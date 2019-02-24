@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="en"><head>
 <meta charset="UTF-8">
@@ -6,6 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <title>All Pokedex2</title>
+<link rel="shortcut icon" href="https://www.serebii.net/pokemongo/pokemon/484.png"/>
+<link rel="apple-touch-icon" href="https://www.serebii.net/pokemongo/pokemon/484.png"/>
+<link rel="icon" href="https://www.serebii.net/pokemongo/pokemon/484.png"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -21,7 +25,9 @@ $(document).ready(function(){
 body {padding: 0xp; margin: 0px; font-family: 'Montserrat', sans-serif; text-align: center; background-color: #e8e5e5; }
 header { min-width: 372px !important; }
 		
-.pokemon { width: 160px; height: 300px;  background-color: #aaaaaa; float: left; margin: 2px; margin-bottom: 3px; }
+.pokemon { width: 160px; height: 300px; float: left; margin: 2px; margin-bottom: 3px;border: 1px solid #aaaaaa;
+	/*background-color: #aaaaaa;  */
+}
 .p_id {position: relative; float:left; height: 0px; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
 .p_g {position: relative; text-transform: uppercase; float:right; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
 .p_n {text-transform: uppercase; text-align: center; font-weight: bold;}
@@ -66,23 +72,23 @@ checkbox {height: 12px; width: 12px; }
 #filter_select, #sort_box { display:inline-block; float:left; width: 90%;} 
 h1 { font-size: 20px; }
 .pokemon { width: 120px; height: 250px; }
-.i { width: 100px; height: 100px; }
-.t { font-size: 15px; }
+.i { width: 100px; height: 100px; }.t { font-size: 15px; }
 .mobile_hide {display:none;}
 }
 /* End Side Pannel CSS */
 </style>
-<script src="clock-library.js"></script>
+<script src="http://efraweb.xyz/pokemons/clock-library.js"></script>
 <style>
 #content { width: 90%; margin: auto; max-width: 1800px; } 
 h1 {padding-top: 0px;}
 #pokedex_content { margin: auto; text-align: center; }
 .pokemon { display: inline-block; float:none !important; width: 120px; height: 240px;}
-
 /* #pokemon_filters { position: -webkit-sticky;  position: sticky; width: 80%; margin: auto; height: 100px; background-color: #bababa; top: 0px; margin-bottom: 20px; } */
 #generation_selectors_c { padding-top: 10px; padding-bottom: 10px; float: left; width: 20%; }
 #filter_selectors_c { width: 70%; height: 100px; float: right; } 
-#pokemon_filters {  position: sticky;  position: -webkit-sticky; top: 120; margin: auto; height: 100px; background-color: #bababa;  margin-bottom: 10px; }
+#pokemon_filters {  position: sticky;  position: -webkit-sticky; top: 120; margin: auto; height: 100px; 
+	/*background-color: #bababa;  */
+	margin-bottom: 10px; }
 #sort_selectors, #hide_selectors, #filter_selectors  {float: left; padding: 0px; margin: 0px; padding-top: 
 20px; padding-bottom: 20px;  width: 33%; }  
 .criteria_dropdown { float: left; }
@@ -95,6 +101,7 @@ h1 {padding-top: 0px;}
 .stat_contain {width: 100%; min-width: 100%; height: 40px; padding-top: 10px;}
 .p_a, .p_d, .p_s { width: 33% !important; float: left;}
 .p_c {margin-top: 10px; font-weight: bold;}
+.p_c2{font-size: 10px;}
 .cp_hold { font-size: 12px; display:inline-block;  }
 .p_n { font-size: 15px; height: 15px; margin-top: -20px;}
 .p_id, .p_g { font-size: 12px; color: black;}
@@ -196,13 +203,20 @@ header {
 <input type="checkbox" name="generation" id='gen_2' class='gen_box' value="2" onchange='update_filter()'>Gen 2<br>
 <input type="checkbox" name="generation" id='gen_3' class='gen_box' value="3" onchange='update_filter()'>Gen 3<br>		  
 </div>
+
 <div class='gen_cont' id='gen_right'>
 <input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>
-<input type="checkbox" style="display:none;" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>			  <input type="checkbox" style="display:none;" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>        <input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
+<input type="checkbox" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>Gen 5<br>
+<!-- style="display:none;"  -->
+<input type="checkbox" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>Gen 6<br>
+<input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
 </div>
-</div>
+      
+		</div>
 	  
     <div id='filter_selectors_c'>
+     
+    
 		<div id='filter_selectors' >
 			<p class='label'>
 				Show
@@ -279,19 +293,15 @@ header {
 		</div>
       
   </div>   
-    
-	<div id=total class='mobile_hide'></div>
-	</div>
-    
-  <!-- <div id='pdex_menu' onclick='show_menu()'>
-     <img src='i/menu.png' id='menu_png'>
-  </div> --> 
-    
-    <style>
-      #advanced_menu {display: none; }
-      #a_share { margin-left: 2%; margin-top: 20px; width: 60%; height: 60px; text-align: left; }
-      #share_box {width: 100%;}
-    </style>
+
+<div id=total class='mobile_hide'></div>
+</div>
+
+<style>
+#advanced_menu {display: none; }
+#a_share { margin-left: 2%; margin-top: 20px; width: 60%; height: 60px; text-align: left; }
+#share_box {width: 100%;}
+</style>
   
   <div id='advanced_menu'>
      <div id='a_share'>
@@ -311,7 +321,7 @@ header {
     <script>
 		
 		//set default values for generation
-	var g_g1 =0,  g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 0, g_g6 = 0, g_g7 = 1; //defaults 
+	var g_g1 =0,  g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 0, g_g6 = 0, g_g7 = 0; //defaults 
 	var g_mode = 'grid';
     var g_ignore_action = 0;
    
@@ -342,7 +352,7 @@ header {
       
 
 </script>
-<script src="pokedex_gen1-4y7.js"></script>			
+<script src="http://efraweb.xyz/pokemons/pokedex_json6.js"></script>			
 <script>
 
 var current_sort = '';
@@ -603,31 +613,25 @@ var current_sort = '';
 
 				if (skip_poke == false && gen_select == true) {
 				temp_count = temp_count + 1 ;
-        if (g_mode== 'grid') {        
-        //write grid
-				text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, 
-																						 pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);	
-				 } else {
-           //write table
-           text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, 
-                                            pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), 
-                                                pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);
-         }
+if (g_mode== 'grid') {
+//write grid
+text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);	
+} else {
+//write table
+text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);
+// pokedex.response[i].CP2.replace(/^0+/, ''),
+	}
          //write_pokemon_table(name, row, img, id, type, type2, gen, cp, att, def, stam)
-        
           
-				text_to_write += text_to_return;
+		text_to_write += text_to_return;
 				
-          count_generated += 1;
+		count_generated += 1;
           
         //remove count for alolan pokemon
          if (show_filter == "released" && pokedex.response[i].ALO == 1 ) {
            	count_generated -= 1;
          }
-
-					
 				}
-			
 				gen_select = false;				
 				skip_poke = false;
 			}
@@ -682,7 +686,7 @@ var current_sort = '';
 			var text_to_return = '';
 			var type_text = '';
 			var sinle_type = 'p_t';
-			var img_type = '';
+			var img_type = 'n';
       var class_extra = '';
       if (type2 != '') { type_text = "<div class='p_t2 "+type2.substring(0, 3)+"'>"+type2+"</div>"; sinle_type = 'p_t1'; }
 			type_text = "<div class='p_t_wrapper'><div class='"+sinle_type+" "+type.substring(0, 3)+"'>"+type+"</div>"+type_text+"</div>";
@@ -694,7 +698,7 @@ var current_sort = '';
       
       text_to_return = "<div class='pokemon' id='"+name+"'> \
 			<div class='p_id'>#"+id+"</div><div class='p_g'>G"+gen+"</div> \
-    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img_type+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
+    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
 			<div class='p_n "+class_extra+"'>"+name+"</div> \
 			"+type_text+" \
 			<div class='p_c'><span class='cp_hold'>MAX CP:</span> "+cp+"</div> \
@@ -704,6 +708,7 @@ var current_sort = '';
        <div class='p_s'><span class='stat_hold'>STA</span> "+stam+"</div> \
 			</div> \
       </div>";
+// 	<div class='p_c2'><span class='cp_hold'>level 20:</span> "+cp2+"</div> \
 	// <div class='"+img_type+row+" "+img_type+"g"+gen+"' style='height: 120px; width:120px;'></div> \
 	// <img src='./pokes4/pokemon_icon_"+img+"_00_shiny.png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
 	// https://www.serebii.net/pokemongo/pokemon/
@@ -738,7 +743,7 @@ var current_sort = '';
   <div id='footer_container'>
  
   <div id='clockcontain' class='nest_migration_container'>
-    <div id='nest_migration_text'>Next Nest Migration</div>
+    <div id='nest_migration_text'>Siguiente Migración Nidos</div>
     <div id='nest_migration_div'></div>
   </div>
   
@@ -761,11 +766,7 @@ var current_sort = '';
 .menu_head {padding-top: 20px; padding-bottom: 10px; font-weight: bold;}
 </style>
       <div id='outer' class='m_item h_menu'  onclick='toggle_menu();'></div>
-      <div id='inner' class='m_item h_menu' >
-      
-      </div>
-      
- </div>  
+      <div id='inner' class='m_item h_menu'></div>
+</div>
 </body>
-
 </html>
