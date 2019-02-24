@@ -194,20 +194,15 @@ header {
 <div class='gen_cont' id='gen_left'>
 <input type="checkbox" name="generation" id='gen_1' class='gen_box' value="1" onchange='update_filter()'>Gen 1<br>
 <input type="checkbox" name="generation" id='gen_2' class='gen_box' value="2" onchange='update_filter()'>Gen 2<br>
-<input type="checkbox" name="generation" id='gen_3' class='gen_box' value="3" onchange='update_filter()'>Gen 3<br>
-			  
+<input type="checkbox" name="generation" id='gen_3' class='gen_box' value="3" onchange='update_filter()'>Gen 3<br>		  
 </div>
-      
 <div class='gen_cont' id='gen_right'>
 <input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>
 <input type="checkbox" style="display:none;" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>			  <input type="checkbox" style="display:none;" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>        <input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
 </div>
-      
-		</div>
+</div>
 	  
     <div id='filter_selectors_c'>
-     
-    
 		<div id='filter_selectors' >
 			<p class='label'>
 				Show
@@ -687,7 +682,7 @@ var current_sort = '';
 			var text_to_return = '';
 			var type_text = '';
 			var sinle_type = 'p_t';
-			var img_type = 'n';
+			var img_type = '';
       var class_extra = '';
       if (type2 != '') { type_text = "<div class='p_t2 "+type2.substring(0, 3)+"'>"+type2+"</div>"; sinle_type = 'p_t1'; }
 			type_text = "<div class='p_t_wrapper'><div class='"+sinle_type+" "+type.substring(0, 3)+"'>"+type+"</div>"+type_text+"</div>";
@@ -699,7 +694,7 @@ var current_sort = '';
       
       text_to_return = "<div class='pokemon' id='"+name+"'> \
 			<div class='p_id'>#"+id+"</div><div class='p_g'>G"+gen+"</div> \
-    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
+    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img_type+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
 			<div class='p_n "+class_extra+"'>"+name+"</div> \
 			"+type_text+" \
 			<div class='p_c'><span class='cp_hold'>MAX CP:</span> "+cp+"</div> \
