@@ -686,19 +686,19 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
 			var text_to_return = '';
 			var type_text = '';
 			var sinle_type = 'p_t';
-			var img_type = 'n';
+			var img_type = '';
       var class_extra = '';
       if (type2 != '') { type_text = "<div class='p_t2 "+type2.substring(0, 3)+"'>"+type2+"</div>"; sinle_type = 'p_t1'; }
 			type_text = "<div class='p_t_wrapper'><div class='"+sinle_type+" "+type.substring(0, 3)+"'>"+type+"</div>"+type_text+"</div>";
 			//type_text = '';
-			if (filter == 'shiny' || filter == 'allshiny') { img_type = 's';}
+			if (filter == 'shiny' || filter == 'allshiny') { img_type = 'shiny/';}
       
       if (name.length > 11) { class_extra = 'lo';}
       if (name.length > 15) { class_extra = 'lon';}
       
       text_to_return = "<div class='pokemon' id='"+name+"'> \
 			<div class='p_id'>#"+id+"</div><div class='p_g'>G"+gen+"</div> \
-    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
+    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img_type+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
 			<div class='p_n "+class_extra+"'>"+name+"</div> \
 			"+type_text+" \
 			<div class='p_c'><span class='cp_hold'>MAX CP:</span> "+cp+"</div> \
