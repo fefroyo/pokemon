@@ -151,8 +151,9 @@ typs: ${pokemon.types}`" :data-type="pokemon.types" :data-id="pokemon.id" :data-
   	<p class="name">34 <span class="number">{{getMaxCpForTrainerLevel(pokemon, 34, iv)}}</span></p>
   	<p class="name">35 <span class="number red">{{getMaxCpForTrainerLevel(pokemon, 35, iv)}}</span></p>
   	<!-- <img :src="'./pokes4/pokemon_icon_'+pokemon.familyId+'_00_shiny.png'" :alt="pokemon.familyId" width="80"> -->
-  	<img :src="'https://www.serebii.net/pokemongo/pokemon/shiny/'+pokemon.familyId+'.png'" width="80" :alt="pokemon.familyId">
-    <!-- https://www.serebii.net/pokemongo/pokemon/shiny/001.png -->
+  <img :src="'./pokemon/shiny/pokemon_icon_'+pokemon.familyId+'_00_shiny.png'" width="80" :alt="pokemon.familyId">
+<!-- <img :src="'https://www.serebii.net/pokemongo/pokemon/shiny/'+pokemon.familyId+'.png'" width="80" :alt="pokemon.familyId">
+     https://www.serebii.net/pokemongo/pokemon/shiny/001.png -->
   </div>
 		
 </div>
