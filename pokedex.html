@@ -613,7 +613,7 @@ var current_sort = '';
 				temp_count = temp_count + 1 ;
 if (g_mode== 'grid') {
 //write grid
-text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);	
+text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].CP2.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);	
 } else {
 //write table
 text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);
@@ -680,7 +680,7 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
 			//alert(count_generated);
 		}
     
-    function write_pokemon_box(name, row, img, id, type, type2, gen, cp, att, def, stam, filter) {
+    function write_pokemon_box(name, row, img, id, type, type2, gen, cp, cp2, att, def, stam, filter) {
 			var text_to_return = '';
 			var type_text = '';
 			var sinle_type = 'p_t';
@@ -700,7 +700,7 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
 			<div class='p_n "+class_extra+"'>"+name+"</div> \
 			"+type_text+" \
 <div class='p_c'><span class='cp_hold'>MAX CP:</span> "+cp+"</div> \
-<div class='p_c2'><span class='cp_hold2'>Raid: "+cp+"</span></div> \
+<div class='p_c2'><span class='cp_hold2'>Raid lv20: "+cp2+"</span></div> \
       <div class='stat_contain'> \
        <div class='p_a'><span class='stat_hold'>ATT</span> "+att+"</div> \
        <div class='p_d'><span class='stat_hold'>DEF</span> "+def+"</div> \
