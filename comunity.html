@@ -101,7 +101,8 @@ tr:nth-child(even){background-color: #f2f2f2}
 </head>
 
 <body>
-
+<div id="app">
+	
 <p><input id="myInput" type="text" placeholder="Search.."></p>
 
 <div class="gridcontent">	
@@ -164,6 +165,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 </ul>
 </div>
 
+	</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
 <script src="./js/pokedex_stats2.js"></script>
 <script>
@@ -300,7 +302,7 @@ var getMaxCpForTrainerLevel = function getMaxCpForTrainerLevel(poke, trainerLeve
 var nivelEntrenador = '40';
 
 var vm = new Vue({
-  el: '#pokeMaxCP',
+  el: '#app',
   data: {
     level: parseInt(window.location.search.match(/\d+/), 10) || nivelEntrenador,
     filter: {
