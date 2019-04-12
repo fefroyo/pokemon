@@ -31,11 +31,9 @@ _____________________________________*/
 .gridcontent {
     /*border: 1px solid #484542;*/
     /*background: hsla(0, 0%, 0%, 0.15);*/
-    position: relative;
-    width: 440px;
-    /*width: 1102px;*/
-    height: 300px;
+    padding: 15px;
     margin: 0 auto;
+    text-align: center;
 }
 .element-item > * { margin: 0;padding: 0;}
 .element-item {
@@ -50,7 +48,7 @@ _____________________________________*/
     /*color: #262524;*/
     color: #000000;
 }
-.element-item .name {
+.name {
 /*    position: absolute;
     left: 10px;
     top: 60px;*/
@@ -61,7 +59,7 @@ _____________________________________*/
     font-size: 1.4em;
     font-weight: normal;
 }
-.element-item .number {
+.number {
 /*    position: absolute;
     right: 8px;
     top: 5px;*/
@@ -76,11 +74,11 @@ _____________________________________*/
   bottom: -50px; 
 }
 .red {color: #d50000!important}
+.verde {color: #4CAF50!important}
 #main { 
   width: 260px; 
   height: 50px; 
-  padding: 6px 10px; 
-  /*border: 1px solid #b5b5b5;*/
+  padding: 6px 10px;
   margin: 0 auto;
 }
 #myInput { 
@@ -90,15 +88,12 @@ _____________________________________*/
   margin-top: 5px; 
   margin-left: 3px; 
   border: 1px solid #999999; 
-    
-  -moz-border-radius: 5px; 
-  -webkit-border-radius: 5px; 
-  border-radius: 5px; 
   
   -moz-box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
   -webkit-box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
   box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
 }
+:focus {outline:0;}	
 	/* tabla */
 ul {list-style:none; margin:0;padding:0;overflow:hidden;}
 li {
