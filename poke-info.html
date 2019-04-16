@@ -1,0 +1,3514 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.type-icon {
+  background: url(http://efraweb.xyz/pokemons/icons-sprite.png);
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  color: transparent;
+  cursor: default;
+}
+.move-type-bug {background-position:-24px 0;}
+.move-type-dark {background-position:-48px 0;}
+.move-type-dragon {background-position:0 -24px;}
+.move-type-electric {background-position:-24px -24px;}
+.move-type-fairy {background-position:-48px -24px;}
+.move-type-fighting {background-position:-72px -24px;}
+.move-type-fight {background-position:-72px -24px;}
+.move-type-fire {background-position:0 -48px;}
+.move-type-flying {background-position:-24px -48px;}
+.move-type-ghost {background-position:-48px -48px;}
+.move-type-grass {background-position:-72px -48px;}
+.move-type-ground {background-position:0 -72px;}
+.move-type-ice {background-position:-24px -72px;}
+.move-type-normal {background-position:-48px -72px;}
+.move-type-poison {background-position:-72px -72px;}
+.move-type-psychic {background-position:0 -96px;}
+.move-type-rock {background-position:-24px -96px;}
+.move-type-steel {background-position:-48px -96px;}
+.move-type-water {background-position:-72px -96px;}
+
+table {border-collapse: collapse;margin: 15px auto;}
+table, th, td {font-family: helvetica; border: 1px solid black;  
+  /*text-align: center;*/
+  padding: 5px;
+  /*width: 24%;*/
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    /*border-color: inherit;*/
+}
+td.weakness-4plus {background: #4FC3F7;}
+td.resistance-1-4plus {background: #ffa9a9;}
+td.weakness-2plus {background: #b8f1cf;}
+td.resistance-1-2plus {background: #ffd9d9;}
+
+/* input search */
+#main { 
+  width: 400px; 
+  height: 50px; 
+  background: #f2f2f2; 
+  padding: 6px 10px; 
+  border: 1px solid #b5b5b5;
+  margin: 0 auto;
+   
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  border-radius: 5px;
+  
+  -moz-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede; 
+  -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede; 
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede; 
+}
+
+input[type="search"] { 
+  float: left; 
+  width: 230px; 
+  padding: 15px 5px 5px 5px; 
+  margin-top: 5px; 
+  margin-left: 3px; 
+  border: 1px solid #999999; 
+    
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  border-radius: 5px; 
+  
+  -moz-box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
+  -webkit-box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
+  box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
+}
+:focus {outline:0;}
+input[type="submit"].solid, #searchBtn.solid { 
+  float: left; 
+  cursor: pointer; 
+  width: 130px; 
+  padding: 8px 6px; 
+  margin-left: 20px; 
+  background-color: #f8b838; 
+  color: rgba(134, 79, 11, 0.8); 
+  text-transform: uppercase; 
+  font-weight: bold; 
+  border: 1px solid #99631d; 
+    
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px; 
+  border-radius: 5px; 
+    
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7), 0 -1px 0 rgba(64, 38, 5, 0.9);  
+    
+  -moz-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 5px 0 #b8882a, 0 6px 0 #593a11, 0 13px 0 #ccc; 
+  -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 5px 0 #b8882a, 0 6px 0 #593a11, 0 13px 0 #ccc; 
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 5px 0 #b8882a, 0 6px 0 #593a11, 0 13px 0 #ccc; 
+  -webkit-transition: background 0.2s ease-out; 
+}
+
+input[type="submit"].solid:active, #searchBtn.solid:active { 
+  background: #f6a000; 
+  position: relative; 
+  top: 5px; 
+  border: 1px solid #702d00; 
+    
+  -moz-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
+  -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
+}
+.list-group {
+  list-style:none;margin: 0;padding: 0;
+}
+.list-group-item { 
+  cursor: pointer; 
+  width: 400px; 
+  padding: 8px 6px;
+  /*margin-left: 20px;*/
+  margin: 12px auto;
+  background-color: #f8b838; 
+  color: rgba(134, 79, 11, 0.8); 
+  background: #f2f2f2;
+  text-transform: uppercase; 
+  font-weight: bold; 
+  border: 1px solid #b5b5b5;
+    
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7), 0 -1px 0 rgba(64, 38, 5, 0.9);  
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; 
+  border-radius: 5px; 
+  -moz-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede; 
+  -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede; 
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede;  
+}
+
+
+/* poke */
+.monsterInfo {
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    margin: auto;
+    
+    text-align: center;
+    font-family: Helvetica;
+    position: relative;
+    vertical-align: top;
+}
+.monsterInfo img {height: 120px}
+.points {color: #44696c;}
+.points span {font-size: 24px;font-weight: bold;}
+.pokemonLevel {
+    width: 150px;
+    margin: 25px auto;
+    line-height: 1px;
+    text-align: center;
+}
+.pokemonName {
+    /*margin-bottom: 10px; */
+    position: relative;
+}
+.pokemonName::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-image: url(https://www.shareicon.net/data/128x128/2015/09/13/100378_edit_512x512.png);
+    /* https://github.com/Superviral/Pokemon-GO-App-Assets-and-Images/blob/master/App%20Converted%20Images/pencil.png?raw=true */
+    /* https://www.shareicon.net/data/128x128/2015/09/13/100378_edit_512x512.png */
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    /* float: right; */
+    position: absolute;
+    /*right: 10px;*/
+    margin-left: 5px;
+    top: -10px;
+}
+.number {position: absolute;top:140px;left:64px;
+      color: transparent;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    font: 900 16em monospace;
+    opacity: .3;
+  }
+.greenWord {color: #44696c;}
+.levelBar {
+    width: 100%;
+    height: 5px;
+    border-radius: 2px;
+    background-color: #6eedb7;
+}
+.HP {
+    font-size: 10px;
+    color: #879fa1;
+    margin-top: 10px;
+}
+.pokemonInfo {
+    /*width: calc(100% - 20px);*/
+    width: 110%;
+    margin: auto;
+    /*border-bottom: 1px solid #ccc;*/
+    padding-bottom: 20px;
+}
+.infoBox:nth-child(2) {
+    border: 1px solid #bac7c8;
+    border-top: 0;
+    border-bottom: 0;
+    text-align: center;
+}
+.infoBox {
+    display: inline-block;
+    width: 30%;
+    /*line-height: ;*/
+    text-align: left;
+    margin-left: 15px;
+}
+.grayWord {
+    color: #bac7c8;
+    font-size: 12px;
+}
+.peso {margin: 0;}
+.pokemonInc {width:80px;}
+
+.view-content {width:600px;height:250px;float:right;}
+.views-field-name {text-align: center;text-decoration: none;}
+
+.results{height:425px;}
+/*.results, .results2 {width:50%;}*/
+.results2 {float:right;}
+.incursion {width:300px;}
+</style>
+</head>
+<body>
+  
+<header id="main">
+<!-- <form class="body-form"> -->
+  <div class="form-group">
+    <input type="search" class="form-control search-input" id="search" placeholder="Busca pokemon">
+  </div>
+<button id="searchBtn" class="solid">mostrar</button>  
+<!-- </form> -->
+</header>
+
+<div id="results" class="results"></div>
+<div id="results2" class="results2"></div>
+
+<div class="view-content" id="results3">
+  <div class="views-row  bug" id="3012" style="display:none"><div class="views-field views-field-name"><span class="field-content">Bug</span></div><div class="views-field views-field-field-type-chart"><div class="field-content">
+<table class="weakness-table"><tbody><tr>
+  <td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td></tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus"> 1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus"> 1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus"> 1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  electric-bug bug-electric" id="1112" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Electric</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fighting-bug bug-fighting" id="1002" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Fighting</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row flying-bug bug-flying" id="1062" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row grass-bug bug-grass" id="1612" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Grass</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  poison-bug bug-poison" id="3212" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  rock-bug bug-rock" id="9962" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Rock</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  steel-bug bug-steel" id="9812" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Steel</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water-bug bug-water" id="1132" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Bug/Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  dark" id="9612" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dark</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fire-dark dark-fire" id="4032" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dark/Fire</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-dark dark-flying" id="9662" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dark/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ice-dark dark-ice" id="1072" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dark/Ice</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-4plus">1.96x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  rock-dark dark-rock" id="1042" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dark/Rock</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-4plus">1.96x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  dragon" id="2662" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dragon</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  dark-dragon dragon-dark" id="5172" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dragon/Dark</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-dragon dragon-flying" id="2712" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Dragon/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-4plus">1.96x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  electric" id="1312" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Electric</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>      
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fairy-electric electric-fairy" id="0152" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Electric/Fairy</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fairy" id="1462" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fairy</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-fairy fairy-flying" id="9312" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fairy/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  psychic-fairy fairy-psychic" id="2212" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fairy/Psychic</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fighting fight" id="1662" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fighting</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water-fighting fighting-water" id="1712" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fighting/Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fire" id="8602" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fire</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  dragon-fire fire-dragon" id="1142" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fire/Dragon</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  rock-fire fire-rock" id="7022" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Fire/Rock</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-4plus">1.96x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  electric-flying flying-electric" id="2562" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Flying/Electric</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fire-flying flying-fire" id="2612" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Flying/Fire</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ice-flying flying-ice" id="2512" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Flying/Ice</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  poison-flying flying-poison" id="1562" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Flying/Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  rock-flying flying-rock" id="2412" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Flying/Rock</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water-flying flying-water" id="2312" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Flying/Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ghost" id="9712" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ghost</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-ghost ghost-flying" id="8122" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ghost/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ground-ghost ghost-ground" id="1342" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ghost/Ground</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  poison-ghost ghost-poison" id="2062" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ghost/Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  grass" id="2162" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fairy-grass grass-fairy" id="2132" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass/Fairy</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-grass grass-flying" id="9512" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-4plus">1.96x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ghost-grass grass-ghost" id="1102" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass/Ghost</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  poison-grass grass-poison" id="8102" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass/Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  psychic-grass grass-psychic" id="2112" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass/Psychic</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  steel-grass grass-steel" id="9162" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Grass/Steel</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ground" id="1362" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ground</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-ground ground-flying" id="9862" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ground/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-4plus">1.96x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  poison-ground ground-poison" id="1412" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ground/Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  rock-ground ground-rock" id="1862" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ground/Rock</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-4plus">1.96x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  steel-ground ground-steel" id="9912" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ground/Steel</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water-ground ground-water" id="9562" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ground/Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ground-ice ice-ground" id="1012" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ice/Ground</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  psychic-ice ice-psychic" id="2262" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Ice/Psychic</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row normal" id="1212" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Normal</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fairy-normal normal-fairy" id="1512" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Normal/Fairy</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fighting-normal normal-fighting" id="1442" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Normal/Fighting</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-normal normal-flying" id="1160" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Normal/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  poison" id="1262" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  psychic" id="1762" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Psychic</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-psychic psychic-flying" id="9362" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Psychic/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ghost-psychic psychic-ghost" id="1162" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Psychic/Ghost</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-4plus">1.96x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  normal-psychic psychic-normal" id="9762" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Psychic/Normal</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  steel-psychic psychic-steel" id="1152" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Psychic/Steel</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water-psychic psychic-water" id="1912" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Psychic/Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  rock" id="9462" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Rock</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="weakness-2plus">1.4x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water-rock rock-water" id="2362" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Rock/Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  electric-steel steel-electric" id="1962" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Steel/Electric</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-4plus">1.96x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fairy-steel steel-fairy" id="1172" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Steel/Fairy</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  flying-steel steel-flying" id="1022" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Steel/Flying</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td>-</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  water" id="9602" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  bug-water water-bug" id="1122" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water/Bug</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  dragon-water water-dragon" id="1032" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water/Dragon</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  electric-water water-electric" id="9262" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water/Electric</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  fairy-water water-fairy" id="9412" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water/Fairy</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+
+
+</tr></tbody></table></div></div>
+  </div>
+    <div class="views-row  ice-water water-ice" id="2012" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water/Ice</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-4plus">.51x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr></tbody></table></div></div>
+  </div>
+
+    <div class="views-row poison-water water-poison" id="1812" style="display:none">
+    <div class="views-field views-field-name"><span class="field-content">Water/Poison</span></div><div class="views-field views-field-field-type-chart"><div class="field-content"><table class="weakness-table"><tbody><tr><td><span class="type-icon move-type-bug">Bug</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-dark">Dark</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-dragon">Dragon</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-electric">Electric</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-fairy">Fairy</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-fighting">Fighting</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-fire ">Fire</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-flying">Flying</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ghost">Ghost</span></td>
+  <td>-</td>
+</tr><tr><td><span class="type-icon move-type-grass">Grass</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-ground">Ground</span></td>
+  <td class="weakness-2plus">1.4x</td>
+  <td><span class="type-icon move-type-ice">Ice</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr><tr><td><span class="type-icon move-type-normal">Normal</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-poison">Poison</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-psychic">Psychic</span></td>
+  <td class="weakness-2plus">1.4x</td>
+</tr><tr><td><span class="type-icon move-type-rock">Rock</span></td>
+  <td>-</td>
+  <td><span class="type-icon move-type-steel">Steel</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+  <td><span class="type-icon move-type-water">Water</span></td>
+  <td class="resistance-1-2plus">.714x</td>
+</tr></tbody></table></div></div></div>
+
+<!-- fin weakles -->
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="raids.js"></script>
+<script src="pokedexAll3.js"></script>
+<script>
+$(document).ready(function() {
+
+  var search = $(".search-input");
+
+  search.keyup(function() {
+    var value = $(this).val();
+    var regex = new RegExp(value, "i");
+    var results = '<ul class="list-group">';
+    var array = [];
+    var count = 1;
+
+    $.each(pokedex, function(key, val) {
+      if ((val.name.search(regex) != -1)) {
+        array.push(val);
+        count++;
+      }
+    });
+    
+// https://www.serebii.net/pokemongo/pokemon/shiny/001.png    
+    $.each(array, function(key, val) {
+      results += "<li class='list-group-item'><img src='https://www.serebii.net/pokemongo/pokemon/"+
+                  val.id2+".png' height='20'>" +val.name+ "</li>";
+      return key < 10;
+    });
+      results += '</ul>';
+    
+    if (value !== '') {
+      $('.results').html(results);
+    }
+    else {
+      $('.results').html('');
+      $('#results2').html('');
+      $('#results3').html('');
+    }
+
+
+  $("li.list-group-item").click(function() {
+    $("#search").val($(this).text());
+    
+    if (value !== '') {
+      $('.results').html(results);
+      myFuncion();
+      myFuncion2();
+
+    }
+     else {
+        $('.results').html('');
+      }
+    
+  });
+
+});
+
+
+$('#searchBtn').click(function (e) {
+  myFuncion();
+  myFuncion2();
+}); 
+
+//document.getElementById("searchBtn").addEventListener('click', myFuncion);
+
+function myFuncion(){
+
+   var formInput = document.getElementById("search").value,
+      foundItem = null;
+
+  for (i = 0; i < pokedex.length; i++) {
+    if (pokedex[i].id == formInput || pokedex[i].name == formInput || pokedex[i].type1 == formInput) {
+      foundItem = pokedex[i]; break;
+    }
+
+  }
+
+if (foundItem) {
+
+    var poke =
+'<div class="monsterInfo">'+
+'<p class="points">PC <span>'+foundItem.cpmax+'</span></p>'+
+'<img src="./pokes4/pokemon_icon_'+foundItem.id2+'_00_shiny.png" alt="pokeMon" class="pokemon">'+
+'<div class="number">'+foundItem.id+'</div>'+
+'<div class="pokemonLevel">'+
+'<h2 class="greenWord pokemonName">'+foundItem.name+' </h2>'+
+'<div class="levelBar"></div>'+
+'<div class="HP"><span>'+foundItem.BaseStamina+'</span> / <span>'+foundItem.BaseStamina+'</span> Stamina</div>'+
+'</div>'+
+
+'<table>'+
+    '<thead><tr><th>Ataque</th><th>Defensa</th><th>Vida</th></tr></thead>'+
+    '<tbody><tr><td>'+foundItem.BaseAttack+'</td><td>'+foundItem.BaseDefense+'</td><td>'+foundItem.BaseStamina+'</td></tr></tbody>'+
+'</table>'+
+
+'<div class="pokemonInfo">'+
+'<div class="infoBox">'+
+'<span class="grayWord">Ataque</span>'+
+'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.atacTipo1+'">Flying</span> '+foundItem.atac1+'</h3>'+
+'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.atacTipo2+'">Flying</span> '+foundItem.atac2+'</h3>'+
+'</div>'+
+
+'<div class="infoBox">'+
+'<div class="grayCircle">'+
+'<span class="type-icon move-type-'+foundItem.type1+'"></span>'+
+'<span class="type-icon move-type-'+foundItem.type2+'"></span>'+
+'</div><span class="grayWord">'+foundItem.type1+' / '+foundItem.type2+'</span>'+
+'</div>'+
+'<div class="infoBox">'+
+'<span class="grayWord">Defensa</span>'+
+'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.defTipo1+'">Flying</span> '+foundItem.def1+'</h3>'+
+'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.defTipo2+'">Flying</span> '+foundItem.def2+'</h3>'+
+'</div>'+
+'</div>'+
+'</div>';
+
+  document.getElementById('results').innerHTML = poke;
+
+
+  var preElements = document.getElementsByClassName('views-row');
+  var tiipo1 = foundItem.type1;
+  var tiipos = foundItem.type1+'-'+foundItem.type2;
+    
+  if (foundItem.type1){
+    for(var k=0; k < preElements.length; k++){
+      preElements[k].style.display = preElements[k].classList.contains(tiipo1)?'block':'none';
+     }    
+  }
+  if (foundItem.type1 && foundItem.type2){
+    for(var k=0; k < preElements.length; k++){
+      preElements[k].style.display = preElements[k].classList.contains(tiipos)?'block':'none';
+     }
+  }
+ 
+}
+
+  $("#search").val('');
+}
+
+function myFuncion2(){
+
+var numId = $('.number').html();
+var incursion = $('.pokemonName').html();
+
+  for (i = 0; i < raids.length; i++) {
+
+    if (numId == raids[i].idRaid){
+
+    var pokeInc =
+'<div class="monsterInfo">'+
+'<img src="./imagenes pokemon/rd'+raids[i].Tier+'.png" alt="pokeMon" height="64"/>'+
+'<p class="points">PC incursion <span>'+raids[i].BossCP+'</span></p>'+
+'<div>'+
+'<table><thead><tr>'+
+'<th>#</th><th>Pokémon</th><th>Movimiento rápido</th>'+
+'<th>Movimiento principal</th></tr></thead>'+
+'<tbody>'+
+'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac1+'.png" style="width:28px;height:28px!important;"></td>'+
+'<td>'+raids[i].pokeAtac1+'</td>'+
+'<td class="stab">'+
+'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick1+'</td><td class="stab">'+
+'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge1+'</td></tr>'+
+'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac2+'.png" style="width:28px;height:28px!important;"></td>'+
+'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac2+'</td>'+
+'<td class="stab">'+
+'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick2+'</td><td class="stab">'+
+'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge2+'</td></tr>'+
+'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac3+'.png" style="width:28px;height:28px!important;"></td>'+
+'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac3+'</td>'+
+'<td class="stab">'+
+'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick3+'</td><td class="stab">'+
+'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge3+'</td></tr>'+
+'</tbody></table>';
+
+  document.getElementById('results2').innerHTML = pokeInc;
+    } 
+  }  
+}
+
+});</script>
+</body>
+</html>
