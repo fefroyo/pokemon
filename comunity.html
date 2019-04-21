@@ -106,13 +106,16 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+max-width: 450px; margin: 0 auto;
 }
 th, td {text-align: left;padding: 8px;}
 /*tr:nth-child(even){background-color: #f2f2f2}*/
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;overflow:hidden;word-break:normal;border: 1px solid #ddd;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;overflow:hidden;word-break:normal;text-align: center;}
-.tg .tg-0lax{text-align:center;vertical-align:top}
+.tg .tg-0lax{text-align:center;vertical-align:top; width: 120px;height: 100px;} 
+td div { height: inherit; width: inherit; overflow: hidden; box-sizing: border-box; } 
+td div img { width: 80%; }
 </style>
 </head>
 
@@ -175,7 +178,8 @@ th, td {text-align: left;padding: 8px;}
     </td>
   </tr>
   <tr>
-    <td class="tg-0lax"><img :src="'https://fefroyo.github.io/pokemon/shiny/pokemon_icon_'+pokemon.img+'_00_shiny.png'" width="80" :alt="pokemon.familyId"></td>
+    <td class="tg-0lax">
+<div><img :src="'https://fefroyo.github.io/pokemon/shiny/pokemon_icon_'+pokemon.img+'_00_shiny.png'" :alt="pokemon.familyId"></div></td>
     <!-- <td class="tg-0lax"><img :src="'https://www.serebii.net/pokemongo/pokemon/shiny/'+pokemon.img+'.png'" width="80" :alt="pokemon.familyId"></td> -->
     <!-- https://fefroyo.github.io/pokemon/icons - https://fefroyo.github.io/pokemon/shiny/pokemon_icon_001_00_shiny.png -->
   </tr>
