@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#especies div").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<style>
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,img,b,u,i,ol,ul,li,form,label,table,tbody,tfoot,thead,tr,th,td,embed{margin:0;padding:0;border:0;font-size:100%;font:inherit}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}html{overflow-y:scroll}input,button,select,textarea{font:inherit;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}.cf{zoom:1}.cf:before,.cf:after{content:'';display:table}.cf:after{clear:both}html{background-color:#e5e5e5}body{font:400 16px/1.5 'Roboto',sans-serif;color:#303030}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}a{color:#4078c0;text-decoration:none}
+
+.type-icon{background:url(icons-sprite.png);
+	display:inline-block;width:24px;height:24px;line-height:24px;color:transparent;cursor:default}
+
+.type-bug {background-position:-24px 0;}
+.type-dark {background-position:-48px 0;}
+.type-dragon {background-position:0 -24px;}
+.type-electric {background-position:-24px -24px;}
+.type-fairy {background-position:-48px -24px;}
+.type-fighting {background-position:-72px -24px;}
+.type-fight {background-position:-72px -24px;}
+.type-fire {background-position:0 -48px;}
+.type-flying {background-position:-24px -48px;}
+.type-ghost {background-position:-48px -48px;}
+.type-grass {background-position:-72px -48px;}
+.type-ground {background-position:0 -72px;}
+.type-ice {background-position:-24px -72px;}
+.type-normal {background-position:-48px -72px;}
+.type-poison {background-position:-72px -72px;}
+.type-psychic {background-position:0 -96px;}
+.type-rock {background-position:-24px -96px;}
+.type-steel {background-position:-48px -96px;}
+.type-water {background-position:-72px -96px;}
+
+.type-name {width:25px!important;color:inherit!important;}
+
+.filtered-inclusive .filter-item, .filtered-exclusive .filter-item, .filter-no-item { display:none } 
+.filtered-inclusive .filter-item.selected, .filtered-exclusive .filter-item:not(.selected) { display:-webkit-flexbox; display:-ms-flexbox; display:flex }
+.filter-no-item.filter-no-item-active { display:block; width:100%; background:#fcc; color:red; padding:1em 1.5em; margin:0.75% }
+.filter-mask-active { position:absolute; top:0; left:0; bottom:0; right:0; }
+
+/* grid contenido 
+_____________________________________*/
+.gridcontent {
+    /*border: 1px solid #484542;*/
+    /*background: hsla(0, 0%, 0%, 0.15);*/
+    position: relative;
+    width: 100%;
+    /*width: 1102px;*/
+    height: 550px;
+    margin: 0 auto;
+}
+.element-item > * {
+    margin: 0;
+    padding: 0;
+}
+.element-item {
+    position: relative;
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    padding: 10px;
+    /*background: #888;*/
+    border: 1px solid #484542;
+    /*color: #262524;*/
+    color: #000000;
+}
+.element-item .name {
+    position: absolute;
+    left: 10px;
+    /*top: 60px;*/
+    bottom: 25px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 1em;
+    font-weight: normal;
+}
+.element-item .weight {
+    position: absolute;
+    left: 10px;
+    /*top: 76px;*/
+    bottom: 0px;
+    font-size: 1em; /* 0.8 */
+}
+.element-item .generation {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    /*bottom: 5px;*/
+    font-size: 1em; /* 0.8 */
+}
+.element-item .symbol {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 2.8em;
+    font-weight: bold;
+    color: black;
+}
+.element-item .number {
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    font-weight: bold;
+    font-size: 32px;
+}
+.element-item .stats {
+    position: absolute;
+    right: 8px;
+    top: 44px;
+    font-size: 16px;
+}
+
+.element-item img {
+    position: absolute;
+    left: 0px;
+    /*top: -5px;*/
+    height: 120px;
+}
+.element-item .tipo {
+    position: absolute;
+    left: 10px;
+    top: 120px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="demo1">	
+
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<style>
+.gen_sel { padding-top: 10px; padding-bottom: 10px; float: left; width: 100%; }
+.gen_cont {width: 50%;}
+	.gen_left {float:left;}.gen_right {float: right;}
+.gen_cont2 {width: 325px;margin-left: 25%;margin-top: -100px;}
+	.gen_left1 {float:left;}.gen_right1 {float: right;}
+</style>
+
+<div class="sortable filter-categories" id="myTable">
+
+<div class='gen_cont gen_left'>
+<input type="checkbox" id="filter-all" class="filter-input" value="todo" checked="true"/>
+	<label class="type-name" for="filter-all">Todo</label>
+<input type="checkbox" value="nada" id="nada" class="filter-input"/>
+	<label class="type-name" for="nada">Nada</label><br>
+
+<input type="checkbox" id="Gen1" class="filter-input" value="Gen1"/>
+	<label for="Gen1" class="type-name">G1</label>
+<input type="checkbox" id="Gen2" class="filter-input" value="Gen2"/>
+	<label for="Gen2" class="type-name">G2</label>
+<input type="checkbox" id="Gen3" class="filter-input" value="Gen3"/>
+	<label for="Gen3" class="type-name">G3</label>
+<input type="checkbox" id="Gen4" class="filter-input" value="Gen4"/>
+	<label for="Gen4" class="type-name">G4</label>
+</div>
+
+<div class='gen_cont'>
+<input type="checkbox" id="Gen5" class="filter-input" value="Gen5"/>
+	<label for="Gen5" class="type-name">G5</label>
+<input type="checkbox" id="Gen6" class="filter-input" value="Gen6"/>
+	<label for="Gen6" class="type-name">G6</label>
+<input type="checkbox" id="Gen7" class="filter-input" value="Gen7"/>
+	<label for="Gen7" class="type-name">G7</label>
+<br>
+
+<input type="checkbox" id="EGG7" class="filter-input" value="EGG7"/>
+<label for="EGG7" class="type-name">Egg7</label>
+<input type="checkbox" id="EGG2" class="filter-input" value="EGG2"/>
+<label for="EGG2" class="type-name">Egg2</label>
+<input type="checkbox" id="EGG5" class="filter-input" value="EGG5"/>
+<label for="EGG5" class="type-name">Egg5</label>
+<input type="checkbox" id="EGG10" class="filter-input" value="EGG10"/>
+<label for="EGG10" class="type-name">Egg10</label>
+</div>
+
+<div class='gen_sel'>
+<div class='gen_cont2 gen_left1'>
+<input type="checkbox" id="normal" class="filter-input" value="normal"/>
+	<label for="normal" class="filter-label type-icon type-normal">normal</label>
+<input type="checkbox" id="fight" class="filter-input" value="fight"/>
+	<label for="fight" class="filter-label type-icon type-fighting">lucha</label>
+<input type="checkbox" id="flying" class="filter-input" value="flying"/>
+	<label for="flying" class="filter-label type-icon type-flying">volador</label>
+<input type="checkbox" id="poison" class="filter-input" value="poison"/>
+	<label for="poison" class="filter-label type-icon type-poison">veneno</label>
+<input type="checkbox" id="ground" class="filter-input" value="ground"/>
+	<label for="ground" class="filter-label type-icon type-ground">tierra</label>
+<input type="checkbox" id="rock" class="filter-input" value="rock"/>
+	<label for="rock" class="filter-label type-icon type-rock">roca</label>
+<input type="checkbox" id="bug" class="filter-input" value="bug"/>
+	<label for="bug" class="filter-label type-icon type-bug">bicho</label>
+<input type="checkbox" id="ghost" class="filter-input" value="ghost"/>
+	<label for="ghost" class="filter-label type-icon type-ghost">fantasma</label>
+<input type="checkbox" id="steel" class="filter-input" value="steel"/>
+	<label for="steel" class="filter-label type-icon type-steel">acero</label>
+<input type="checkbox" id="grass" class="filter-input" value="grass"/>
+	<label for="grass" class="filter-label type-icon type-grass">planta</label>
+<input type="checkbox" id="fire" class="filter-input" value="fire"/>
+	<label for="fire" class="filter-label type-icon type-fire">fuego</label>
+<input type="checkbox" id="water" class="filter-input" value="water"/>
+	<label for="water" class="filter-label type-icon type-water">agua</label>
+<input type="checkbox" id="electric" class="filter-input" value="electric"/>
+	<label for="electric" class="filter-label type-icon type-electric">electrico</label>
+<input type="checkbox" id="psychic" class="filter-input" value="psychic"/>
+	<label for="psychic" class="filter-label type-icon type-psychic">psychico</label>
+<input type="checkbox" id="ice" class="filter-input" value="ice"/>
+	<label for="ice" class="filter-label type-icon type-ice">hielo</label>
+<input type="checkbox" id="dragon" class="filter-input" value="dragon"/>
+	<label for="dragon" class="filter-label type-icon type-dragon">dragon</label>
+<input type="checkbox" id="dark" class="filter-input" value="dark"/>
+	<label for="dark" class="filter-label type-icon type-dark">dark</label>
+<input type="checkbox" id="fairy" class="filter-input" value="fairy"/>
+	<label for="fairy" class="filter-label type-icon type-fairy">hada</label>
+	</div></div>
+</div>
+
+<div class="filter-wrap gridcontent" id="especies">
+	<div class="filter-no-item">Sorry, no items match your filter selection(s).</div>
+	<div class="filter-mask"></div> <!-- mask is last -->
+</div>
+
+</div>
+
+<script>
+function addClassAll(el, cls){
+	for (var i = 0; i < el.length; ++i){
+		if (!el[i].className.match('(?:^|\\s)'+cls+'(?!\\S)')){ el[i].className += ' '+cls; } 
+	}
+}
+function delClassAll(el, cls){
+	for (var i = 0; i < el.length; ++i){
+		el[i].className = el[i].className.replace(new RegExp('(?:^|\\s)'+cls+'(?!\\S)'),'');
+	}
+}
+
+function contentFilter(filterID, filterType){  
+var id = filterID;
+document.querySelector(id+' .filter-categories').onclick = function(evt) { 
+	evt = evt || window.event;
+	var elem = evt.target || evt.srcElement, 
+	    wrap = document.querySelectorAll(id+' .filter-wrap'),
+	    items = document.querySelectorAll(id+' .filter-item'),
+	    inputs = document.querySelectorAll(id+' .filter-input'),
+	    filters = [],
+	    noitem = document.querySelectorAll(id+' .filter-no-item'), 
+	    mask = document.querySelectorAll(id+' .filter-mask'), 
+	    type = filterType;
+	addClassAll(mask, 'filter-mask-active');
+	setTimeout(function() { delClassAll(mask, 'filter-mask-active'); }, 100); // 1000
+	if (elem.className.match('(?:^|\\s)filter-all(?!\\S)')) { // #filter-all
+		for (var i = 1; i < inputs.length; ++i) { // loop through inputs but ignore [0] - #filter-all
+			inputs[i].checked = false; // uncheck all other inputs
+			}
+		setTimeout(function() { 
+			delClassAll(items, 'selected');  
+			delClassAll(wrap, 'filtered-'+type); 
+			delClassAll(noitem, 'filter-no-item-active'); 
+			}, 100); 
+		} else { // another filter is checked
+		inputs[0].checked = false; // uncheck #filter-all
+		for (var i = 1; i < inputs.length; ++i) { // loop through inputs but ignore [0] - #filter-all
+			if (inputs[i].checked) { filters.push(inputs[i].id); } // add checked inputs to filters array 
+			}
+		setTimeout(function() { 
+			delClassAll(items, 'selected'); 
+			addClassAll(wrap, 'filtered-'+type);
+			if (type == 'exclusive') {
+				for (var i = 0; i < filters.length; ++i) {
+					addClassAll(document.querySelectorAll(id+' .filter-item.'+filters[i]), 'selected'); 
+					}
+				document.querySelectorAll(id+' .selected').length == items.length ? addClassAll(noitem, 'filter-no-item-active') : delClassAll(noitem, 'filter-no-item-active'); 
+			} else if (type == 'inclusive') {
+				if (filters.length > 0) {addClassAll(document.querySelectorAll(id+' .filter-item.'+filters.join('.')), 'selected');} // build css selector from filters array
+				document.querySelectorAll(id+' .selected').length == 0 ? addClassAll(noitem, 'filter-no-item-active') : delClassAll(noitem, 'filter-no-item-active'); 
+				} 
+			var checkCount = 0;  
+			for (var i = 0; i < inputs.length; ++i) {
+				checkCount += inputs[i].checked ? 1 : 0; 
+				}
+			if (checkCount == 0) {inputs[0].checked = true;}
+			if (inputs[0].checked) {
+				delClassAll(wrap, 'filtered-'+type);
+				delClassAll(noitem, 'filter-no-item-active');
+				}
+			}, 100); 
+		}
+	}
+}
+contentFilter('#demo1', 'inclusive');
+</script>
+<!-- <script src="pokedex_gen1-4y7.js"></script> -->
+<script src="pokedex_json6.js"></script>
+<script>
+	
+var lista = '';
+// var lista = '';
+for (i in pokedex.response) {
+
+	lista += '<div class="filter-item element-item '+pokedex.response[i].Typ1+' '+pokedex.response[i].Typ2+' Gen'+pokedex.response[i].Gen+' EGG'+pokedex.response[i].EGG+'">';
+	lista += '<span class="tipo"><span class="type-icon type-'+pokedex.response[i].Typ1+'"></span><span class="type-icon type-'+pokedex.response[i].Typ2+'"></span></span>';
+	lista += '<p class="generation">#G'+pokedex.response[i].Gen+'</p>';
+	lista += '<p class="number">'+pokedex.response[i].id+'</p>';
+	lista += '<p class="stats">'+pokedex.response[i].A+'</br>'+pokedex.response[i].D+'</br>'+pokedex.response[i].S+'</p>';
+  	lista += '<img src="./pokes4/pokemon_icon_'+pokedex.response[i].img+'_00_shiny.png" alt="'+pokedex.response[i].name+'">';
+  	// lista += '<img src="https://www.serebii.net/pokemongo/pokemon/shiny/'+pokedex.response[i].img+'.png" alt="'+pokedex.response[i].name+'">';
+  	// lista += '<img src="https://www.serebii.net/pokemongo/pokemon/'+pokedex.response[i].img+'.png" alt="'+pokedex.response[i].name+'">';
+	lista += '<p class="weight">'+pokedex.response[i].name+' - EGG'+pokedex.response[i].EGG+'</p>';
+	lista += '</div>';
+}
+// lista += '</tbody></table>';
+	
+document.getElementById('especies').innerHTML = lista;
+
+// https://www.serebii.net/pokemongo/pokemon/809.png
+</script>
+</body>
+</html>
