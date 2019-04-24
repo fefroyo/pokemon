@@ -304,11 +304,10 @@ document.querySelector(id+' .filter-categories').onclick = function(evt) {
 contentFilter('#demo1', 'inclusive');
 </script>
 <!-- <script src="pokedex_gen1-4y7.js"></script> -->
-<script src="pokedex_json6.js"></script>
+<script src="./js/pokedex_json6.js"></script>
 <script>
 	
 var lista = '';
-// var lista = '';
 for (i in pokedex.response) {
 
 	lista += '<div class="filter-item element-item '+pokedex.response[i].Typ1+' '+pokedex.response[i].Typ2+' Gen'+pokedex.response[i].Gen+' EGG'+pokedex.response[i].EGG+'">';
@@ -316,16 +315,13 @@ for (i in pokedex.response) {
 	lista += '<p class="generation">#G'+pokedex.response[i].Gen+'</p>';
 	lista += '<p class="number">'+pokedex.response[i].id+'</p>';
 	lista += '<p class="stats">'+pokedex.response[i].A+'</br>'+pokedex.response[i].D+'</br>'+pokedex.response[i].S+'</p>';
-  	lista += '<img src="./pokes4/pokemon_icon_'+pokedex.response[i].img+'_00_shiny.png" alt="'+pokedex.response[i].name+'">';
+  	lista += '<img src="./shiny/pokemon_icon_'+pokedex.response[i].img+'_00_shiny.png" alt="'+pokedex.response[i].name+'">';
   	// lista += '<img src="https://www.serebii.net/pokemongo/pokemon/shiny/'+pokedex.response[i].img+'.png" alt="'+pokedex.response[i].name+'">';
   	// lista += '<img src="https://www.serebii.net/pokemongo/pokemon/'+pokedex.response[i].img+'.png" alt="'+pokedex.response[i].name+'">';
 	lista += '<p class="weight">'+pokedex.response[i].name+' - EGG'+pokedex.response[i].EGG+'</p>';
 	lista += '</div>';
 }
-// lista += '</tbody></table>';
-	
-document.getElementById('especies').innerHTML = lista;
-
+	document.getElementById('especies').innerHTML = lista;
 // https://www.serebii.net/pokemongo/pokemon/809.png
 </script>
 </body>
