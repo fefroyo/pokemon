@@ -44,7 +44,7 @@ html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,img,b,u,i,ol,ul,li,form,label,table
 .type-name {width:25px!important;color:inherit!important;}
 
 .filtered-inclusive .filter-item, .filtered-exclusive .filter-item, .filter-no-item { display:none } 
-.filtered-inclusive .filter-item.selected, .filtered-exclusive .filter-item:not(.selected) { display:-webkit-flexbox; display:-ms-flexbox; display:flex }
+.filtered-inclusive .filter-item.selected, .filtered-exclusive .filter-item:not(.selected) { display:-webkit-flexbox; display:-ms-flexbox; display:flex;overflow: hidden; }
 .filter-no-item.filter-no-item-active { display:block; width:100%; background:#fcc; color:red; padding:1em 1.5em; margin:0.75% }
 .filter-mask-active { position:absolute; top:0; left:0; bottom:0; right:0; }
 
@@ -91,6 +91,7 @@ _____________________________________*/
     /*top: 76px;*/
     bottom: 0px;
     font-size: 1em; /* 0.8 */
+font-weight: bold;
 }
 .element-item .generation {
     position: absolute;
@@ -109,10 +110,11 @@ _____________________________________*/
 }
 .element-item .number {
     position: absolute;
-    right: 8px;
-    top: 5px;
+    left: 0px;
+    top: -455px;
     font-weight: bold;
-    font-size: 32px;
+    font-size: 100px;
+opacity: .1;
 }
 .element-item .stats {
     position: absolute;
@@ -123,9 +125,10 @@ _____________________________________*/
 
 .element-item img {
     position: absolute;
-    left: 0px;
-    /*top: -5px;*/
-    height: 120px;
+    right: 15px;
+    bottom: 15px;
+    height: 170px;
+    z-index: -1;
 }
 .element-item .tipo {
     position: absolute;
@@ -318,7 +321,7 @@ for (i in pokedex.response) {
   	lista += '<img src="./shiny/pokemon_icon_'+pokedex.response[i].img+'_00_shiny.png" alt="'+pokedex.response[i].name+'">';
   	// lista += '<img src="https://www.serebii.net/pokemongo/pokemon/shiny/'+pokedex.response[i].img+'.png" alt="'+pokedex.response[i].name+'">';
   	// lista += '<img src="https://www.serebii.net/pokemongo/pokemon/'+pokedex.response[i].img+'.png" alt="'+pokedex.response[i].name+'">';
-	lista += '<p class="weight">'+pokedex.response[i].name+' - EGG'+pokedex.response[i].EGG+'</p>';
+	lista += '<p class="weight">'+pokedex.response[i].name+'</p>';
 	lista += '</div>';
 }
 	document.getElementById('especies').innerHTML = lista;
