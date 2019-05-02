@@ -1,0 +1,886 @@
+<!DOCTYPE HTML>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>All Pokedex Shiny</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#pokedex_content div.pokemon").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<style>
+body {padding: 0xp; margin: 0px; font-family: 'Montserrat', sans-serif; text-align: center; background-color: #e8e5e5; }
+header { min-width: 372px !important; }
+		
+.pokemon { width: 160px; height: 300px; float: left; margin: 1px; margin-bottom: 3px;border: 1px solid #aaaaaa;
+	/*background-color: #aaaaaa;  */
+}
+.p_id {position: relative; float:left; height: 0px; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
+.p_g {position: relative; text-transform: uppercase; float:right; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
+.p_n {text-transform: uppercase; text-align: center; font-weight: bold;}
+.i {position: relative; width: 140px; height:140px; padding: 10px; margin-top: -25px; background-color: white; z-index: 1; }
+.p_t_wrapper {clear: both; min-width: 100%; height: 15px; padding-top: 5px; padding-bottom: 5px;}
+.p_t {text-transform: uppercase; max-width: 100%; margin: auto; text-align: center; font-size: 12px; padding-top: 2px; padding-bottom: 2px;}
+/*.t_1 {width: 100%; float: left; clear:none; text-transform: uppercase; text-align: center; font-size: 12px;}*/
+.p_t1 { text-transform: uppercase; width: 49%; float: left; text-align: center; font-size: 12px; padding-top: 2px; padding-bottom: 2px;} 
+.p_t2 { text-transform: uppercase; width: 49%; float: right; text-align: center; font-size: 12px; padding-top: 2px; padding-bottom: 2px;}
+/*color for types */
+.fir {background-color: #ff7c4c; }
+.fig {background-color: #ff4c4c; }
+.nor { background-color: Beige; }
+.wat { background-color: #4ca8ff;}
+.gra { background-color: #59c67a; }
+.gro { background-color: #c69659; }
+.dar { background-color: #919191; }
+.bug {background-color: #d1ed95; }
+.fly {background-color: #d9f6f7;}
+.poi {background-color: #ffa0e8; }
+.fai {background-color: #ffa0e8; }
+.psy {background-color: #efbbf7; }
+.roc {background-color: #bc8871; }
+.ste {background-color: #b5a69f; }
+.gho {background-color: #a498ad; }
+.ele {background-color: #fffa82; }
+.dra {background-color: #ff5e5e; }
+.ice {background-color: #d6ffff; }
+		
+p {padding: 0px; margin: 0px;}
+ul, li { list-style-type: none; padding: 0px; margin: 0px; } 
+checkbox {height: 12px; width: 12px; }
+/* .p_cp, .p_a, .p_, .p_s { clear:both; width: 100%; } */
+/* Apply CSS when the page gets smaller */
+@media (max-width:800px)  {
+#pokedex_content { width: 100%; margin: auto; min-width: 372px;}
+#pokemon_filters { width: 100%; min-width: 372px;} 
+#generation_selectors { width: 40%; }
+#filter_selectors, #sort_selectors { float:right !important; clear: right; width: 60%; padding-top: 10px; padding-bottom: 10px; } 
+#filter_select, #sort_box { display:inline-block; float:left; width: 90%;} 
+h1 { font-size: 20px; }
+.pokemon { width: 120px; height: 255px; }
+.i { width: 100px; height: 100px; }.t { font-size: 15px; }
+.mobile_hide {display:none;}
+}
+/* End Side Pannel CSS */
+</style>
+<script src="clock-library.js"></script>
+<style>
+#content { width: 90%; margin: auto; max-width: 1800px; } 
+h1 {padding-top: 0px;}
+#pokedex_content { margin: auto; text-align: center; }
+.pokemon { display: inline-block; float:none !important; width: 120px; height: 255px;}
+/* #pokemon_filters { position: -webkit-sticky;  position: sticky; width: 80%; margin: auto; height: 100px; background-color: #bababa; top: 0px; margin-bottom: 20px; } */
+#generation_selectors_c { padding-top: 10px; padding-bottom: 10px; float: left; width: 20%; }
+#filter_selectors_c { width: 70%; height: 100px; float: right; } 
+#pokemon_filters {  position: sticky;  position: -webkit-sticky; top: 120; margin: auto; height: 100px; 
+	/*background-color: #bababa;  */
+	margin-bottom: 10px; }
+#sort_selectors, #hide_selectors, #filter_selectors  {float: left; padding: 0px; margin: 0px; padding-top: 
+20px; padding-bottom: 20px;  width: 33%; }  
+.criteria_dropdown { float: left; }
+#filter_select { width: 80%; height:30px; } 
+#hide_select { width: 80%; height:30px; } 
+#sort_select { width:80%; height:30px;}
+.label { float: left; margin: 0px; padding: 0px; clear:both; width: 100%; text-align: left;}
+#total {float:right; padding-right: 10px; }
+.stat_hold {clear:both; font-size: 12px; display:block;}
+.stat_contain {width: 100%; min-width: 100%; height: 40px; padding-top: 10px;}
+.p_a, .p_d, .p_s { width: 33% !important; float: left;}
+.p_c {margin-top: 10px; font-weight: bold;}
+.cp_hold { font-size: 12px; display:inline-block;  }
+.p_c2 {font-weight: bold;}
+.cp_hold2 { font-size: 12px; display:inline-block;  }
+.p_n { font-size: 15px; height: 15px; margin-top: -20px;}
+.p_id, .p_g { font-size: 12px; color: black;}
+.lo {font-size: 12px !important; line-height: 15px; }
+.lon {font-size: 10px !important; line-height: 15px; }		
+#menu_png {height: 50px; width: 50px; z-index: 9999;}
+#pdex_menu { float:right; margin-top: 25px; margin-right: 25px; border-width: 1px; border-style: solid;
+border-width: 5px; border: 1px;  z-index: 9999; position: absolute; right: 45px;  top: 120px;}
+#footer { position: absolute; right: 0; bottom: 0; left: 0; padding: 1rem; }
+#advanced_menu { height: 100px;  background-color: #bababa; position: absolute; width: 90%; z-index: 9998;  top: 120px;}
+    
+/* table code */
+#P337_pokedex_table {min-width: 100% !important; }
+tr:nth-child(even) {   background-color: #FFF; }
+#filter_text_output { width: 100%; margin-bottom: 10px;}
+#headerelement { text-align: center; }
+#headerhomelink {text-align: center; }
+    
+/*page gets smaller*/
+@media (max-width:800px)  {
+	#generation_selectors_c { width: 24%; }
+	#content { width: 100%; min-width: 316px !important;} 
+	header {min-width: 316px !important;}
+	#pokemon_filters { height:160px; width: 100%; }
+	#generation_selectors { min-width: 33%; margin-top: 0px; }
+	.gen_cont {font-size: 10px; line-height: 14px;  }
+	input[type='checkbox'] { width: 25px; height: 25px;}
+	#filter_selectors {margin-top: 10px; }
+	#sort_selectors, #hide_selectors, #filter_selectors { height: 30px; padding: 5px;  width: 100%; margin-bottom: 5px; float:right; line-height: 200%;}
+	#filter_select, #sort_select, #hide_select { font-size: 12px; clear:none; width: 70%; border: 1px;}
+	#pokedex_content { width: 100%;}
+	.label { clear:none; display: block; width: 60px; }
+	.p_n { font-size: 12px;}
+}
+</style>
+</head>
+  
+<body>
+	
+	<!-- Global Nav Bar Start -->
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css' property='stylesheet'>
+<style>
+header {
+	background-color: black;	height: 40px;
+	width: 100%;	color: white;
+	max-width: 100%;	min-width: 100%;
+}
+
+#headertext {
+	font-family: 'Roboto Slab', sans-serif;
+	line-height: 40px; 	font-size: 20px; 
+	margin-left: 10px;	text-decoration: none;
+	font-weight: bold;
+}
+
+@media (max-width:801px)  {
+	#headerhomelink {
+		float: left;
+	}
+}
+
+#headerhomelink {
+	font-family: 'Roboto Slab', sans-serif;
+	text-decoration: none;
+	color: white;
+	text-align: center;
+}
+
+.headerelement {
+	color: white;
+	font-family: 'Roboto Slab', sans-serif;
+	line-height: 40px; 
+	font-size: 20px; 
+	text-decoration: none;
+	font-weight: bold;
+}
+</style>
+		
+      <!-- Global Nav Bar End -->
+  
+<div id="content">
+
+  <h2>PokemonGo Stats Pokedex</h2>
+    
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+    
+<div id="pokemon_filters">
+		
+				
+<style>
+.gen_cont {width: 50%;}#gen_left {float:left;}#gen_right {float: right;}
+</style>
+    
+<div id='generation_selectors_c' class='criteria_dropdown'>
+      
+<div class='gen_cont' id='gen_left'>
+<input type="checkbox" name="generation" id='gen_1' class='gen_box' value="1" onchange='update_filter()'>Gen 1<br>
+<input type="checkbox" name="generation" id='gen_2' class='gen_box' value="2" onchange='update_filter()'>Gen 2<br>
+<input type="checkbox" name="generation" id='gen_3' class='gen_box' value="3" onchange='update_filter()'>Gen 3<br>
+			  
+</div>
+      
+<div class='gen_cont' id='gen_right'>
+<input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>
+<input type="checkbox" style="display:none;" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>
+<input type="checkbox" style="display:none;" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>
+<input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
+</div>
+      
+		</div>
+	  
+    <div id='filter_selectors_c'>
+     
+    
+		<div id='filter_selectors' >
+			<p class='label'>
+				Show
+			</p>
+			<select id='filter_select' class='criteria_dropdown' oninput="update_other_filters()">
+				<option value="all" >Todos Pokemon</option>
+								
+				<option value="released" >Released Pokemon</option>
+				<option value="new">Newly Released</option>
+				<option value="legendary">Legendary + Mythical</option>
+				<option value="regional">Regionales</option>
+				<option value="egg">Egg Eclosionan</option>
+				<option value="raid">Raid Bosses</option>
+				<option value="nest">Nidos</option>
+				<option value="wild">Wild Spawns</option>
+				<option value="baby">Babies</option>
+				<option value="shiny">Shiny</option>
+		        <option value="alolan">Alola</option>
+		        <option value="ditto">Puede ser Ditto</option>
+				<!-- <option value="unreleased">Not released</option>
+				<option value="unavailable">Out of rotation</option> -->
+		        <!-- <option value="crossgen">Cross Generational</option> -->
+		        <option value="egg2">Egg 2 Km</option>
+				<option value="egg5">Egg 5 Km</option>
+				<option value="egg10">Egg 10 Km</option>
+				<option value="egg7">Egg 7 Km</option>
+		        <option value="raid1">Raid nivel 1</option>
+				<option value="raid2">Raid nivel 2</option>
+				<option value="raid3">Raid nivel 3</option>
+				<option value="raid4">Raid nivel 4</option>
+				<option value="raid5">Raid nivel 5</option>
+		        <option value="allshiny">Todos Shinies</option>
+        			</select>
+		</div>
+		
+		<div id='hide_selectors'>
+			<p class='label'>
+				Hide
+			</p>
+			<select id='hide_select' class='criteria_dropdown' oninput="update_hide_filters()">
+				<option value="none">None</option>
+				<option value="released">Released Pokemon</option>
+				<option value="new">Newly Released</option>
+				<option value="legendary">Legendary + Mythical</option>
+				<option value="regional">Regionals</option>
+				<option value="egg">Egg Hatches</option>
+				<option value="raid">Raid Bosses</option>
+				<option value="nest">Nesting</option>
+				<option value="wild">Wild Spawns</option>
+				<option value="baby">Babies</option>
+				<option value="shiny">Shiny</option>
+		        <option value="alolan">Alolan</option>
+		        <option value="ditto">Can be Ditto</option>
+				<option value="unreleased">Not released</option>
+				<option value="unavailable">Out of rotation</option>
+		        <option value="crossgen">Cross Generational</option>
+		        <option value="allshiny">All Shinies</option>
+        	</select>
+		</div>
+		
+		<div id='sort_selectors'>
+			<p class='label'>Sort</p>
+			<select id='sort_select' class='criteria_dropdown' oninput="update_sort()">
+				<option value="-CP2">Potential CP</option>
+				<option value="id">Pokedex Number</option>
+				<option value="-A">Attack</option>
+				<option value="-D">Defense</option>
+				<option value="-S">Stamina</option>
+				<option value="-TOT">Stat Total</option>
+				<option value="Typ1">Type</option>
+				<option value="name">Name</option>
+				<option value="family">Family</option>
+			</select>
+		</div>
+      
+  </div>   
+    
+	<div id=total class='mobile_hide'></div>
+	</div>
+    
+  <!-- <div id='pdex_menu' onclick='show_menu()'>
+     <img src='i/menu.png' id='menu_png'>
+  </div> --> 
+    
+    <style>
+      #advanced_menu {display: none; }
+      #a_share { margin-left: 2%; margin-top: 20px; width: 60%; height: 60px; text-align: left; }
+      #share_box {width: 100%;}
+    </style>
+  
+  <div id='advanced_menu'>
+     <div id='a_share'>
+      Loading <br>
+      <input id='share_box'> 
+    </div>
+  </div> 
+    
+	
+  <div id='filter_text_output'></div>
+
+  <div id='pokedex_content'>
+		<ul class="list"> <!-- IMPORTANT, class=list have to be at tbody / container -->
+		</ul>
+	</div>
+
+<script src="pokedex_json6.js"></script>		
+<script>
+//set default values for generation
+	var g_g1 =0, g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 0, g_g6 = 0, g_g7 = 0; //defaults 
+	var g_mode = 'grid';
+    var g_ignore_action = 0;
+   
+	document.getElementById("gen_1").checked = g_g1;
+	document.getElementById("gen_2").checked = g_g2;
+	document.getElementById("gen_3").checked = g_g3;
+	document.getElementById("gen_4").checked = g_g4;
+    document.getElementById("gen_5").checked = g_g5;
+    document.getElementById("gen_6").checked = g_g6;
+    document.getElementById("gen_7").checked = g_g7;
+		
+		//set default values for show filter
+		var filter = 'released';
+		 filter = 'all'; 		
+		 document.getElementById('filter_select').value=filter;
+      
+		//set default values for show filter
+		var hide = 'none';
+			document.getElementById('hide_select').value=hide;	
+		
+		//ordenar por: id (pokedex), -A (ataque), ...
+		var sort = '-CP2';
+		 sort = 'id';
+		 document.getElementById('sort_select').value=sort;
+			
+	document.getElementById("sort_select").style.display = 'none';
+    document.getElementById("advanced_menu").style.display = 'none';
+</script>			
+<script>
+var current_sort = '';
+		
+	function update_filter() {
+		
+			//get generation check boxes
+			//var chk_arr =  document.getElementsByName("generation[]");
+			//alert(chk_arr[0]);
+			
+		g_g1 = document.getElementById("gen_1").checked;
+		g_g2 = document.getElementById("gen_2").checked;
+		g_g3 = document.getElementById("gen_3").checked;
+		g_g4 = document.getElementById("gen_4").checked;
+	    g_g5 = document.getElementById("gen_5").checked;
+	    g_g6 = document.getElementById("gen_6").checked;
+	    g_g7 = document.getElementById("gen_7").checked;
+      
+      if (g_g1 == 0 && g_g1 == 0 && g_g1 == 0 && g_g7 == 0 && filter == 'released') {
+        document.getElementById("filter_select").value = 'all';
+        filter = 'all';
+      }
+		loop_pokemon_list(sort, filter, hide);
+	}
+			
+		function update_other_filters(selectItem) {
+			filter = document.getElementById("filter_select").value;
+			//alert(filter);
+      if (filter == 'crossgen' || filter == 'shiny' || filter == 'alolan') {
+        //alert(filter);
+        g_ignore_action = 0;
+        document.getElementById("sort_select").selectedIndex = 8;
+        //sort = 'shiny';
+        temp_loop('family', filter, hide)
+      }else {
+        document.getElementById("sort_select").value = sort;
+			  force_loop();
+      }
+		}
+			
+		function update_hide_filters(selectItem) {
+			hide = document.getElementById("hide_select").value;
+			//alert(filter);
+			force_loop();
+		}
+      
+   function update_sort(selectItem) {
+     if (g_ignore_action > 0) { 
+       g_ignore_action = g_ignore_action-1; 
+     }
+     else {
+        sort = document.getElementById("sort_select").value;	
+			  //alert(sort);
+        //override sort 
+        force_loop();
+     }
+			
+		}
+		
+    function force_loop() {
+      hide = document.getElementById("hide_select").value;
+      sort = document.getElementById("sort_select").value;
+      filter = document.getElementById("filter_select").value;
+      loop_pokemon_list(sort, filter, hide);
+    }	
+      
+		function temp_loop(temp_sort, temp_filter, temp_hide) {
+      //var temp_hide = document.getElementById("hide_select").value;
+      //var temp_sort = document.getElementById("sort_select").value;
+      //var temp_filter = document.getElementById("filter_select").value;
+      loop_pokemon_list(temp_sort, temp_filter, temp_hide);
+    }	
+			
+      
+    function show_menu() {
+      var val = document.getElementById("advanced_menu").style.display;
+      
+      if (val == 'block') { document.getElementById("advanced_menu").style.display = 'none'; }
+      else { document.getElementById("advanced_menu").style.display = 'block'; }
+      
+    }	
+			
+		//https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+		function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+		}
+      
+    //javascript clipboard library
+    //https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript#answer-30810322 
+    function fallbackCopyTextToClipboard(text) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+      document.body.removeChild(textArea);
+    }
+    
+    function copyTextToClipboard(text) {
+      if (!navigator.clipboard) {
+        fallbackCopyTextToClipboard(text);
+        return;
+      }
+      navigator.clipboard.writeText(text).then(function() {
+        console.log('Async: Copying to clipboard was successful!');
+      }, function(err) {
+        console.error('Async: Could not copy text: ', err);
+      });
+    }
+   
+    //copyTextToClipboard('Jane');
+    
+    //End copy to clipboard code
+      
+    /** Using JavaScript to change URL */
+    //https://gist.github.com/hasibomi/b23ea8e9e1ad7c5d88349ddf863a7a6f
+    function ChangeUrl(title, url) {
+        if (typeof (history.pushState) != "undefined") {
+            var obj = { Title: title, Url: url };
+            try {
+              //history.pushState(obj, obj.Title, obj.Url);
+              
+              //document.title = response.pageTitle;
+              //window.history.pushState({"html":response.html,"pageTitle":response.pageTitle},"", url);
+              
+              history.pushState({urlPath:url},"",url)
+            }
+            catch(err) {
+              //document.getElementById("demo").innerHTML = err.message;
+              //alert('test');
+            }
+          
+        } else {
+            //alert("Browser does not support HTML5.");
+        }
+    }  
+    
+	
+		function loop_pokemon_list(sort_type, show_filter, hide_type) {
+			if (sort_type === undefined) { sort_type = "";  }  
+			
+			var text_to_write = '';
+			var text_to_return = '';
+			document.getElementById('pokedex_content').innerHTML = '';
+      
+      //override sort
+			//if (show_filter == "crossgen") { sort_type = "fam"; }
+      
+			//sortProperties(pokedex.response, false);
+			if (sort_type != '') {
+				if (sort_type == current_sort) { sort_type = "-"+sort_type;}
+        if (sort_type == "id") { sort_type = "row"; }
+				if (sort_type == "--CP2") { sort_type = "CP2"; }
+				if (sort_type == "family") { pokedex.response.sort(dynamicSort('id')); sort_type = 'fam'}
+				//alert(sort_type);
+				pokedex.response.sort(dynamicSort(sort_type));
+				sort_type = current_sort;
+			}
+			
+			var temp_count = 0;	
+			var skip_poke = false;
+			var gen_select = false; 
+			var count_generated = 0;
+      var skip_gen = false;	
+      
+			for (i in pokedex.response) {
+			
+
+				
+				if (show_filter != '') {
+					//alert(show_filter);
+					//if (show_filter == "noleg") { if (pokedex.response[i].L == '1' || pokedex.response[i].L == '2') { skip_poke = true;} }
+					if (show_filter == "released") { if (pokedex.response[i].AQU == '0') { skip_poke = true;} }
+			else if (show_filter == "new") { if (pokedex.response[i].NEW == '0') { skip_poke = true;} }
+			else if (show_filter == "legendary") { if (pokedex.response[i].L == '0') { skip_poke = true;} }
+			else if (show_filter == "regional") { if (pokedex.response[i].REG == '0') { skip_poke = true;} }
+			else if (show_filter == "egg") { if (pokedex.response[i].EGG == '0') { skip_poke = true;} }
+			else if (show_filter == "nest") { if (pokedex.response[i].N == '0') { skip_poke = true;} }
+			else if (show_filter == "wild") { if (pokedex.response[i].SPA == '0') { skip_poke = true;} }
+			else if (show_filter == "baby") { if (pokedex.response[i].ERK != '0') { skip_poke = true;} }
+			else if (show_filter == "unreleased") { if (pokedex.response[i].AQU != '0') { skip_poke = true;} }
+			else if (show_filter == "unavailable") { if (pokedex.response[i].TEM == '0' ) { skip_poke = true;} }
+			else if (show_filter == "raid") { if (pokedex.response[i].RAI == '0' ) { skip_poke = true;} }
+			else if (show_filter == "shiny") { if (pokedex.response[i].SHI == '0' ) { skip_poke = true;} }
+	        else if (show_filter == "ditto") { if (pokedex.response[i].DIT == '0' ) { skip_poke = true;} }
+	        else if (show_filter == "crossgen") { if (pokedex.response[i].CRO == '0' ) { skip_poke = true; skip_gen = true;} }
+	        else if (show_filter == "alolan") { if (pokedex.response[i].ALO == '0' ) { skip_poke = true; skip_gen = true;} }
+
+	        else if (show_filter == "egg2") { if (pokedex.response[i].EGG != '2') { skip_poke = true;} }
+			else if (show_filter == "egg5") { if (pokedex.response[i].EGG != '5') { skip_poke = true;} }
+			else if (show_filter == "egg10") { if (pokedex.response[i].EGG != '10') { skip_poke = true;} }
+			else if (show_filter == "egg7") { if (pokedex.response[i].EGG != '7') { skip_poke = true;} }
+			else if (show_filter == "raid1") { if (pokedex.response[i].RAI != '1' ) { skip_poke = true;} }
+			else if (show_filter == "raid2") { if (pokedex.response[i].RAI != '2' ) { skip_poke = true;} }
+			else if (show_filter == "raid3") { if (pokedex.response[i].RAI != '3' ) { skip_poke = true;} }
+			else if (show_filter == "raid4") { if (pokedex.response[i].RAI != '4' ) { skip_poke = true;} }
+			else if (show_filter == "raid5") { if (pokedex.response[i].RAI != '5' ) { skip_poke = true;} }
+          
+				}
+				
+				if (hide_type != '') {
+					//alert(show_filter);
+					//if (show_filter == "noleg") { if (pokedex.response[i].L == '1' || pokedex.response[i].L == '2') { skip_poke = true;} }
+			if (hide_type == "released") { if (pokedex.response[i].AQU != '0') { skip_poke = true;} }
+			else if (hide_type == "new") { if (pokedex.response[i].NEW != '=') { skip_poke = true;} }
+			else if (hide_type == "legendary") { if (pokedex.response[i].L != '0') { skip_poke = true;} }
+			else if (hide_type == "regional") { if (pokedex.response[i].REG != '0') { skip_poke = true;} }
+			else if (hide_type == "egg") { if (pokedex.response[i].EGG != '0') { skip_poke = true;} }
+			else if (hide_type == "nest") { if (pokedex.response[i].N != '0') { skip_poke = true;} }
+			else if (hide_type == "wild") { if (pokedex.response[i].SPA != '0') { skip_poke = true;} }
+			else if (hide_type == "baby") { if (pokedex.response[i].ERK == '0') { skip_poke = true;} }
+			else if (hide_type == "unreleased") { if (pokedex.response[i].AQU == '0') { skip_poke = true;} }
+			else if (hide_type == "unavailable") { if (pokedex.response[i].TEM != '0' ) { skip_poke = true;} }
+			else if (hide_type == "raid") { if (pokedex.response[i].RAI != '0' ) { skip_poke = true;} }
+			else if (hide_type == "shiny") { if (pokedex.response[i].SHI != '0' ) { skip_poke = true;} }
+          	else if (hide_type == "ditto") { if (pokedex.response[i].DIT == '0' ) { skip_poke = true;} }
+          	else if (hide_type == "crossgen") { if (pokedex.response[i].CRO != '0' ) { skip_poke = true;} }
+          	else if (hide_type == "alolan") { if (pokedex.response[i].ALO != '0' ) { skip_poke = true;} }
+				}
+				
+        if (skip_gen == true) {
+          //if (pokedex.response[i].id == '001') {alert('test');}
+          //only show gens 1-4
+          if(pokedex.response[i].Gen == 1 || pokedex.response[i].Gen == 2 || pokedex.response[i].Gen == 3 || pokedex.response[i].Gen == 4 || pokedex.response[i].Gen == 7) {
+            gen_select = true;
+          }
+          
+         } else {
+          if (g_g1 && pokedex.response[i].Gen == 1 ) { gen_select = true; }
+		  else if (g_g2 && pokedex.response[i].Gen == 2) { gen_select = true; }
+		  else if (g_g3 && pokedex.response[i].Gen == 3) { gen_select = true; }
+		  else if (g_g4 && pokedex.response[i].Gen == 4) { gen_select = true; }
+          else if (g_g5 && pokedex.response[i].Gen == 5) { gen_select = true; }
+          else if (g_g6 && pokedex.response[i].Gen == 6) { gen_select = true; }
+          else if (g_g7 && pokedex.response[i].Gen == 7) { gen_select = true; }
+        }
+				
+
+		if (skip_poke == false && gen_select == true) {
+				temp_count = temp_count + 1 ;
+        if (g_mode== 'grid') {        
+        //write grid
+text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, 
+ pokedex.response[i].CP1.replace(/^0+/, ''), pokedex.response[i].CP2.replace(/^0+/, ''), pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);	
+} else {
+           //write table
+text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, 
+pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), 
+    pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);
+         }
+//write_pokemon_table(name, row, img, id, type, type2, gen, cp, att, def, stam)
+text_to_write += text_to_return;
+count_generated += 1;
+
+        //remove count for alolan pokemon
+         if (show_filter == "released" && pokedex.response[i].ALO == 1 ) {
+           	count_generated -= 1;
+         }
+	}
+				gen_select = false;				
+				skip_poke = false;
+			}
+			
+      //alert(temp_count);
+      
+      //if the mode is table, then add extra HTML
+      if (g_mode== 'table') {
+         text_to_write = "<table id='P337_pokedex_table' style='width:100%;'> \
+        <tr> <th>Dex #</th> <th>Name</th> <th>Type1</th> <th>Type2</th> <th>Max CP</th> <th>Att</th> <th>Def</th> <th>Sta</th> </tr> \
+        "+text_to_write+"</table>";
+      }
+      
+			if (text_to_write =='') { text_to_write = "Nothing was found, try adding more generations or altering search criteria"; }
+			
+			//write the text to HTML
+			document.getElementById('pokedex_content').innerHTML = text_to_write;
+
+       var filter_text = '';
+       filter_text = "Searching all '"+filter+"' Pokemon "; 
+       if (hide != 'none' ) { filter_text = filter_text+"( excluding '"+hide+"' Pokemon ) "; }
+       document.getElementById('filter_text_output').innerHTML = filter_text+' returns '+count_generated+' results';
+      
+      //build url
+      var filter_url = '';
+      var all_bits = '';
+      var temp_bit = ''; 
+      if (filter != 'released') { temp_bit = 'show='+filter; if (all_bits == '') { all_bits = temp_bit; } else { all_bits = all_bits+"&"+temp_bit;}}
+      if (hide != 'none') { temp_bit = 'hide='+hide; if (all_bits == '') { all_bits = temp_bit; } else { all_bits = all_bits+"&"+temp_bit;} }
+      
+      if (filter != 'shiny' && filter != 'crossgen') {
+        if (sort != '-CP2') { temp_bit = 'sort='+sort; if (all_bits == '') { all_bits = temp_bit; } else { all_bits = all_bits+"&"+temp_bit;} }
+      }
+      
+      if (all_bits == '') { filter_url = 'https://p337.info/pokemongo/pokedex/'; } 
+      else { filter_url = 'https://p337.info/pokemongo/pokedex/?'+all_bits; }
+      
+      document.getElementById('share_box').value = filter_url;
+      
+      if (true == true) {
+          ChangeUrl("PokemonGO Base Stats Pokedex", filter_url);
+      }
+      
+      //document.getElementById('filter_text_output').innerHTML = document.getElementById('filter_text_output').innerHTML+"<br>"+filter_url;
+      
+			//document.getElementById('total').innerHTML = "Count: "+count_generated;
+			//alert(count_generated);
+		}
+    
+    function write_pokemon_box(name, row, img, id, type, type2, gen, cp, cp2, att, def, stam, filter) {
+			var text_to_return = '';
+			var type_text = '';
+			var sinle_type = 'p_t';
+			var img_type = '';
+      var class_extra = '';
+      if (type2 != '') { type_text = "<div class='p_t2 "+type2.substring(0, 3)+"'>"+type2+"</div>"; sinle_type = 'p_t1'; }
+			type_text = "<div class='p_t_wrapper'><div class='"+sinle_type+" "+type.substring(0, 3)+"'>"+type+"</div>"+type_text+"</div>";
+			//type_text = '';
+	  if (filter == 'shiny' || filter == 'allshiny') { img_type = ''; }
+      if (name.length > 11) { class_extra = 'lo';}
+      if (name.length > 15) { class_extra = 'lon';}
+      
+      text_to_return = "<div class='pokemon' id='"+name+"'> \
+			<div class='p_id'>#"+id+"</div><div class='p_g'>G"+gen+"</div> \
+<img src='./shiny/pokemon_icon_"+img+"_00"+img_type+"_shiny.png' style='height: 120px; width:120px;position:relative;top:-20px;' alt="+img_type+"> \
+			<div class='p_n "+class_extra+"'>"+name+"</div> \
+			"+type_text+" \
+			<div class='p_c'><span class='cp_hold'>MAX CP:</span> "+cp+"</div> \
+<div class='p_c2'><span class='cp_hold2'>Raid lv20: "+cp2+"</span></div> \
+      <div class='stat_contain'> \
+       <div class='p_a'><span class='stat_hold'>ATT</span> "+att+"</div> \
+       <div class='p_d'><span class='stat_hold'>DEF</span> "+def+"</div> \
+       <div class='p_s'><span class='stat_hold'>STA</span> "+stam+"</div> \
+			</div> \
+      </div>";
+			return text_to_return;
+    }
+    // ./shiny/pokemon_icon_"+img+"_00"+img_type+"_shiny.png
+    // ./pokes4/pokemon_icon_ 777 _00_shiny
+	// <div class='"+img_type+row+" "+img_type+"g"+gen+"' style='height: 120px; width:120px;'></div> \
+	// <img src='./pokes4/pokemon_icon_"+img+"_00_shiny.png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
+	// https://www.serebii.net/pokemongo/pokemon/
+      
+    function write_pokemon_table(name, row, img, id, type, type2, gen, cp, att, def, stam, filter) {
+       var text_to_return = '';
+       text_to_return = "<tr> \
+          <td>"+id+"</td> \
+          <td>"+name+"</td> \
+          <td>"+type+"</td> \
+          <td>"+type2+"</td> \
+          <td>"+cp+"</td> \
+          <td>"+att+"</td> \
+          <td>"+def+"</td> \
+          <td>"+stam+"</td> \
+      </tr>";
+      
+      return text_to_return;
+    }
+			
+		loop_pokemon_list(sort, filter, hide);
+		document.getElementById("sort_select").style.display = 'block';			
+  </script>
+
+</div><!-- end content -->
+	
+<div class='clear' style='height: 30px;'> </div>
+<style> #footer { position: inherit !important; } 
+.extra_timer_box, .extra_timer_box_nolink { padding: 7px; padding-top: 10px; padding-bottom: 5px; width: 80%; 
+ margin: auto;  background-color: #dbdbdb; height: 70px; margin-bottom: 15px;}
+.extra_timer_box:hover { background-color: #cccccc;} 
+.extra_timer_left { width: 25%; float: left;} 
+.extra_timer_left img {width: 60px;height: 60px; float: right; margin-right:0px;} 
+.extra_timer_right { width: 75%; float: right;} 
+.extra_timer_box {max-width: 350px !important;}
+.countdown_small {margin-bottom: 5px; margin-top: 5px; font-size: 15px;}
+.local_small { font-size: 12px; }
+
+
+</style>
+    <div id='footer'>
+  <div id='footer_container'>
+
+<p><a target="_self" href="https://www.p337.info/pokemongo/" rel="nofollow" id="headerhomelink"> P337 </a> - 
+<a id='link' class='link' href="https://pokemongolive.com/es/post/legendary-dialga2019/"> Oficial pokemon GO!</a>
+</p>
+		  <div id='clockcontain' class='nest_migration_container'>
+		    <div id='nest_migration_text'>Siguiente Migracion: </div>
+		    <div id='nest_migration_div'></div>
+		  </div>
+
+<!-- 		<div id='clockcontain' class='nest_migration_container'>
+	<div class="clock_left">
+      <img class="clock_image" style="width:100px; height: 100px; margin-top: -2px;" src="https://www.serebii.net/pokemongo/pokemon/384.png">
+    </div>
+		<div id='nest_migration_text'>Raids Dialga: </div>
+		<div class='countdown_small' id='dialga-raids-2019_secondary'></div>
+
+		</div> -->
+<div class='extra_timer_box dialga-raids-2019'>
+      <div class='extra_timer_left'><img alt='dialga-raids-2019' src='https://www.serebii.net/pokemongo/pokemon/483.png'></div>
+        <div class='extra_timer_right'>Dialga Raids End in<br>
+          <div class='mini_sc' id='dialga-raids-2019_mini_sc'>
+            <div class='countdown_small' id='dialga-raids-2019_secondary'></div>
+            <div id='dialga-raids-2019_secondary_local' class='local_small'> Local Time: </div> 
+          </div>
+        </div>
+      </div>
+
+<div class="extra_timer_box rayquaza-raids-2019">
+<div class="extra_timer_left"><img alt="rayquaza-raids-2019" src="https://www.serebii.net/pokemongo/pokemon/384.png"></div>
+<div class="extra_timer_right">Rayquaza Raids start<br>
+  <div class="mini_sc" id="rayquaza-raids-2019_mini_sc">
+    <div class="countdown_small" id="rayquaza_raids_2019_countdown"></div>
+    <div id="rayquaza_raids_2019_time" class="local_small"></div> 
+  </div>
+</div>
+</div>
+
+<div id='treeko_community_day_mz_r' class='extra_timer_box'>
+    <div class='extra_timer_left'><img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/252.png'/></div>
+    <div class='extra_timer_right'>
+      <div id='treeko_community_day_mz_l'></div>
+      <div class='mini_sc' id='treeko_community_day_mz_countdown'></div>
+      <div id='treeko_community_day_mz_time' class='local_small'></div> 
+    </div>
+  </div>
+
+ </div>
+<script>
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
+    if ( document.getElementById('nest_migration_div') ) {
+      //Code for nest migration
+      var deadline = 'Oct 5 2017 0:00:00 GMT';
+      if (deadline == '') { deadline = base_deadline; }
+      //var date_clock = get_recurring_week_day_v5(deadline, 2);
+      var date_clock = get_recurring_week_day_v2(deadline, 2);
+      //alert(date_clock);
+      //function initializeClock(id, endtime, negative_time, message){
+      initializeClock('nest_migration_div', date_clock, 0, ''); }
+      
+
+    if ( document.getElementById('dialga-raids-2019_secondary') ) {
+        var deadline = 'Mar 28 2019 13:00:00 GMT-0700';
+        initializeClock('dialga-raids-2019_secondary', deadline , 0, 'Dialga Raids have Ended');
+        //offset the date for local time
+        var local_date = new Date(deadline);
+        //local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
+        //format date into string
+        var local_date_string = format_date(local_date,true);
+        document.getElementById('dialga-raids-2019_secondary_local').innerHTML = local_date_string; }
+
+// rayquaza
+  var s = 'Mar 15 2019 13:00:00 GMT-0700'; var e = 'Mar 18 2019 13:00:00 GMT-0700';
+  var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
+  //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
+  if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
+  
+  var m = 'Rayquaza Raids';
+  t = m.toLowerCase()
+  t = t.replace('-', ' '); 
+  t = t.replace('mz', ' '); 
+  if ( t.includes('raids') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Start'; f=t+' Started';} }
+  if ( t.includes('community day') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Starts'; f=t+' Started';} }
+  else { if (o) { d=t+' Ends'; f=t+' is over'; } else { d=t+' Starts'; f=t+' started';} }
+  d = toTitleCase(d);
+  //alert(d);
+  if ( document.getElementById('rayquaza_raids_2019_l') ) { document.getElementById('rayquaza_raids_2019_l').innerHTML = d; } 
+  
+  var stop_clock_id = '';
+  var offset = new Date().getTimezoneOffset();
+  var offset_hours = offset/60;
+  var offset_miliseconds = 0;
+  if (offset_hours < 0) { offset_miliseconds = 100; }
+
+  if ( document.getElementById('rayquaza_raids_2019_countdown') ) {
+    stop_clock_id = initializeClock('rayquaza_raids_2019_countdown', deadline, 0, f);
+    var local_date = new Date(deadline);
+    local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
+    var local_date_string = format_date(local_date,true);
+    document.getElementById('rayquaza_raids_2019_time').innerHTML = local_date_string;
+  }
+
+// treecko
+  var s = 'Mar 23 2019 15:00:00'; var e = 'Mar 23 2019 18:00:00';
+  var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
+  //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
+  if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
+  
+  var m = 'Treeko Community Day';
+  t = m.toLowerCase()
+  t = t.replace('-', ' '); 
+  t = t.replace('mz', ' '); 
+  if ( t.includes('raids') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Start'; f=t+' Started';} }
+  if ( t.includes('community day') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Starts'; f=t+' Started';} }
+  else { if (o) { d=t+' Ends'; f=t+' is over'; } else { d=t+' Starts'; f=t+' started';} }
+  d = toTitleCase(d);
+  //alert(d);
+  if ( document.getElementById('treeko_community_day_mz_l') ) { document.getElementById('treeko_community_day_mz_l').innerHTML = d; } 
+  
+  var stop_clock_id = '';
+  var offset = new Date().getTimezoneOffset();
+  var offset_hours = offset/60;
+  var offset_miliseconds = 0;
+  if (offset_hours < 0) { offset_miliseconds = 100; }
+  if ( document.getElementById('treeko_community_day_mz_countdown') ) {
+    stop_clock_id = initializeClock('treeko_community_day_mz_countdown', deadline, 0, f);
+    var local_date = new Date(deadline);
+    local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
+    var local_date_string = format_date(local_date,true);
+    document.getElementById('treeko_community_day_mz_time').innerHTML = local_date_string;
+  }
+</script>
+ </div>  
+</body>
+</html>
