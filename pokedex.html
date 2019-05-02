@@ -22,7 +22,7 @@ $(document).ready(function(){
 body {padding: 0xp; margin: 0px; font-family: 'Montserrat', sans-serif; text-align: center; background-color: #e8e5e5; }
 header { min-width: 372px !important; }
 		
-.pokemon { width: 160px; height: 300px; float: left; margin: 2px; margin-bottom: 3px;border: 1px solid #aaaaaa;
+.pokemon { width: 160px; height: 300px; float: left; margin: 1px; margin-bottom: 3px;border: 1px solid #aaaaaa;
 	/*background-color: #aaaaaa;  */
 }
 .p_id {position: relative; float:left; height: 0px; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
@@ -744,10 +744,26 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
     <div id='nest_migration_text'>Siguiente Migración Nidos</div>
     <div id='nest_migration_div'></div>
   </div>
-  
+
+<div id='treeko_community_day_mz_r' class='extra_timer_box'>
+<div class='extra_timer_left'><img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/252.png'/></div>
+<div class='extra_timer_right'>
+<div id='treeko_community_day_mz_l'></div>
+<div class='mini_sc' id='treeko_community_day_mz_countdown'></div>
+<div id='treeko_community_day_mz_time' class='local_small'></div> 
+</div>
+</div> 
+	 
     
  </div>
 <script>
+function toTitleCase(str) {
+return str.replace(/\w\S*/g, function(txt){
+return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();	
+});
+}
+	
+// migracion nidos	
     if ( document.getElementById('nest_migration_div') ) {
       //Code for nest migration
       var deadline = 'Oct 5 2017 0:00:00 GMT';
@@ -758,6 +774,36 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
       //function initializeClock(id, endtime, negative_time, message){
       initializeClock('nest_migration_div', date_clock, 0, '');
     }
+	
+// treecko
+  var s = 'Mar 23 2019 15:00:00'; var e = 'Mar 23 2019 18:00:00';
+  var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
+  //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
+  if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
+  
+  var m = 'Treeko Community Day';
+  t = m.toLowerCase()
+  t = t.replace('-', ' '); 
+  t = t.replace('mz', ' '); 
+  if ( t.includes('raids') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Start'; f=t+' Started';} }
+  if ( t.includes('community day') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Starts'; f=t+' Started';} }
+  else { if (o) { d=t+' Ends'; f=t+' is over'; } else { d=t+' Starts'; f=t+' started';} }
+  d = toTitleCase(d);
+  //alert(d);
+  if ( document.getElementById('treeko_community_day_mz_l') ) { document.getElementById('treeko_community_day_mz_l').innerHTML = d; } 
+  
+  var stop_clock_id = '';
+  var offset = new Date().getTimezoneOffset();
+  var offset_hours = offset/60;
+  var offset_miliseconds = 0;
+  if (offset_hours < 0) { offset_miliseconds = 100; }
+  if ( document.getElementById('treeko_community_day_mz_countdown') ) {
+    stop_clock_id = initializeClock('treeko_community_day_mz_countdown', deadline, 0, f);
+    var local_date = new Date(deadline);
+    local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
+    var local_date_string = format_date(local_date,true);
+    document.getElementById('treeko_community_day_mz_time').innerHTML = local_date_string;
+  }	
 </script>
   
 <style>
