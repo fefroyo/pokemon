@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <title>All Pokedex Shiny</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css' property='stylesheet'>	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -18,12 +19,11 @@ $(document).ready(function(){
 });
 </script>
 <style>
-body {padding: 0xp; margin: 0px; font-family: 'Montserrat', sans-serif; text-align: center; background-color: #e8e5e5; }
+body {padding: 0xp; margin: 0px; font-family: 'Montserrat', sans-serif; text-align: center; }
 header { min-width: 372px !important; }
 		
-.pokemon { width: 160px; height: 300px; float: left; margin: 1px; margin-bottom: 3px;border: 1px solid #aaaaaa;
-	/*background-color: #aaaaaa;  */
-}
+.pokemon { width: 160px; height: 300px; float: left; margin: 1px; margin-bottom: 3px;border: 1px solid #aaaaaa;}
+	
 .p_id {position: relative; float:left; height: 0px; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
 .p_g {position: relative; text-transform: uppercase; float:right; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
 .p_n {text-transform: uppercase; text-align: center; font-weight: bold;}
@@ -135,47 +135,6 @@ tr:nth-child(even) {   background-color: #FFF; }
 </head>
   
 <body>
-	
-	<!-- Global Nav Bar Start -->
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css' property='stylesheet'>
-<style>
-header {
-	background-color: black;	height: 40px;
-	width: 100%;	color: white;
-	max-width: 100%;	min-width: 100%;
-}
-
-#headertext {
-	font-family: 'Roboto Slab', sans-serif;
-	line-height: 40px; 	font-size: 20px; 
-	margin-left: 10px;	text-decoration: none;
-	font-weight: bold;
-}
-
-@media (max-width:801px)  {
-	#headerhomelink {
-		float: left;
-	}
-}
-
-#headerhomelink {
-	font-family: 'Roboto Slab', sans-serif;
-	text-decoration: none;
-	color: white;
-	text-align: center;
-}
-
-.headerelement {
-	color: white;
-	font-family: 'Roboto Slab', sans-serif;
-	line-height: 40px; 
-	font-size: 20px; 
-	text-decoration: none;
-	font-weight: bold;
-}
-</style>
-		
-      <!-- Global Nav Bar End -->
   
 <div id="content">
 
@@ -218,33 +177,35 @@ header {
 			</p>
 			<select id='filter_select' class='criteria_dropdown' oninput="update_other_filters()">
 				<option value="all" >Todos Pokemon</option>
-								
-				<option value="released" >Released Pokemon</option>
-				<option value="new">Newly Released</option>
 				<option value="legendary">Legendary + Mythical</option>
 				<option value="regional">Regionales</option>
 				<option value="egg">Egg Eclosionan</option>
 				<option value="raid">Raid Bosses</option>
 				<option value="nest">Nidos</option>
-				<option value="wild">Wild Spawns</option>
 				<option value="baby">Babies</option>
 				<option value="shiny">Shiny</option>
-		        <option value="alolan">Alola</option>
-		        <option value="ditto">Puede ser Ditto</option>
-				<!-- <option value="unreleased">Not released</option>
-				<option value="unavailable">Out of rotation</option> -->
-		        <!-- <option value="crossgen">Cross Generational</option> -->
-		        <option value="egg2">Egg 2 Km</option>
-				<option value="egg5">Egg 5 Km</option>
-				<option value="egg10">Egg 10 Km</option>
-				<option value="egg7">Egg 7 Km</option>
-		        <option value="raid1">Raid nivel 1</option>
-				<option value="raid2">Raid nivel 2</option>
-				<option value="raid3">Raid nivel 3</option>
-				<option value="raid4">Raid nivel 4</option>
+		        	<option value="alolan">Alola</option>
+		        	<option value="ditto">Puede ser Ditto</option>
 				<option value="raid5">Raid nivel 5</option>
-		        <option value="allshiny">Todos Shinies</option>
-        			</select>
+				<option value="normal">Normal</option>
+				<option value="fighting">Lucha</option>
+				<option value="flying">Volador</option>
+				<option value="poison">Veneno</option>
+				<option value="ground">Tierra</option>
+				<option value="rock">Roca</option>
+				<option value="bug">Bicho</option>
+				<option value="ghost">Fantasma</option>
+				<option value="steel">Acero</option>
+		        	<option value="grass">Planta</option>
+		        	<option value="fire">Fuego</option>
+		        	<option value="water">Agua</option>
+				<option value="electric">Electrico</option>
+				<option value="psychic">Psychico</option>
+				<option value="ice">Hielo</option>
+				<option value="dragon">Dragon</option>
+				<option value="dark">Siniestro</option>
+		        	<option value="fairy">Hada</option>
+        		</select>
 		</div>
 		
 		<div id='hide_selectors'>
@@ -534,10 +495,10 @@ var current_sort = '';
 			
 
 				
-				if (show_filter != '') {
+		if (show_filter != '') {
 					//alert(show_filter);
 					//if (show_filter == "noleg") { if (pokedex.response[i].L == '1' || pokedex.response[i].L == '2') { skip_poke = true;} }
-					if (show_filter == "released") { if (pokedex.response[i].AQU == '0') { skip_poke = true;} }
+		if (show_filter == "released") { if (pokedex.response[i].AQU == '0') { skip_poke = true;} }
 			else if (show_filter == "new") { if (pokedex.response[i].NEW == '0') { skip_poke = true;} }
 			else if (show_filter == "legendary") { if (pokedex.response[i].L == '0') { skip_poke = true;} }
 			else if (show_filter == "regional") { if (pokedex.response[i].REG == '0') { skip_poke = true;} }
@@ -549,23 +510,31 @@ var current_sort = '';
 			else if (show_filter == "unavailable") { if (pokedex.response[i].TEM == '0' ) { skip_poke = true;} }
 			else if (show_filter == "raid") { if (pokedex.response[i].RAI == '0' ) { skip_poke = true;} }
 			else if (show_filter == "shiny") { if (pokedex.response[i].SHI == '0' ) { skip_poke = true;} }
-	        else if (show_filter == "ditto") { if (pokedex.response[i].DIT == '0' ) { skip_poke = true;} }
-	        else if (show_filter == "crossgen") { if (pokedex.response[i].CRO == '0' ) { skip_poke = true; skip_gen = true;} }
-	        else if (show_filter == "alolan") { if (pokedex.response[i].ALO == '0' ) { skip_poke = true; skip_gen = true;} }
-
-	        else if (show_filter == "egg2") { if (pokedex.response[i].EGG != '2') { skip_poke = true;} }
-			else if (show_filter == "egg5") { if (pokedex.response[i].EGG != '5') { skip_poke = true;} }
-			else if (show_filter == "egg10") { if (pokedex.response[i].EGG != '10') { skip_poke = true;} }
-			else if (show_filter == "egg7") { if (pokedex.response[i].EGG != '7') { skip_poke = true;} }
-			else if (show_filter == "raid1") { if (pokedex.response[i].RAI != '1' ) { skip_poke = true;} }
-			else if (show_filter == "raid2") { if (pokedex.response[i].RAI != '2' ) { skip_poke = true;} }
-			else if (show_filter == "raid3") { if (pokedex.response[i].RAI != '3' ) { skip_poke = true;} }
-			else if (show_filter == "raid4") { if (pokedex.response[i].RAI != '4' ) { skip_poke = true;} }
+	        	else if (show_filter == "ditto") { if (pokedex.response[i].DIT == '0' ) { skip_poke = true;} }
+	        	else if (show_filter == "crossgen") { if (pokedex.response[i].CRO == '0' ) { skip_poke = true; skip_gen = true;} }
+	        	else if (show_filter == "alolan") { if (pokedex.response[i].ALO == '0' ) { skip_poke = true; skip_gen = true;} }
 			else if (show_filter == "raid5") { if (pokedex.response[i].RAI != '5' ) { skip_poke = true;} }
-          
+		else if (show_filter == "normal") { if (pokedex.response[i].Typ1 != 'normal') { skip_poke = true;} }
+		else if (show_filter == "fighting") { if (pokedex.response[i].Typ1 != 'fighting') { skip_poke = true;} }
+		else if (show_filter == "flying") { if (pokedex.response[i].Typ1 != 'flying') { skip_poke = true;} }
+		else if (show_filter == "poison") { if (pokedex.response[i].Typ1 != 'poison') { skip_poke = true;} }
+		else if (show_filter == "ground") { if (pokedex.response[i].Typ1= 'ground') { skip_poke = true;} }
+		else if (show_filter == "rock") { if (pokedex.response[i].Typ1 != 'rock') { skip_poke = true;} }
+		else if (show_filter == "bug") { if (pokedex.response[i].Typ1 != 'bug') { skip_poke = true;} }
+		else if (show_filter == "ghost") { if (pokedex.response[i].Typ1 != 'ghost' ) { skip_poke = true;} }
+		else if (show_filter == "steel") { if (pokedex.response[i].Typ1 != 'steel' ) { skip_poke = true;} }
+	        else if (show_filter == "grass") { if (pokedex.response[i].Typ1 != 'grass' ) { skip_poke = true;} }
+	        else if (show_filter == "fire") { if (pokedex.response[i].Typ1 != 'fire' ) { skip_poke = true;} }
+	        else if (show_filter == "water") { if (pokedex.response[i].Typ1 != 'water' ) { skip_poke = true;} }
+	        else if (show_filter == "electric") { if (pokedex.response[i].Typ1 != 'electric') { skip_poke = true;} }
+		else if (show_filter == "psychic") { if (pokedex.response[i].Typ1 != 'psychic') { skip_poke = true;} }
+		else if (show_filter == "ice") { if (pokedex.response[i].Typ1 != 'ice') { skip_poke = true;} }
+		else if (show_filter == "dragon") { if (pokedex.response[i].Typ1 != 'dragon') { skip_poke = true;} }
+		else if (show_filter == "dark") { if (pokedex.response[i].Typ1 != 'dark') { skip_poke = true;} }
+		else if (show_filter == "fairy") { if (pokedex.response[i].Typ1 != 'fairy' ) { skip_poke = true;} }					
 				}
 				
-				if (hide_type != '') {
+			if (hide_type != '') {
 					//alert(show_filter);
 					//if (show_filter == "noleg") { if (pokedex.response[i].L == '1' || pokedex.response[i].L == '2') { skip_poke = true;} }
 			if (hide_type == "released") { if (pokedex.response[i].AQU != '0') { skip_poke = true;} }
@@ -586,25 +555,21 @@ var current_sort = '';
 				}
 				
         if (skip_gen == true) {
-          //if (pokedex.response[i].id == '001') {alert('test');}
           //only show gens 1-4
-          if(pokedex.response[i].Gen == 1 || pokedex.response[i].Gen == 2 || pokedex.response[i].Gen == 3 || pokedex.response[i].Gen == 4 || pokedex.response[i].Gen == 7) {
-            gen_select = true;
-          }
-          
+        if(pokedex.response[i].Gen == 1 || pokedex.response[i].Gen == 2 || pokedex.response[i].Gen == 3 || pokedex.response[i].Gen == 4 || pokedex.response[i].Gen == 7) {
+            gen_select = true;}
          } else {
           if (g_g1 && pokedex.response[i].Gen == 1 ) { gen_select = true; }
-		  else if (g_g2 && pokedex.response[i].Gen == 2) { gen_select = true; }
-		  else if (g_g3 && pokedex.response[i].Gen == 3) { gen_select = true; }
-		  else if (g_g4 && pokedex.response[i].Gen == 4) { gen_select = true; }
-          else if (g_g5 && pokedex.response[i].Gen == 5) { gen_select = true; }
-          else if (g_g6 && pokedex.response[i].Gen == 6) { gen_select = true; }
-          else if (g_g7 && pokedex.response[i].Gen == 7) { gen_select = true; }
+		else if (g_g2 && pokedex.response[i].Gen == 2) { gen_select = true; }
+		else if (g_g3 && pokedex.response[i].Gen == 3) { gen_select = true; }
+		else if (g_g4 && pokedex.response[i].Gen == 4) { gen_select = true; }
+          	else if (g_g5 && pokedex.response[i].Gen == 5) { gen_select = true; }
+          	else if (g_g6 && pokedex.response[i].Gen == 6) { gen_select = true; }
+          	else if (g_g7 && pokedex.response[i].Gen == 7) { gen_select = true; }
         }
-				
 
-		if (skip_poke == false && gen_select == true) {
-				temp_count = temp_count + 1 ;
+	if (skip_poke == false && gen_select == true) {
+		temp_count = temp_count + 1 ;
         if (g_mode== 'grid') {        
         //write grid
 text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, pokedex.response[i].Gen, 
@@ -613,7 +578,7 @@ text_to_return = write_pokemon_box(pokedex.response[i].name, pokedex.response[i]
            //write table
 text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[i].row, pokedex.response[i].img, pokedex.response[i].id, pokedex.response[i].Typ1, pokedex.response[i].Typ2, 
 pokedex.response[i].Gen, pokedex.response[i].CP1.replace(/^0+/, ''), 
-    pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);
+pokedex.response[i].A.replace(/^0+/, ''), pokedex.response[i].D.replace(/^0+/, ''), pokedex.response[i].S.replace(/^0+/, ''), show_filter);
          }
 //write_pokemon_table(name, row, img, id, type, type2, gen, cp, att, def, stam)
 text_to_write += text_to_return;
@@ -624,12 +589,9 @@ count_generated += 1;
            	count_generated -= 1;
          }
 	}
-				gen_select = false;				
-				skip_poke = false;
-			}
+	gen_select = false; skip_poke = false; }
 			
       //alert(temp_count);
-      
       //if the mode is table, then add extra HTML
       if (g_mode== 'table') {
          text_to_write = "<table id='P337_pokedex_table' style='width:100%;'> \
@@ -754,16 +716,11 @@ count_generated += 1;
 		    <div id='nest_migration_div'></div>
 		  </div>
 
-<!-- 		<div id='clockcontain' class='nest_migration_container'>
-	<div class="clock_left">
-      <img class="clock_image" style="width:100px; height: 100px; margin-top: -2px;" src="https://www.serebii.net/pokemongo/pokemon/384.png">
-    </div>
-		<div id='nest_migration_text'>Raids Dialga: </div>
-		<div class='countdown_small' id='dialga-raids-2019_secondary'></div>
 
-		</div> -->
 <div class='extra_timer_box dialga-raids-2019'>
-      <div class='extra_timer_left'><img alt='dialga-raids-2019' src='https://www.serebii.net/pokemongo/pokemon/483.png'></div>
+      <div class='extra_timer_left'>
+	      <img alt='dialga-raids-2019' src='https://www.serebii.net/pokemongo/pokemon/483.png'>
+	</div>
         <div class='extra_timer_right'>Dialga Raids End in<br>
           <div class='mini_sc' id='dialga-raids-2019_mini_sc'>
             <div class='countdown_small' id='dialga-raids-2019_secondary'></div>
@@ -771,25 +728,17 @@ count_generated += 1;
           </div>
         </div>
       </div>
-
-<div class="extra_timer_box rayquaza-raids-2019">
-<div class="extra_timer_left"><img alt="rayquaza-raids-2019" src="https://www.serebii.net/pokemongo/pokemon/384.png"></div>
-<div class="extra_timer_right">Rayquaza Raids start<br>
-  <div class="mini_sc" id="rayquaza-raids-2019_mini_sc">
-    <div class="countdown_small" id="rayquaza_raids_2019_countdown"></div>
-    <div id="rayquaza_raids_2019_time" class="local_small"></div> 
-  </div>
-</div>
-</div>
-
-<div id='treeko_community_day_mz_r' class='extra_timer_box'>
-    <div class='extra_timer_left'><img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/252.png'/></div>
-    <div class='extra_timer_right'>
-      <div id='treeko_community_day_mz_l'></div>
-      <div class='mini_sc' id='treeko_community_day_mz_countdown'></div>
-      <div id='treeko_community_day_mz_time' class='local_small'></div> 
+	  
+<div id='torchic_community_day_mz_r' class='clock_contain mas' style='background-color: #dbdbdb;'>
+    <div class='extra_timer_left'>
+      <img class='clock_image' style='width:100px; height: 100px;' src='https://www.serebii.net/pokemongo/pokemon/shiny/255.png'/>
     </div>
-  </div>
+    <div class='extra_timer_right'>
+      <div id='torchic_community_day_mz_l'></div>
+      <div class='countdown' id='torchic_community_day_mz_countdown'></div>
+      <div id='torchic_community_day_mz_time' class='local_small'> Local Time: </div> 
+    </div>
+  </div>	  
 
  </div>
 <script>
@@ -851,34 +800,35 @@ function toTitleCase(str) {
     document.getElementById('rayquaza_raids_2019_time').innerHTML = local_date_string;
   }
 
-// treecko
-  var s = 'Mar 23 2019 15:00:00'; var e = 'Mar 23 2019 18:00:00';
-  var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
-  //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
-  if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
+// torchic
+var s = 'May 19 2019 15:00:00'; var e = 'May 19 2019 18:00:00';
+var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = ''; var eda = true;  
+  if (e.length < 10) { console.log('hello there'); eda = false; }
+  if (Date.parse(ds)-Date.parse(new Date())<0 && eda) { deadline = e; o = true; } else { deadline = s; o = false; }
   
-  var m = 'Treeko Community Day';
+  var m = 'Torchic Community Day';
   t = m.toLowerCase()
   t = t.replace('-', ' '); 
-  t = t.replace('mz', ' '); 
+  t = t.replace('mz', ' ');
   if ( t.includes('raids') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Start'; f=t+' Started';} }
-  if ( t.includes('community day') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Starts'; f=t+' Started';} }
+  else if ( t.includes('community day') ) { if (o) { d=t+' End'; f=t+' has finished'; } else { d=t+' Starts'; f=t+' has Started';} }
   else { if (o) { d=t+' Ends'; f=t+' is over'; } else { d=t+' Starts'; f=t+' started';} }
-  d = toTitleCase(d);
+  if ( eda == false ) { d=t+''; f=t+' Occured'; }
+  d = toTitleCase(d);  f = toTitleCase(f); 
   //alert(d);
-  if ( document.getElementById('treeko_community_day_mz_l') ) { document.getElementById('treeko_community_day_mz_l').innerHTML = d; } 
+  if ( document.getElementById('torchic_community_day_mz_l') ) { document.getElementById('torchic_community_day_mz_l').innerHTML = d; } 
   
   var stop_clock_id = '';
   var offset = new Date().getTimezoneOffset();
   var offset_hours = offset/60;
   var offset_miliseconds = 0;
   if (offset_hours < 0) { offset_miliseconds = 100; }
-  if ( document.getElementById('treeko_community_day_mz_countdown') ) {
-    stop_clock_id = initializeClock('treeko_community_day_mz_countdown', deadline, 0, f);
+  if ( document.getElementById('torchic_community_day_mz_countdown') ) {
+    stop_clock_id = initializeClock('torchic_community_day_mz_countdown', deadline, 0, f);
     var local_date = new Date(deadline);
     local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
     var local_date_string = format_date(local_date,true);
-    document.getElementById('treeko_community_day_mz_time').innerHTML = local_date_string;
+    document.getElementById('torchic_community_day_mz_time').innerHTML = local_date_string;
   }
 </script>
  </div>  
