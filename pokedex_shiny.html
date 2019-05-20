@@ -720,11 +720,10 @@ count_generated += 1;
 		  </div>
 
 
-<div class='extra_timer_box dialga-raids-2019'>
+<div class='extra_timer_box'>
       <div class='extra_timer_left'>
-	      <img alt='dialga-raids-2019' src='https://www.serebii.net/pokemongo/pokemon/483.png'>
-	</div>
-        <div class='extra_timer_right'>Dialga Raids End in<br>
+	      <img alt='dialga-raids-2019' src='https://p337.info/pokemongo/img/custom/ux-leg.png'></div>
+        <div class='extra_timer_right'><div id='rayquaza_raids_2019_l'></div>
           <div class='mini_sc' id='dialga-raids-2019_mini_sc'>
             <div class='countdown_small' id='dialga-raids-2019_secondary'></div>
             <div id='dialga-raids-2019_secondary_local' class='local_small'> Local Time: </div> 
@@ -732,16 +731,26 @@ count_generated += 1;
         </div>
       </div>
 	  
-<div id='torchic_community_day_mz_r' class='clock_contain mas' style='background-color: #dbdbdb;'>
-    <div class='extra_timer_left'>
-      <img class='clock_image' style='width:100px; height: 100px;' src='https://www.serebii.net/pokemongo/pokemon/shiny/255.png'/>
-    </div>
-    <div class='extra_timer_right'>
-      <div id='torchic_community_day_mz_l'></div>
-      <div class='countdown' id='torchic_community_day_mz_countdown'></div>
-      <div id='torchic_community_day_mz_time' class='local_small'> Local Time: </div> 
-    </div>
-  </div>	  
+<div class="extra_timer_box">
+<div class="extra_timer_left">
+	<img alt="raids-2019" src="https://www.serebii.net/pokemongo/pokemon/shiny/486.png"></div>
+<div class="extra_timer_right"><div id='rayquaza_raids_2019_l'></div>
+  <div class="mini_sc" id="rayquaza-raids-2019_mini_sc">
+    <div class="countdown_small" id="rayquaza_raids_2019_countdown"></div>
+    <div id="rayquaza_raids_2019_time" class="local_small"></div> 
+  </div>
+</div>
+</div>
+	  
+<div id='torchic_community_day_mz_r' class='extra_timer_box'>
+<div class='extra_timer_left'>
+<img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/258.png'/></div>
+<div class='extra_timer_right'>
+  <div id='torchic_community_day_mz_l'></div>
+  <div class='mini_sc' id='treeko_community_day_mz_countdown'></div>
+  <div id='torchic_community_day_mz_time' class='local_small'></div> 
+</div>
+</div>	  
 
  </div>
 <script>
@@ -772,13 +781,13 @@ function toTitleCase(str) {
         var local_date_string = format_date(local_date,true);
         document.getElementById('dialga-raids-2019_secondary_local').innerHTML = local_date_string; }
 
-// rayquaza
-  var s = 'Mar 15 2019 13:00:00 GMT-0700'; var e = 'Mar 18 2019 13:00:00 GMT-0700';
+// legendarias
+  var s = 'May 2 2019 18:00:00'; var e = 'May 27 2019 19:00:00';
   var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
   //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
   if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
   
-  var m = 'Rayquaza Raids';
+  var m = 'Trio del lago Raids';
   t = m.toLowerCase()
   t = t.replace('-', ' '); 
   t = t.replace('mz', ' '); 
@@ -809,7 +818,7 @@ var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = ''
   if (e.length < 10) { console.log('hello there'); eda = false; }
   if (Date.parse(ds)-Date.parse(new Date())<0 && eda) { deadline = e; o = true; } else { deadline = s; o = false; }
   
-  var m = 'Torchic Community Day';
+  var m = 'Torchic CommunityDay';
   t = m.toLowerCase()
   t = t.replace('-', ' '); 
   t = t.replace('mz', ' ');
