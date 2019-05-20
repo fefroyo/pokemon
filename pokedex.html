@@ -734,7 +734,17 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
 </div><!-- end content -->
 	
 		  <div class='clear' style='height: 30px;'> </div>
-                  <style> #footer { position: inherit !important; } </style>
+<style> #footer { position: inherit !important; }
+.extra_timer_box, .extra_timer_box_nolink { padding: 7px; padding-top: 10px; padding-bottom: 5px; width: 80%; 
+ margin: auto;  background-color: #dbdbdb; height: 70px; margin-bottom: 15px;}
+.extra_timer_box:hover { background-color: #cccccc;} 
+.extra_timer_left { width: 25%; float: left;} 
+.extra_timer_left img {width: 60px;height: 60px; float: right; margin-right:0px;} 
+.extra_timer_right { width: 75%; float: right;} 
+.extra_timer_box {max-width: 350px !important;}
+.countdown_small {margin-bottom: 5px; margin-top: 5px; font-size: 15px;}
+.local_small { font-size: 12px; }
+</style>
     <div id='footer'>
   <div id='footer_container'>
  
@@ -743,16 +753,27 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
     <div id='nest_migration_div'></div>
   </div>
 
-<div id='treeko_community_day_mz_r' class='extra_timer_box'>
-<div class='extra_timer_left'><img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/252.png'/></div>
+<div class="extra_timer_box">
+<div class="extra_timer_left">
+	<img alt="raids-2019" src="https://p337.info/pokemongo/img/custom/ux-leg.png"></div>
+<div class="extra_timer_right"><div id='lake_trio_raids_2019_mz_l'></div>
+  <div class="mini_sc" id="rayquaza-raids-2019_mini_sc">
+    <div class="countdown_small" id="rayquaza_raids_2019_countdown"></div>
+    <div id="lake_trio_raids_2019_mz_time" class="local_small"></div> 
+  </div>
+</div>
+</div>
+	  
+<div id='torchic_community_day_mz_r' class='extra_timer_box'>
+<div class='extra_timer_left'>
+<img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/255.png'/></div>
 <div class='extra_timer_right'>
-<div id='treeko_community_day_mz_l'></div>
-<div class='mini_sc' id='treeko_community_day_mz_countdown'></div>
-<div id='treeko_community_day_mz_time' class='local_small'></div> 
+  <div id='torchic_community_day_mz_l'></div>
+  <div class='mini_sc' id='torchic_community_day_mz_countdown'></div>
+  <div id='torchic_community_day_mz_time' class='local_small'></div> 
 </div>
 </div> 
 	 
-    
  </div>
 <script>
 function toTitleCase(str) {
@@ -772,14 +793,14 @@ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       //function initializeClock(id, endtime, negative_time, message){
       initializeClock('nest_migration_div', date_clock, 0, '');
     }
-	
-// treecko
-  var s = 'Mar 23 2019 15:00:00'; var e = 'Mar 23 2019 18:00:00';
+
+// trio del lago raids
+var s = 'May 2 2019 18:00:00'; var e = 'May 27 2019 19:00:00';
   var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
   //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
   if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
   
-  var m = 'Treeko Community Day';
+  var m = 'Trio del lago Raids';
   t = m.toLowerCase()
   t = t.replace('-', ' '); 
   t = t.replace('mz', ' '); 
@@ -788,27 +809,52 @@ return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   else { if (o) { d=t+' Ends'; f=t+' is over'; } else { d=t+' Starts'; f=t+' started';} }
   d = toTitleCase(d);
   //alert(d);
-  if ( document.getElementById('treeko_community_day_mz_l') ) { document.getElementById('treeko_community_day_mz_l').innerHTML = d; } 
+  if ( document.getElementById('lake_trio_raids_2019_mz_l') ) { document.getElementById('lake_trio_raids_2019_mz_l').innerHTML = d; } 
   
   var stop_clock_id = '';
   var offset = new Date().getTimezoneOffset();
   var offset_hours = offset/60;
   var offset_miliseconds = 0;
   if (offset_hours < 0) { offset_miliseconds = 100; }
-  if ( document.getElementById('treeko_community_day_mz_countdown') ) {
-    stop_clock_id = initializeClock('treeko_community_day_mz_countdown', deadline, 0, f);
+
+  if ( document.getElementById('rayquaza_raids_2019_countdown') ) {
+    stop_clock_id = initializeClock('rayquaza_raids_2019_countdown', deadline, 0, f);
     var local_date = new Date(deadline);
     local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
     var local_date_string = format_date(local_date,true);
-    document.getElementById('treeko_community_day_mz_time').innerHTML = local_date_string;
+    document.getElementById('lake_trio_raids_2019_mz_time').innerHTML = local_date_string;
+  }
+
+// torchic
+  var s = 'May 19 2019 15:00:00'; var e = 'May 19 2019 18:00:00';
+  var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = '';
+  //if (ds.getTime() < dn.getTime()) { deadline = s; o = true; } else { deadline = e; o = false; }
+  if (Date.parse(ds)-Date.parse(new Date())<0) { deadline = e; o = true; } else { deadline = s; o = false; }
+  
+  var m = 'Torchic CommunityDay';
+  t = m.toLowerCase()
+  t = t.replace('-', ' '); 
+  t = t.replace('mz', ' '); 
+  if ( t.includes('raids') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Start'; f=t+' Started';} }
+  if ( t.includes('community day') ) { if (o) { d=t+' End'; f=t+' have finished'; } else { d=t+' Starts'; f=t+' Started';} }
+  else { if (o) { d=t+' Ends'; f=t+' is over'; } else { d=t+' Starts'; f=t+' started';} }
+  d = toTitleCase(d);
+  //alert(d);
+  if ( document.getElementById('torchic_community_day_mz_l') ) { document.getElementById('torchic_community_day_mz_l').innerHTML = d; } 
+  
+  var stop_clock_id = '';
+  var offset = new Date().getTimezoneOffset();
+  var offset_hours = offset/60;
+  var offset_miliseconds = 0;
+  if (offset_hours < 0) { offset_miliseconds = 100; }
+  if ( document.getElementById('torchic_community_day_mz_countdown') ) {
+    stop_clock_id = initializeClock('torchic_community_day_mz_countdown', deadline, 0, f);
+    var local_date = new Date(deadline);
+    local_date.setTime(local_date.getTime() + (offset_hours+offset_miliseconds));
+    var local_date_string = format_date(local_date,true);
+    document.getElementById('torchic_community_day_mz_time').innerHTML = local_date_string;
   }	
 </script>
-  
-<style>
-.menu_head {padding-top: 20px; padding-bottom: 10px; font-weight: bold;}
-</style>
-      <div id='outer' class='m_item h_menu'  onclick='toggle_menu();'></div>
-      <div id='inner' class='m_item h_menu'></div>
 </div>
 </body>
 </html>
