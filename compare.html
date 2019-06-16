@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>pokemon select type number</title>
-  <link rel="shortcut icon" href="https://www.serebii.net/pokemongo/pokemon/shiny/133.png"/>
-  <link rel="apple-touch-icon" href="https://www.serebii.net/pokemongo/pokemon/shiny/133.png"/>
-  <link rel="icon" href="https://www.serebii.net/pokemongo/pokemon/shiny/133.png"/>
+  <link rel="shortcut icon" href="https://www.serebii.net/pokemongo/pokemon/409.png"/>
+  <link rel="apple-touch-icon" href="https://www.serebii.net/pokemongo/pokemon/409.png"/>
+  <link rel="icon" href="https://www.serebii.net/pokemongo/pokemon/409.png"/>
   <!-- type="image/gif" sizes="16x16" -->
 <style>
 @import url('https://fonts.googleapis.com/css?family=Oswald:300|Passion+One');
@@ -120,7 +120,7 @@ th, td {padding: 5px;}
 .dragon {background-color: #ff5e5e; }
 .ice {background-color: #d6ffff; }
 
-.pokemon { display: inline-block; float:none !important; width: 120px; height: 275px;}
+.pokemon { display: inline-block; float:none !important; width: 120px; height: auto;}
 .stat_hold {clear:both; font-size: 12px; display:block;}
 .stat_contain {width: 100%; min-width: 100%; height: 40px; padding-top: 10px;}
 .p_a, .p_d, .p_s { width: 33% !important; float: left;}
@@ -133,15 +133,12 @@ th, td {padding: 5px;}
 .p_id, .p_g { font-size: 12px; color: black;}
 .lo {font-size: 12px !important; line-height: 15px; }
 .lon {font-size: 10px !important; line-height: 15px; }
-
+.pokemon p {text-align: left;margin: 0px;}
+.pokemon p span{vertical-align: middle;margin: 5px;}
+  
 .pokemon:hover #img2 {
   display: block;
 }
-/*.pokemon #img2 {
-        position: fixed;
-        right:0;
-        bottom:0;
-}*/
 </style>  
 </head>
 
@@ -258,7 +255,7 @@ shiny = document.getElementById("demo").innerHTML;
   if (foundItem) {
 
   var poke = 
-  '<div class="p_id">#'+foundItem.id+'</div><div class="p_g">PC '+foundItem.cpmax+'</div> <img id="img1" src="https://www.serebii.net/pokemongo/pokemon/'+shiny+foundItem.id2+'.png" style="height: 120px; width:120px;position:relative;top:-10px;" alt=""><div class="p_n ">'+foundItem.name+'</div><div class="p_t_wrapper"><div class="p_t1 '+foundItem.type1+'">'+foundItem.type1+'</div><div class="p_t2 '+foundItem.type2+'">'+foundItem.type2+'</div></div><div class="p_c2"><span class="cp_hold2">lv15: <b>'+foundItem.level15+'</b></span></div><div class="p_c2"><span class="cp_hold2">lv20: <b>'+foundItem.eggiv+'</b></span></div><div class="stat_contain"><div class="p_a"><span class="stat_hold">ATT</span> '+foundItem.BaseAttack+'</div><div class="p_d"><span class="stat_hold">DEF</span> '+foundItem.BaseDefense+'</div><div class="p_s"><span class="stat_hold">STA</span> '+foundItem.BaseStamina+'</div></div>';
+  '<div class="p_id">#<a href="https://db.pokemongohub.net/pokemon/'+foundItem.id+'">'+foundItem.id+'</a></div><div class="p_g">PC '+foundItem.cpmax+'</div> <img id="img1" src="https://www.serebii.net/pokemongo/pokemon/'+shiny+foundItem.id2+'.png" style="height: 120px; width:120px;position:relative;top:-10px;" alt=""><div class="p_n "><a href="https://pokemon.gameinfo.io/es/pokemon/'+foundItem.id+'">'+foundItem.name+'</a></div><div class="p_t_wrapper"><div class="p_t1 '+foundItem.type1+'">'+foundItem.type1+'</div><div class="p_t2 '+foundItem.type2+'">'+foundItem.type2+'</div></div><div class="p_c2"><span class="cp_hold2">lv15: <b>'+foundItem.level15+'</b></span></div><div class="p_c2"><span class="cp_hold2">lv20: <b>'+foundItem.eggiv+'</b></span></div><p><span class="type-icon move-type-'+foundItem.atacTipo1+'"></span>'+foundItem.atac1+'<br><span class="type-icon move-type-'+foundItem.atacTipo2+'"></span>'+foundItem.atac2+'</p><div class="stat_contain"><div class="p_a"><span class="stat_hold">ATT</span> '+foundItem.BaseAttack+'</div><div class="p_d"><span class="stat_hold">DEF</span> '+foundItem.BaseDefense+'</div><div class="p_s"><span class="stat_hold">STA</span> '+foundItem.BaseStamina+'</div></div>';
 
       document.getElementById('resultado').innerHTML = poke;
 
