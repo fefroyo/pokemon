@@ -164,7 +164,7 @@ tr:nth-child(even) {   background-color: #FFF; }
       
 <div class='gen_cont' id='gen_right'>
 <input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>
-<input type="checkbox" style="display:none;" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>
+<input type="checkbox" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>Gen 5<br>
 <input type="checkbox" style="display:none;" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>
 <input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
 </div>
@@ -284,17 +284,17 @@ tr:nth-child(even) {   background-color: #FFF; }
 <script src="./js/pokedex_json6.js"></script>		
 <script>
 //set default values for generation
-	var g_g1 =0, g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 0, g_g6 = 0, g_g7 = 0; //defaults 
-	var g_mode = 'grid';
+	var g_g1 =0, g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 1, g_g6 = 0, g_g7 = 0; //defaults 
+    var g_mode = 'grid';
     var g_ignore_action = 0;
    
 	document.getElementById("gen_1").checked = g_g1;
 	document.getElementById("gen_2").checked = g_g2;
 	document.getElementById("gen_3").checked = g_g3;
 	document.getElementById("gen_4").checked = g_g4;
-    document.getElementById("gen_5").checked = g_g5;
+    	document.getElementById("gen_5").checked = g_g5;
     document.getElementById("gen_6").checked = g_g6;
-    document.getElementById("gen_7").checked = g_g7;
+    	document.getElementById("gen_7").checked = g_g7;
 		
 		//set default values for show filter
 		var filter = 'released';
@@ -326,7 +326,7 @@ var current_sort = '';
 		g_g2 = document.getElementById("gen_2").checked;
 		g_g3 = document.getElementById("gen_3").checked;
 		g_g4 = document.getElementById("gen_4").checked;
-	    g_g5 = document.getElementById("gen_5").checked;
+	    	g_g5 = document.getElementById("gen_5").checked;
 	    g_g6 = document.getElementById("gen_6").checked;
 	    g_g7 = document.getElementById("gen_7").checked;
       
