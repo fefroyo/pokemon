@@ -163,7 +163,42 @@ th, td {padding: 5px;}
 <!-- <script src="./js/pokedexAll3.js"></script> -->
 <script src="./js/allpokedex.json"></script>  
 <script>
-var pokedex = JSON.parse(pokes);
+var spreadsheetID = "1_-QRT2cyZEIlFNHYHhvGlSLvzg5WG9zoFDAJhZ1vqdI";
+var url = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID+"/od6/public/values?alt=json";
+    
+    $.getJSON(url, function(data) {
+        var entry = data.feed.entry;
+        var grouped = [];
+
+        entry.forEach(function (a) {
+
+            grouped.push({ 
+                id: a.gsx$id.$t,
+                id2: a.gsx$id2.$t,
+                name: a.gsx$name.$t,
+                cpmax: a.gsx$cpmax.$t,
+                atac1: a.gsx$atac1.$t,
+                atac2: a.gsx$atac2.$t,
+                atacTipo1: a.gsx$atactipo1.$t,
+                atacTipo2: a.gsx$atactipo2.$t,
+                BaseAttack: a.gsx$baseattack.$t,
+                BaseDefense: a.gsx$basedefense.$t,
+                BaseStamina: a.gsx$basestamina.$t,
+                def1: a.gsx$def1.$t,
+                def2: a.gsx$def2.$t,
+                deftipo1: a.gsx$deftipo1.$t,
+                deftipo2: a.gsx$deftipo2.$t,
+                eggiv: a.gsx$eggiv.$t,
+                gen: a.gsx$gen.$t,
+                level15: a.gsx$level15.$t,
+                type1: a.gsx$type1.$t,
+                type2: a.gsx$type2.$t,
+            });
+        });
+
+
+var pokes1 = JSON.stringify(grouped);
+var pokedex = JSON.parse(pokes1);
 // listar al buscar
 var search = $(".search-input");
 
@@ -294,7 +329,7 @@ function show() {
         buttons[i].addEventListener('click', remove);
     };
 }
-
+    
 // click and enter
 document.getElementById('add').addEventListener('click', add);
 document.addEventListener('keypress', function (e) {
@@ -304,6 +339,8 @@ document.addEventListener('keypress', function (e) {
       document.getElementById("formInput").value = '';
     }
 }); show();
+
+});
 </script>
 </body>
 </html>
