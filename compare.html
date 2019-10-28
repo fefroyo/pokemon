@@ -165,8 +165,23 @@ th, td {padding: 5px;}
 <script>
 var spreadsheetID = "1_-QRT2cyZEIlFNHYHhvGlSLvzg5WG9zoFDAJhZ1vqdI";
 var url = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID+"/od6/public/values?alt=json";
-    
-    $.getJSON(url, function(data) {
+
+  //// funcion shiny
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+
+  if (x == 'shiny'){
+    var shiny = "shiny/";
+  }
+  if (x == 'noshiny'){
+    shiny = "";
+  }
+  document.getElementById("demo").innerHTML = shiny;
+ // console.log(shiny + " " +x)
+}
+
+  //// JSON de google excel
+$.getJSON(url, function(data) {
         var entry = data.feed.entry;
         var grouped = [];
 
@@ -195,11 +210,10 @@ var url = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID+"/od6/publ
                 type2: a.gsx$type2.$t,
             });
         });
-
-
 var pokes1 = JSON.stringify(grouped);
 var pokedex = JSON.parse(pokes1);
-// listar al buscar
+
+  // listar al buscar
 var search = $(".search-input");
 
 search.keyup(function() {
@@ -257,19 +271,6 @@ function get_todos() {
 }
 
 // var shiny = '/shiny';
-function myFunction() {
-  var x = document.getElementById("mySelect").value;
-
-  if (x == 'shiny'){
-    var shiny = "shiny/";
-  }
-  if (x == 'noshiny'){
-    shiny = "";
-  }
-  document.getElementById("demo").innerHTML = shiny;
- // console.log(shiny + " " +x)
-}
-
 function add() {
 
     var formInput = document.getElementById("formInput").value,
