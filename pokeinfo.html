@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 .type-icon {
-  background: url(http://efraweb.xyz/pokemons/icons-sprite.png);
+  background: url(icons-sprite.png);
   display: inline-block;
   width: 24px;
   height: 24px;
@@ -3332,11 +3332,46 @@ input[type="submit"].solid:active, #searchBtn.solid:active {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/raids.js"></script>
-<script src="./js/pokedexAll3.js"></script>
+<!-- <script src="./js/pokedexAll3.js"></script> -->
 <script>
 $(document).ready(function() {
 
-  var search = $(".search-input");
+var spreadsheetID = "1_-QRT2cyZEIlFNHYHhvGlSLvzg5WG9zoFDAJhZ1vqdI";
+var url = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID+"/od6/public/values?alt=json";
+    
+    $.getJSON(url, function(data) {
+        var entry = data.feed.entry;
+        var grouped = [];
+
+        entry.forEach(function (a) {
+
+            grouped.push({ 
+                id: a.gsx$id.$t,
+                id2: a.gsx$id2.$t,
+                name: a.gsx$name.$t,
+                cpmax: a.gsx$cpmax.$t,
+                atac1: a.gsx$atac1.$t,
+                atac2: a.gsx$atac2.$t,
+                atacTipo1: a.gsx$atactipo1.$t,
+                atacTipo2: a.gsx$atactipo2.$t,
+                BaseAttack: a.gsx$baseattack.$t,
+                BaseDefense: a.gsx$basedefense.$t,
+                BaseStamina: a.gsx$basestamina.$t,
+                def1: a.gsx$def1.$t,
+                def2: a.gsx$def2.$t,
+                defTipo1: a.gsx$deftipo1.$t,
+                defTipo2: a.gsx$deftipo2.$t,
+                eggiv: a.gsx$eggiv.$t,
+                gen: a.gsx$gen.$t,
+                level15: a.gsx$level15.$t,
+                type1: a.gsx$type1.$t,
+                type2: a.gsx$type2.$t,
+            });
+        });
+
+var pokes1 = JSON.stringify(grouped);
+var pokedex = JSON.parse(pokes1);   
+var search = $(".search-input");
 
   search.keyup(function() {
     var value = $(this).val();
@@ -3507,8 +3542,10 @@ var incursion = $('.pokemonName').html();
   document.getElementById('results2').innerHTML = pokeInc;
     } 
   }  
-}
+}//fin function2
 
+
+   });
 });</script>
 </body>
 </html>
