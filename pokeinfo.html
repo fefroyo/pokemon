@@ -249,8 +249,17 @@ input[type="submit"].solid:active, #searchBtn.solid:active {
   </div>
 <button id="searchBtn" class="solid">mostrar</button>  
 <!-- </form> -->
-</header>
 
+   <!-- seleccionar shiny -->  
+<select id="mySelect" onchange="myFunction()">
+  <option value="noshiny" selected>Normal</option>
+  <option value="shiny">Shiny</option>
+</select>
+    
+</header>
+   
+<p id="demo" style="display: none"></p>  
+   
 <div id="results" class="results"></div>
 <div id="results2" class="results2"></div>
 
@@ -3338,7 +3347,20 @@ $(document).ready(function() {
 
 var spreadsheetID = "1_-QRT2cyZEIlFNHYHhvGlSLvzg5WG9zoFDAJhZ1vqdI";
 var url = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID+"/od6/public/values?alt=json";
-    
+
+  //// funcion shiny
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  if (x == 'shiny'){
+    var shiny = "shiny/";
+  }
+  if (x == 'noshiny'){
+    shiny = "";
+  }
+  document.getElementById("demo").innerHTML = shiny;
+ // console.log(shiny + " " +x)
+}   
+  //// JSON de google spreadsheet     
     $.getJSON(url, function(data) {
         var entry = data.feed.entry;
         var grouped = [];
@@ -3442,12 +3464,16 @@ function myFuncion(){
 
   }
 
+var shiny = "";
+var x1 = document.getElementById("mySelect").value;
+shiny = document.getElementById("demo").innerHTML;   
+   
 if (foundItem) {
 
     var poke =
 '<div class="monsterInfo">'+
 '<p class="points">PC <span>'+foundItem.cpmax+'</span></p>'+
-'<img src="./icons/'+foundItem.id2+'.png" alt="pokeMon" class="pokemon">'+
+'<img src="https://www.serebii.net/pokemongo/pokemon/'+shiny+foundItem.id2+'.png" alt="'+foundItem.id2+'" class="pokemon">'+
 '<div class="number">'+foundItem.id+'</div>'+
 '<div class="pokemonLevel">'+
 '<h2 class="greenWord pokemonName">'+foundItem.name+' </h2>'+
