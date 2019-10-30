@@ -85,7 +85,7 @@ input[type="search"] {
   box-shadow: inset 0 5px 0 #ccc, inset 0 6px 0 #989898, inset 0 13px 0 #dfdede; 
 }
 :focus {outline:0;}
-input[type="submit"].solid, #searchBtn.solid { 
+input[type="submit"].solid, #searchBtn.solid, #mySelect.solid { 
   float: left; 
   cursor: pointer; 
   width: 130px; 
@@ -109,7 +109,7 @@ input[type="submit"].solid, #searchBtn.solid {
   -webkit-transition: background 0.2s ease-out; 
 }
 
-input[type="submit"].solid:active, #searchBtn.solid:active { 
+input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:active { 
   background: #f6a000; 
   position: relative; 
   top: 5px; 
@@ -253,7 +253,7 @@ input[type="submit"].solid:active, #searchBtn.solid:active {
    <!-- seleccionar shiny -->  
 <select id="mySelect" onchange="myFunction()">
   <option value="noshiny" selected>Normal</option>
-  <option value="shiny">Shiny</option>
+  <option value="shiny">Shiny✨</option>
 </select>
     
 </header>
@@ -3341,7 +3341,6 @@ input[type="submit"].solid:active, #searchBtn.solid:active {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/raids.js"></script>
-<!-- <script src="./js/pokedexAll3.js"></script> -->
 <script>
 $(document).ready(function() {
 
@@ -3357,7 +3356,7 @@ function myFunction() {
   if (x == 'noshiny'){
     shiny = "";
   }
-  document.getElementById("demo").innerHTML = shiny;
+  var pokeShiny = document.getElementById("demo").innerHTML = shiny;
  // console.log(shiny + " " +x)
 }   
   //// JSON de google spreadsheet     
@@ -3464,11 +3463,12 @@ function myFuncion(){
 
   }
 
-var shiny = "";
-var x1 = document.getElementById("mySelect").value;
-shiny = document.getElementById("demo").innerHTML;   
    
 if (foundItem) {
+   
+  var x1 = document.getElementById("mySelect").value;
+  if (x1 == 'shiny'){ var shiny = "shiny/"; }
+  if (x1 == 'noshiny'){ shiny = ""; }
 
     var poke =
 '<div class="monsterInfo">'+
