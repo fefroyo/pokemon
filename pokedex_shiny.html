@@ -165,7 +165,7 @@ tr:nth-child(even) {   background-color: #FFF; }
 <div class='gen_cont' id='gen_right'>
 <input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>
 <input type="checkbox" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>Gen 5<br>
-<input type="checkbox" style="display:none;" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>
+<input type="checkbox" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>Gen 6<br>
 <input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
 </div>
       
@@ -284,7 +284,7 @@ tr:nth-child(even) {   background-color: #FFF; }
 <script src="./js/pokedex_json6.js"></script>		
 <script>
 //set default values for generation
-	var g_g1 =0, g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 1, g_g6 = 0, g_g7 = 0; //defaults 
+	var g_g1 =0, g_g2 = 0, g_g3 = 0, g_g4 = 0, g_g5 = 1, g_g6 = 0, g_g7 = 0; //defaults 
     var g_mode = 'grid';
     var g_ignore_action = 0;
    
@@ -293,7 +293,7 @@ tr:nth-child(even) {   background-color: #FFF; }
 	document.getElementById("gen_3").checked = g_g3;
 	document.getElementById("gen_4").checked = g_g4;
     	document.getElementById("gen_5").checked = g_g5;
-    document.getElementById("gen_6").checked = g_g6;
+    	document.getElementById("gen_6").checked = g_g6;
     	document.getElementById("gen_7").checked = g_g7;
 		
 		//set default values for show filter
@@ -744,7 +744,7 @@ count_generated += 1;
 	  
 <div id='torchic_community_day_mz_r' class='extra_timer_box'>
 <div class='extra_timer_left'>
-<img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/258.png'/></div>
+<img class='clock_image' src='https://www.serebii.net/pokemongo/pokemon/shiny/390.png'/></div>
 <div class='extra_timer_right'>
   <div id='torchic_community_day_mz_l'></div>
   <div class='mini_sc' id='treeko_community_day_mz_countdown'></div>
@@ -812,13 +812,13 @@ function toTitleCase(str) {
     document.getElementById('rayquaza_raids_2019_time').innerHTML = local_date_string;
   }
 
-// torchic
-var s = 'May 19 2019 15:00:00'; var e = 'May 19 2019 18:00:00';
+// chimchar
+var s = 'Nov 16 2019 11:00:00'; var e = 'Nov 16 2019 14:00:00';
 var ds = new Date(s); var dn = new Date(); var o = false; var d = ''; var t = ''; var eda = true;  
   if (e.length < 10) { console.log('hello there'); eda = false; }
   if (Date.parse(ds)-Date.parse(new Date())<0 && eda) { deadline = e; o = true; } else { deadline = s; o = false; }
   
-  var m = 'Torchic CommunityDay';
+  var m = 'Chimchar CommunityDay';
   t = m.toLowerCase()
   t = t.replace('-', ' '); 
   t = t.replace('mz', ' ');
