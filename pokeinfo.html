@@ -13,6 +13,7 @@
   line-height: 24px;
   color: transparent;
   cursor: default;
+   margin-right:4px; 
 }
 .move-type-bug {background-position:-24px 0;}
 .move-type-dark {background-position:-48px 0;}
@@ -119,9 +120,8 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
   -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
   box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
 }
-.list-group {
-  list-style:none;margin: 0;padding: 0;
-}
+.shinyboton {float: right;width: 30px;}
+.list-group {list-style:none;margin: 0;padding: 0;}
 .list-group-item { 
   cursor: pointer; 
   width: 400px; 
@@ -228,30 +228,27 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
 .peso {margin: 0;}
 .pokemonInc {width:80px;}
 
-.results{height:425px;}
+/*.results{height:425px;}*/
 .results2 {float:right;}
 .incursion {width:300px;}
 
 /* ///// VULNERABLE ///// */
-div.types-divs {padding: 8px;}
+div.types-divs {padding: 8px;font:400 16px/1.5 'Roboto',sans-serif;}
 .field--name-field-secondary-title,
-h2.main-title {border-left-color:#23406f}
+h2.main-title {border-left-color:#121212}
 .field--name-field-secondary-title,
 .main-title {
  margin:20px 0 10px;
  font-size:18px;
  font-weight:700;
- background:#585858;
  padding:7px 10px;
  clear:both;
  color:#fff;
  border-radius:2px;
  border-left:10px solid #3e3e3e;
+ background:#585858;
  line-height:1.5
 }
-.field--name-field-secondary-title,
-h2.main-title {border-left-color:#3896e6}
-.main-title {background:#00497d}
 .type-img-cell {text-align:center}
 
 table {
@@ -262,7 +259,8 @@ table {
 }
 table td {line-height:1.5}
 table tbody td {
- border:1px solid #dde4e6!important;
+ /*border:1px solid #dde4e6!important;*/
+ border: none !important;
  padding:6px 8px
 }
 td {
@@ -280,6 +278,76 @@ td.type-img-cell img {vertical-align:middle}
  width:48.82117%
 }
 .type-divs:last-child {margin-right:0}
+
+/* ataq def */
+.large-type {text-align: center; 
+  font: 400 16px/1.5 'Roboto',sans-serif;
+  margin-bottom: 10px;}
+.large-type .type {
+    font-size: 18px;
+    padding: 5px 32px;
+}
+.typess {
+    padding: 4px 9px;
+    line-height: 1.3;
+    display: inline-block;
+    color: #fff;
+    cursor: default;
+    border-radius: 3px;
+    text-shadow: 0 1px 1px rgba(0,0,0,.8);
+    font-weight: 700;
+    margin: 2px;
+}
+.POKEMON_TYPE_normal {background-color:#a8a878}
+.POKEMON_TYPE_fire {background-color:#f08030}
+.POKEMON_TYPE_water {background-color:#6890f0}
+.POKEMON_TYPE_grass {background-color:#78c850}
+.POKEMON_TYPE_poison {background-color:#a040a0}
+.POKEMON_TYPE_electric {background-color:#f8d030}
+.POKEMON_TYPE_ground {background-color:#e0c068}
+.POKEMON_TYPE_psychic {background-color:#f85888}
+.POKEMON_TYPE_rock {background-color:#b8a038}
+.POKEMON_TYPE_ice {background-color:#98d8d8}
+.POKEMON_TYPE_bug {background-color:#a8b820}
+.POKEMON_TYPE_dragon {background-color:#7038f8}
+.POKEMON_TYPE_ghost {background-color:#705898}
+.POKEMON_TYPE_steel {background-color:#b8b8d0}
+.POKEMON_TYPE_fairy {background-color:#ee99ac}
+.POKEMON_TYPE_dark {background-color:#705848}
+.POKEMON_TYPE_flying {background-color:#a890f0}
+.POKEMON_TYPE_fighting {background-color:#c02038}
+.POKEMON_TYPE_fight {background-color:#c02038}
+
+/*.type-weak-value {color: #c71f1f;}
+.type-resist-value {color: #038403;}*/
+
+table.weak span._x, .type-weak-value {color:#b71c1c}
+table.weak span._xx, .type-weak-value-256 {
+ color:#f44336;
+ font-size:18px
+}
+table.res span._x, .type-resist-value {color:#004d40}
+table.res span._xx,.type-resist-value-63 {
+ color:#388e3c; font-size:16px}
+table.res span._xxx,.type-resist-value-39 {
+ color:#4caf50; font-size:20px}
+
+.grid {display:flex;font: 400 16px/1.5 'Roboto',sans-serif;margin:0px -10px 20px}
+.grid>div {flex:1 1 50%;margin:0 10px}
+.grid h3 {text-align:center;margin-top:0}
+table.moveset {
+ width:100%;
+ border-spacing:0 1px;
+ border-collapse:separate
+}
+table.moveset td {
+ padding:0 6px;
+ font-size:14px;
+ line-height:36px;
+ /*background:rgba(0,0,0,.03)*/
+}
+table.moveset td .move-icon {margin-right:4px}
+table.moveset td a { color:#222;text-decoration:none }
 </style>
 </head>
 <body>
@@ -5508,31 +5576,18 @@ if (foundItem) {
 '<div class="HP"><span>'+foundItem.BaseStamina+'</span> / <span>'+foundItem.BaseStamina+'</span> Stamina</div>'+
 '</div>'+
 
+'<div class="large-type letra"><div class="typess POKEMON_TYPE_'+foundItem.type1+'">'+foundItem.type1+'</div>'+
+'<div class="typess POKEMON_TYPE_'+foundItem.type2+'">'+foundItem.type2+'</div></div>'+
+
 '<table>'+
-    '<thead><tr><th>Ataque</th><th>Defensa</th><th>Vida</th></tr></thead>'+
-    '<tbody><tr><td>'+foundItem.BaseAttack+'</td><td>'+foundItem.BaseDefense+'</td><td>'+foundItem.BaseStamina+'</td></tr></tbody>'+
+  '<thead><tr><th>Ataque</th><th>Defensa</th><th>Vida</th></tr></thead>'+
+  '<tbody><tr><td>'+foundItem.BaseAttack+'</td><td>'+foundItem.BaseDefense+'</td><td>'+foundItem.BaseStamina+'</td></tr></tbody>'+
 '</table>'+
 
-'<div class="pokemonInfo">'+
-'<div class="infoBox">'+
-'<span class="grayWord">Ataque</span>'+
-'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.atacTipo1+'">Flying</span> '+foundItem.atac1+'</h3>'+
-'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.atacTipo2+'">Flying</span> '+foundItem.atac2+'</h3>'+
 '</div>'+
 
-'<div class="infoBox">'+
-'<div class="grayCircle">'+
-'<span class="type-icon move-type-'+foundItem.type1+'"></span>'+
-'<span class="type-icon move-type-'+foundItem.type2+'"></span>'+
-'</div><span class="grayWord">'+foundItem.type1+' / '+foundItem.type2+'</span>'+
-'</div>'+
-'<div class="infoBox">'+
-'<span class="grayWord">Defensa</span>'+
-'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.defTipo1+'">Flying</span> '+foundItem.def1+'</h3>'+
-'<h3 class="greenWord peso"><span class="type-icon move-type-'+foundItem.defTipo2+'">Flying</span> '+foundItem.def2+'</h3>'+
-'</div>'+
-'</div>'+
-'</div>';
+'<div class="grid letra"><div class="moves compact"><h3>Ataque<i class="fa fa-question-circle-o fa-fw" data-type="offense"></i></h3><table class="moveset"><tbody><tr class="stab"><td><span class="type-icon move-type-'+foundItem.atacTipo1+'">Flying</span><a href="#">'+foundItem.atac1+'</a></td><td></td></tr><tr class="stab"><td><span class="type-icon move-type-'+foundItem.atacTipo2+'">Flying</span><a href="/es/move/74-cabeza-de-hierro">'+foundItem.atac2+'</a></td><td></td></tr></tbody></table></div>'+
+'<div class="moves compact"><h3>Defensa<i class="fa fa-question-circle-o fa-fw" data-type="defense"></i></h3><table class="moveset"><tbody><tr class=""><td><span class="type-icon move-type-'+foundItem.defTipo1+'">Flying</span><a href="/es/move/234-cabezazo-zen">'+foundItem.def1+'</a></td><td></td></tr><tr class="stab"><td><span class="type-icon move-type-'+foundItem.defTipo2+'">Flying</span><a href="/es/move/245-a-bocajarro">'+foundItem.def2+'</a></td><td></td></tr></tbody></table></div></div>';
 
   document.getElementById('results').innerHTML = poke;
 
@@ -5547,6 +5602,10 @@ if (foundItem) {
      }    
   }
   if (foundItem.type1 && foundItem.type2){
+    for(var k=0; k < preElements.length; k++){
+      preElements[k].style.display = preElements[k].classList.contains(tiipos)?'block':'none';
+     }
+  }else if(foundItem.type2 && foundItem.type1){
     for(var k=0; k < preElements.length; k++){
       preElements[k].style.display = preElements[k].classList.contains(tiipos)?'block':'none';
      }
