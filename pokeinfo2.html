@@ -1,9 +1,11 @@
-<!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="shortcut icon" href="https://www.serebii.net/pokemongo/pokemon/409.png"/>
+  <link rel="apple-touch-icon" href="https://www.serebii.net/pokemongo/pokemon/409.png"/>
+  <link rel="icon" href="https://www.serebii.net/pokemongo/pokemon/409.png"/>
 <style>
 .type-icon {
   background: url(icons-sprite.png);
@@ -304,10 +306,7 @@ td.type-img-cell img {vertical-align:middle}
 .POKEMON_TYPE_flying {background-color:#a890f0}
 .POKEMON_TYPE_fighting {background-color:#c02038}
 .POKEMON_TYPE_fight {background-color:#c02038}
-
-/*.type-weak-value {color: #c71f1f;}
-.type-resist-value {color: #038403;}*/
-
+   
 table.weak span._x, .type-weak-value {color:#b71c1c}
 table.weak span._xx, .type-weak-value-256 {
  color:#f44336;
@@ -5545,7 +5544,6 @@ $('#searchBtn').click(function (e) {
   myFuncion2();
 }); 
 
-//document.getElementById("searchBtn").addEventListener('click', myFuncion);
 
 function myFuncion(){
 
@@ -5556,7 +5554,6 @@ function myFuncion(){
     if (pokedex[i].id == formInput || pokedex[i].name == formInput || pokedex[i].type1 == formInput) {
       foundItem = pokedex[i]; break;
     }
-
   }
     
 if (foundItem) {
@@ -5660,8 +5657,6 @@ var incursion = $('.pokemonName').html();
 
    });
 });
-
-
 </script>
 </body>
 </html>
