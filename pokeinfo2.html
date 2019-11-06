@@ -140,7 +140,7 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
   margin: auto;
 
   text-align: center;
-  font-family: Helvetica;
+  font-family: helvetica;
   position: relative;
   vertical-align: top;
 }
@@ -222,7 +222,7 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
 .incursion {width:300px;}
 
 /* ///// VULNERABLE ///// */
-div.types-divs {padding: 8px;font:400 16px/1.5 'Roboto',sans-serif;}
+div.types-divs {padding: 8px;font-family: helvetica;}
 .field--name-field-secondary-title,
 h2.main-title {border-left-color:#121212}
 .field--name-field-secondary-title,
@@ -241,6 +241,7 @@ h2.main-title {border-left-color:#121212}
 .type-img-cell {text-align:center}
 
 table {
+ font-family: helvetica;
  margin:0 0 10px;
  width:100%;
  border-collapse:collapse;
@@ -270,7 +271,7 @@ td.type-img-cell img {vertical-align:middle}
 
 /* ataq def */
 .large-type {text-align: center; 
-  font: 400 16px/1.5 'Roboto',sans-serif;
+  font-family: helvetica;
   margin-bottom: 10px;}
 .large-type .type {
     font-size: 18px;
@@ -308,17 +309,12 @@ td.type-img-cell img {vertical-align:middle}
 .POKEMON_TYPE_fight {background-color:#c02038}
    
 table.weak span._x, .type-weak-value {color:#b71c1c}
-table.weak span._xx, .type-weak-value-256 {
- color:#f44336;
- font-size:18px
-}
+table.weak span._xx, .type-weak-value-256 {color:#f44336;font-size:18px}
 table.res span._x, .type-resist-value {color:#004d40}
-table.res span._xx,.type-resist-value-63 {
- color:#388e3c; font-size:16px}
-table.res span._xxx,.type-resist-value-39 {
- color:#4caf50; font-size:20px}
+table.res span._xx,.type-resist-value-63 {color:#388e3c; font-size:16px}
+table.res span._xxx,.type-resist-value-39 {color:#4caf50; font-size:20px}
 
-.grid {display:flex;font: 400 16px/1.5 'Roboto',sans-serif;margin:0px -10px 20px}
+.grid {display:flex;font-family: helvetica;margin:0px -10px 20px}
 .grid>div {flex:1 1 50%;margin:0 10px}
 .grid h3 {text-align:center;margin-top:0}
 table.moveset {
@@ -339,12 +335,11 @@ table.moveset td a { color:#222;text-decoration:none }
 <body>
   
 <header id="main">
-<!-- <form class="body-form"> -->
+
   <div class="form-group">
     <input type="search" class="form-control search-input" id="search" placeholder="Busca pokemon">
   </div>
 <button id="searchBtn" class="solid">mostrar</button>  
-<!-- </form> -->
 
    <!-- seleccionar shiny -->  
 <select id="mySelect" class="solid shinyboton" onchange="myFunction()">
