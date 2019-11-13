@@ -248,13 +248,8 @@ table {
  border-spacing:0
 }
 table td {line-height:1.5}
-table tbody td {
- /*border:1px solid #dde4e6!important;*/
- border: none !important;
- padding:6px 8px
-}
-td {
- border-bottom:1px solid #ddd;
+table.stats {
+ border:1px solid #dde4e6!important;
  padding:6px 8px
 }
 tr,
@@ -314,7 +309,7 @@ table.res span._x, .type-resist-value {color:#004d40}
 table.res span._xx,.type-resist-value-63 {color:#388e3c; font-size:16px}
 table.res span._xxx,.type-resist-value-39 {color:#4caf50; font-size:20px}
 
-.grid {display:flex;font-family: helvetica;margin:0px -10px 20px}
+.grid {display:flex;margin:0px -10px 20px;width: 500px;margin: 0 auto;}
 .grid>div {flex:1 1 50%;margin:0 10px}
 .grid h3 {text-align:center;margin-top:0}
 table.moveset {
@@ -328,6 +323,7 @@ table.moveset td {
  line-height:36px;
  /*background:rgba(0,0,0,.03)*/
 }
+table.moveset tr.stab td {background-color: #dcedc8;}   
 table.moveset td .move-icon {margin-right:4px}
 table.moveset td a { color:#222;text-decoration:none }
 </style>
@@ -5571,7 +5567,7 @@ if (foundItem) {
 '<div class="large-type letra"><div class="typess POKEMON_TYPE_'+foundItem.type1+'">'+foundItem.type1+'</div>'+
 '<div class="typess POKEMON_TYPE_'+foundItem.type2+'">'+foundItem.type2+'</div></div>'+
 
-'<table>'+
+'<table class="stats">'+
   '<thead><tr><th>Ataque</th><th>Defensa</th><th>Vida</th></tr></thead>'+
   '<tbody><tr><td>'+foundItem.BaseAttack+'</td><td>'+foundItem.BaseDefense+'</td><td>'+foundItem.BaseStamina+'</td></tr></tbody>'+
 '</table>'+
