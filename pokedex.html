@@ -197,15 +197,16 @@ header {
 <div class='gen_cont' id='gen_left'>
 <input type="checkbox" name="generation" id='gen_1' class='gen_box' value="1" onchange='update_filter()'>Gen 1<br>
 <input type="checkbox" name="generation" id='gen_2' class='gen_box' value="2" onchange='update_filter()'>Gen 2<br>
-<input type="checkbox" name="generation" id='gen_3' class='gen_box' value="3" onchange='update_filter()'>Gen 3<br>		  
+<input type="checkbox" name="generation" id='gen_3' class='gen_box' value="3" onchange='update_filter()'>Gen 3<br>
+<input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>	
 </div>
 
 <div class='gen_cont' id='gen_right'>
-<input type="checkbox" name="generation" id='gen_4' class='gen_box' value="4" onchange='update_filter()'>Gen 4<br>
+
 <input type="checkbox" name="generation" id='gen_5' class='gen_box' value="5" onchange='update_filter()'>Gen 5<br>
-<!-- style="display:none;"  -->
 <input type="checkbox" name="generation" id='gen_6' class='gen_box' value="6" onchange='update_filter()'>Gen 6<br>
 <input type="checkbox" name="generation" id='gen_7' class='gen_box' value="7" onchange='update_filter()'>Gen 7<br>
+<input type="checkbox" name="generation" id='gen_8' class='gen_box' value="8" onchange='update_filter()'>Gen 8<br>	
 </div>
       
 		</div>
@@ -317,7 +318,7 @@ header {
     <script>
 		
 		//set default values for generation
-	var g_g1 =0,  g_g2 = 0, g_g3 = 0, g_g4 = 1, g_g5 = 0, g_g6 = 0, g_g7 = 0; //defaults 
+	var g_g1 =0,  g_g2 = 0, g_g3 = 0, g_g4 = 0, g_g5 = 1, g_g6 = 0, g_g7 = 0, g_g8 = 1; //defaults 
 	var g_mode = 'grid';
     var g_ignore_action = 0;
    
@@ -325,9 +326,10 @@ header {
 	document.getElementById("gen_2").checked = g_g2;
 	document.getElementById("gen_3").checked = g_g3;
 	document.getElementById("gen_4").checked = g_g4;
-    document.getElementById("gen_5").checked = g_g5;
-    document.getElementById("gen_6").checked = g_g6;
-    document.getElementById("gen_7").checked = g_g7;
+	document.getElementById("gen_5").checked = g_g5;
+	document.getElementById("gen_6").checked = g_g6;
+	document.getElementById("gen_7").checked = g_g7;
+	document.getElementById("gen_8").checked = g_g8;
 		
 		//set default values for show filter
 		var filter = 'released';
@@ -359,13 +361,14 @@ var current_sort = '';
 			//var chk_arr =  document.getElementsByName("generation[]");
 			//alert(chk_arr[0]);
 			
-		g_g1 = document.getElementById("gen_1").checked;
-		g_g2 = document.getElementById("gen_2").checked;
-		g_g3 = document.getElementById("gen_3").checked;
-		g_g4 = document.getElementById("gen_4").checked;
-	    g_g5 = document.getElementById("gen_5").checked;
-	    g_g6 = document.getElementById("gen_6").checked;
-	    g_g7 = document.getElementById("gen_7").checked;
+	g_g1 = document.getElementById("gen_1").checked;
+	g_g2 = document.getElementById("gen_2").checked;
+	g_g3 = document.getElementById("gen_3").checked;
+	g_g4 = document.getElementById("gen_4").checked;
+	g_g5 = document.getElementById("gen_5").checked;
+	g_g6 = document.getElementById("gen_6").checked;
+	g_g7 = document.getElementById("gen_7").checked;
+	g_g8 = document.getElementById("gen_8").checked;
       
       if (g_g1 == 0 && g_g1 == 0 && g_g1 == 0 && g_g7 == 0 && filter == 'released') {
         document.getElementById("filter_select").value = 'all';
@@ -598,12 +601,13 @@ var current_sort = '';
           
          } else {
           if (g_g1 && pokedex.response[i].Gen == 1 ) { gen_select = true; }
-				  else if (g_g2 && pokedex.response[i].Gen == 2) { gen_select = true; }
-				  else if (g_g3 && pokedex.response[i].Gen == 3) { gen_select = true; }
-				  else if (g_g4 && pokedex.response[i].Gen == 4) { gen_select = true; }
-          else if (g_g5 && pokedex.response[i].Gen == 5) { gen_select = true; }
-          else if (g_g6 && pokedex.response[i].Gen == 6) { gen_select = true; }
-          else if (g_g7 && pokedex.response[i].Gen == 7) { gen_select = true; }
+		else if (g_g2 && pokedex.response[i].Gen == 2) { gen_select = true; }
+		else if (g_g3 && pokedex.response[i].Gen == 3) { gen_select = true; }
+		else if (g_g4 && pokedex.response[i].Gen == 4) { gen_select = true; }
+         	else if (g_g5 && pokedex.response[i].Gen == 5) { gen_select = true; }
+         	else if (g_g6 && pokedex.response[i].Gen == 6) { gen_select = true; }
+         	else if (g_g7 && pokedex.response[i].Gen == 7) { gen_select = true; }
+		else if (g_g8 && pokedex.response[i].Gen == 8) { gen_select = true; }
         }
 				
 
@@ -679,22 +683,22 @@ text_to_return = write_pokemon_table(pokedex.response[i].name, pokedex.response[
 		}
     
     function write_pokemon_box(name, row, img, id, type, type2, gen, cp, cp2, att, def, stam, filter) {
-			var text_to_return = '';
-			var type_text = '';
-			var sinle_type = 'p_t';
-			var img_type = '';
-      var class_extra = '';
+	var text_to_return = '';
+	var type_text = '';
+	var sinle_type = 'p_t';
+	var img_type = 'icons/';
+	var pokeicono = ''; var shinyicono = '';
+      	var class_extra = '';
       if (type2 != '') { type_text = "<div class='p_t2 "+type2.substring(0, 3)+"'>"+type2+"</div>"; sinle_type = 'p_t1'; }
 			type_text = "<div class='p_t_wrapper'><div class='"+sinle_type+" "+type.substring(0, 3)+"'>"+type+"</div>"+type_text+"</div>";
 			//type_text = '';
-			if (filter == 'shiny' || filter == 'allshiny') { img_type = 'shiny/';}
-      
+	if (filter == 'shiny' || filter == 'allshiny') { img_type = 'shiny/';pokeicono = 'pokemon_icon_'; shinyicono = '_00_shiny';}
       if (name.length > 11) { class_extra = 'lo';}
       if (name.length > 15) { class_extra = 'lon';}
       
       text_to_return = "<div class='pokemon' id='"+name+"'> \
 			<div class='p_id'>#"+id+"</div><div class='p_g'>G"+gen+"</div> \
-    	<img src='https://www.serebii.net/pokemongo/pokemon/"+img_type+img+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
+    	<img src='./"+img_type+pokeicono+img+shinyicono+".png' style='height: 120px; width:120px;position:relative;top:-20px;'> \
 			<div class='p_n "+class_extra+"'>"+name+"</div> \
 			"+type_text+" \
 <div class='p_c'><span class='cp_hold'>MAX CP:</span> "+cp+"</div> \
