@@ -5496,7 +5496,7 @@ var search = $(".search-input");
     
 // https://www.serebii.net/pokemongo/pokemon/shiny/001.png    
     $.each(array, function(key, val) {
-      results += "<li class='list-group-item'><img src='https://www.serebii.net/pokemongo/pokemon/"+
+      results += "<li class='list-group-item'><img src='./icons/"+
                   val.id2+".png' height='20'>" +val.name+ "</li>";
       return key < 10;
     });
@@ -5551,12 +5551,12 @@ if (foundItem) {
 
   var x1 = document.getElementById("mySelect").value;
   if (x1 == 'shiny'){ var shiny = "shiny/"; }
-  if (x1 == 'noshiny'){ shiny = ""; }
+  if (x1 == 'noshiny'){ shiny = "icons/"; }
 
     var poke =
 '<div class="monsterInfo">'+
 '<p class="points">PC <span>'+foundItem.cpmax+'</span></p>'+
-'<img src="https://www.serebii.net/pokemongo/pokemon/'+shiny+foundItem.id2+'.png" alt="'+foundItem.id2+'" class="pokemon">'+
+'<img src="./'+shiny+foundItem.id2+'.png" alt="'+foundItem.id2+'" class="pokemon">'+
 '<div class="number">'+foundItem.id+'</div>'+
 '<div class="pokemonLevel">'+
 '<h2 class="greenWord pokemonName">'+foundItem.name+' </h2>'+
