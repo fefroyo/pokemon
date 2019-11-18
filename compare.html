@@ -160,8 +160,6 @@ th, td {padding: 5px;}
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<!-- <script src="./js/pokedexAll3.js"></script> -->
-<script src="./js/allpokedex.json"></script>  
 <script>
 var spreadsheetID = "1_-QRT2cyZEIlFNHYHhvGlSLvzg5WG9zoFDAJhZ1vqdI";
 var url = "https://spreadsheets.google.com/feeds/list/"+spreadsheetID+"/od6/public/values?alt=json";
@@ -174,7 +172,7 @@ function myFunction() {
     var shiny = "shiny/";
   }
   if (x == 'noshiny'){
-    shiny = "";
+    shiny = "icons/";
   }
   document.getElementById("demo").innerHTML = shiny;
  // console.log(shiny + " " +x)
@@ -233,7 +231,7 @@ $.each(pokedex, function(key, val) {
 $.each(array, function(key, val) {
 
   results += "<tr><td><span>"+val.id+"</span></td>";
-  results += "<td id='lista'><img src='https://www.serebii.net/pokemongo/pokemon/"+val.id2+".png' height='20' alt='"+val.id+"'>" 
+  results += "<td id='lista'><img src='./icons/"+val.id2+".png' height='20' alt='"+val.id+"'>" 
             +val.name+ "</td></tr>"; //" +val.id+ " 
   return key < 3;
 });
@@ -285,14 +283,14 @@ function add() {
     }
   }
 
-var shiny = "";
+var shiny = "icons/";
 var x1 = document.getElementById("mySelect").value;
 shiny = document.getElementById("demo").innerHTML;
 
   if (foundItem) {
 
   var poke = 
-  '<div class="p_id">#<a href="https://db.pokemongohub.net/pokemon/'+foundItem.id+'">'+foundItem.id+'</a></div><div class="p_g">PC '+foundItem.cpmax+'</div> <img id="img1" src="https://www.serebii.net/pokemongo/pokemon/'+shiny+foundItem.id2+'.png" style="height: 120px; width:120px;position:relative;top:-10px;" alt=""><div class="p_n "><a href="https://pokemon.gameinfo.io/es/pokemon/'+foundItem.id+'">'+foundItem.name+'</a></div><div class="p_t_wrapper"><div class="p_t1 '+foundItem.type1+'">'+foundItem.type1+'</div><div class="p_t2 '+foundItem.type2+'">'+foundItem.type2+'</div></div><div class="p_c2"><span class="cp_hold2">lv15: <b>'+foundItem.level15+'</b></span></div><div class="p_c2"><span class="cp_hold2">lv20: <b>'+foundItem.eggiv+'</b></span></div><p><span class="type-icon move-type-'+foundItem.atacTipo1+'"></span>'+foundItem.atac1+'<br><span class="type-icon move-type-'+foundItem.atacTipo2+'"></span>'+foundItem.atac2+'</p><div class="stat_contain"><div class="p_a"><span class="stat_hold">ATT</span> '+foundItem.BaseAttack+'</div><div class="p_d"><span class="stat_hold">DEF</span> '+foundItem.BaseDefense+'</div><div class="p_s"><span class="stat_hold">STA</span> '+foundItem.BaseStamina+'</div></div>';
+  '<div class="p_id">#<a href="https://db.pokemongohub.net/pokemon/'+foundItem.id+'">'+foundItem.id+'</a></div><div class="p_g">PC '+foundItem.cpmax+'</div> <img id="img1" src="./'+shiny+foundItem.id2+'.png" style="height: 120px; width:120px;position:relative;top:-10px;" alt=""><div class="p_n "><a href="https://pokemon.gameinfo.io/es/pokemon/'+foundItem.id+'">'+foundItem.name+'</a></div><div class="p_t_wrapper"><div class="p_t1 '+foundItem.type1+'">'+foundItem.type1+'</div><div class="p_t2 '+foundItem.type2+'">'+foundItem.type2+'</div></div><div class="p_c2"><span class="cp_hold2">lv15: <b>'+foundItem.level15+'</b></span></div><div class="p_c2"><span class="cp_hold2">lv20: <b>'+foundItem.eggiv+'</b></span></div><p><span class="type-icon move-type-'+foundItem.atacTipo1+'"></span>'+foundItem.atac1+'<br><span class="type-icon move-type-'+foundItem.atacTipo2+'"></span>'+foundItem.atac2+'</p><div class="stat_contain"><div class="p_a"><span class="stat_hold">ATT</span> '+foundItem.BaseAttack+'</div><div class="p_d"><span class="stat_hold">DEF</span> '+foundItem.BaseDefense+'</div><div class="p_s"><span class="stat_hold">STA</span> '+foundItem.BaseStamina+'</div></div>';
 
       document.getElementById('resultado').innerHTML = poke;
 
