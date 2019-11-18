@@ -5518,8 +5518,8 @@ var search = $(".search-input");
     if (value !== '') {
       $('.results').html(results);
       myFuncion();
-      myFuncion2();
-
+      //myFuncion2();
+      myFuncion3();
     }
      else {
         $('.results').html('');
@@ -5532,7 +5532,8 @@ var search = $(".search-input");
 
 $('#searchBtn').click(function (e) {
   myFuncion();
-  myFuncion2();
+  //myFuncion2();
+   myFuncion3();
 }); 
 
 
@@ -5605,45 +5606,63 @@ if (foundItem) {
   $("#search").val('');
 }
 
-function myFuncion2(){
+//function myFuncion2(){
+//
+//var numId = $('.number').html();
+//var incursion = $('.pokemonName').html();
+//
+//  for (i = 0; i < raids.length; i++) {
+//
+//    if (numId == raids[i].idRaid){
+//
+//    var pokeInc =
+//'<div class="monsterInfo">'+
+//'<img src="./imagenes pokemon/rd'+raids[i].Tier+'.png" alt="pokeMon" height="64"/>'+
+//'<p class="points">PC incursion <span>'+raids[i].BossCP+'</span></p>'+
+//'<div>'+
+//'<table><thead><tr>'+
+//'<th>#</th><th>Pokémon</th><th>Movimiento rápido</th>'+
+//'<th>Movimiento principal</th></tr></thead>'+
+//'<tbody>'+
+//'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac1+'.png" style="width:28px;height:28px!important;"></td>'+
+//'<td>'+raids[i].pokeAtac1+'</td>'+
+//'<td class="stab">'+
+//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick1+'</td><td class="stab">'+
+//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge1+'</td></tr>'+
+//'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac2+'.png" style="width:28px;height:28px!important;"></td>'+
+//'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac2+'</td>'+
+//'<td class="stab">'+
+//'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick2+'</td><td class="stab">'+
+//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge2+'</td></tr>'+
+//'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac3+'.png" style="width:28px;height:28px!important;"></td>'+
+//'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac3+'</td>'+
+//'<td class="stab">'+
+//'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick3+'</td><td class="stab">'+
+//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge3+'</td></tr>'+
+//'</tbody></table>';
+//
+//  document.getElementById('results2').innerHTML = pokeInc;
+//    } 
+//  }  
+//}//fin function2
+       
+function myFuncion3(){
+   var numId = $('.number').html();
+   var numId2 = 'pokeshiny'+numId;
+   var pokenumId = document.getElementById(numId2);
+   var imgBasePath = 'raw.githubusercontent.com/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_';
 
-var numId = $('.number').html();
-var incursion = $('.pokemonName').html();
-
-  for (i = 0; i < raids.length; i++) {
-
-    if (numId == raids[i].idRaid){
-
-    var pokeInc =
-'<div class="monsterInfo">'+
-'<img src="./imagenes pokemon/rd'+raids[i].Tier+'.png" alt="pokeMon" height="64"/>'+
-'<p class="points">PC incursion <span>'+raids[i].BossCP+'</span></p>'+
-'<div>'+
-'<table><thead><tr>'+
-'<th>#</th><th>Pokémon</th><th>Movimiento rápido</th>'+
-'<th>Movimiento principal</th></tr></thead>'+
-'<tbody>'+
-'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac1+'.png" style="width:28px;height:28px!important;"></td>'+
-'<td>'+raids[i].pokeAtac1+'</td>'+
-'<td class="stab">'+
-'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick1+'</td><td class="stab">'+
-'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge1+'</td></tr>'+
-'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac2+'.png" style="width:28px;height:28px!important;"></td>'+
-'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac2+'</td>'+
-'<td class="stab">'+
-'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick2+'</td><td class="stab">'+
-'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge2+'</td></tr>'+
-'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac3+'.png" style="width:28px;height:28px!important;"></td>'+
-'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac3+'</td>'+
-'<td class="stab">'+
-'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick3+'</td><td class="stab">'+
-'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge3+'</td></tr>'+
-'</tbody></table>';
-
-  document.getElementById('results2').innerHTML = pokeInc;
-    } 
-  }  
-}//fin function2
+   var pokeInc ='<div class="monsterInfo">'+
+              '<img src="https://images.weserv.nl/?w=200&il&url='+imgBasePath+numId+'_00.png" id="pokeshiny'+numId+'" class="pokeshiny1" alt="pokeMon" height="64"/>'+
+            '</div>';
+   
+   $(pokenumId).hover(
+     function() {
+       $(this).attr("src",'https://images.weserv.nl/?w=200&il&url='+imgBasePath+numId+'_00_shiny.png'); },
+     function() {
+       $(this).attr("src",'https://images.weserv.nl/?w=200&il&url='+imgBasePath+numId+'_00.png'); }
+   );
+} //fin function3       
 
 
    });
