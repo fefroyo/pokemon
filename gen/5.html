@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400">
+<style>
+.pokedex {padding: 2rem 0;font-family: Lato;}
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pokemon-list li {
+    width: 130px;
+    height: 150px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.pokemon__sprite {height: 120px;}
+.u-sprite {height: 100%;}
+.pokemon__name {
+    font-weight: 700;
+    padding: 5px 0;
+}
+.u-capitalize, .u-stat-label, .u-stat-value {text-transform: capitalize;}
+</style>
+</head>
+
+<body>
+
+
+<input type="search" v-model="buscar">
+
+<div class="pokedex">
+
+<ul class="pokemon-list" v-for="(key, val) in pkmn | filterBy buscar">
+
+<li><a href="#/pokedex/{{val}}">
+     <div class="pokemon" data-name="{{ key }}">
+      <div class="pokemon__sprite"><p>{{val}}</p>
+<!-- <img :src="'https://pkmref.com/images/set_1/'+val+'.png'" height="80"/> -->
+<!-- shiny -->
+<img :src="'./pokesHome/g1/poke_capture_0'+val+'_000_mf_n_00000000_f_n.png'" height="80"/>
+<!-- <img :src="'https://www.serebii.net/pokemongo/pokemon/'+val+'.png'" height="80"/> -->
+<!-- <img :src="'https://www.serebii.net/pokemongo/pokemon/shiny/'+val+'.png'" height="120"/> -->
+<!-- <img v-attr="src: 'http://fefro.hol.es/pokemons/pokes2/' + {{val}} +'.png'"> -->
+<!-- <img class="u-sprite" v-bind:src="'http://fefro.hol.es/pokemons/pokes2/'{{val}}'.png'" title="Ivysaur"> -->
+
+
+
+</div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a></li>
+
+
+</ul>
+
+</div>
+
+<!-- <ul v-for="(key, val) in pkmn"><li>{{ key }} - {{ val }}</li></ul>
+<pre>{{ pkmn | json }}</pre> -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script>
+/////// SHINY ////////
+// https://www.serebii.net/Shiny/SM/
+// https://bulbapedia.bulbagarden.net/wiki/File:Spr_7s_'+val+'_s.png
+// https://github.com/ZeChrales/PogoAssets/blob/master/pokemon_icons/pokemon_icon_640_00_shiny.png
+// https://www.serebii.net/pokemongo/pokemon/shiny/261.png
+// https://db.pokemongohub.net/images/ingame/normal/pokemon_icon_492_00_shiny.png
+
+// 1 -151
+// 152 - 251
+// 252 - 356 
+// 357 - 386
+// 387 - 493
+// 650 - 
+// 722 - 809
+// 810 - 830... 
+
+new Vue({
+  el: 'body',
+
+  data: {
+
+pkmn: {
+'victini':[494],
+'snivy':[495],
+'servine':[496],
+'serperior':[497],
+'tepig':[498],
+'pignite':[499],
+'emboar':[500],
+'oshawott':[501],
+'dewott':[502],
+'samurott':[503],
+'patrat':[504],
+'watchog':[505],
+'lillipup':[506],
+'herdier':[507],
+'stoutland':[508],
+'purrloin':[509],
+'liepard':[510],
+'pansage':[511],
+'simisage':[512],
+'pansear':[513],
+'simisear':[514],
+'panpour':[515],
+'simipour':[516],
+'munna':[517],
+'musharna':[518],
+'pidove':[519],
+'tranquill':[520],
+'unfezant':[521],
+'blitzle':[522],
+'zebstrika':[523],
+'roggenrola':[524],
+'boldore':[525],
+'gigalith':[526],
+'woobat':[527],
+'swoobat':[528],
+'drilbur':[529],
+'excadrill':[530],
+'audino':[531],
+'timburr':[532],
+'gurdurr':[533],
+'conkeldurr':[534],
+'tympole':[535],
+'palpitoad':[536],
+'seismitoad':[537],
+'throh':[538],
+'sawk':[539],
+'sewaddle':[540],
+'swadloon':[541],
+'leavanny':[542],
+'venipede':[543],
+'whirlipede':[544],
+'scolipede':[545],
+'cottonee':[546],
+'whimsicott':[547],
+'petilil':[548],
+'lilligant':[549],
+'basculin':[550],
+'sandile':[551],
+'krokorok':[552],
+'krookodile':[553],
+'darumaka':[554],
+'darmanitan':[555],
+'maractus':[556],
+'dwebble':[557],
+'crustle':[558],
+'scraggy':[559],
+'scrafty':[560],
+'sigilyph':[561],
+'yamask':[562],
+'cofagrigus':[563],
+'tirtouga':[564],
+'carracosta':[565],
+'archen':[566],
+'archeops':[567],
+'trubbish':[568],
+'garbodor':[569],
+'zorua':[570],
+'zoroark':[571],
+'minccino':[572],
+'cinccino':[573],
+'gothita':[574],
+'gothorita':[575],
+'gothitelle':[576],
+'solosis':[577],
+'duosion':[578],
+'reuniclus':[579],
+'ducklett':[580],
+'swanna':[581],
+'vanillite':[582],
+'vanillish':[583],
+'vanilluxe':[584],
+'deerling':[585],
+'sawsbuck':[586],
+'emolga':[587],
+'karrablast':[588],
+'escavalier':[589],
+'foongus':[590],
+'amoonguss':[591],
+'frillish':[592],
+'jellicent':[593],
+'alomomola':[594],
+'joltik':[595],
+'galvantula':[596],
+'ferroseed':[597],
+'ferrothorn':[598],
+'klink':[599],
+'klang':[600],
+'klinklang':[601],
+'tynamo':[602],
+'eelektrik':[603],
+'eelektross':[604],
+'elgyem':[605],
+'beheeyem':[606],
+'litwick':[607],
+'lampent':[608],
+'chandelure':[609],
+'axew':[610],
+'fraxure':[611],
+'haxorus':[612],
+'cubchoo':[613],
+'beartic':[614],
+'cryogonal':[615],
+'shelmet':[616],
+'accelgor':[617],
+'stunfisk':[618],
+'mienfoo':[619],
+'mienshao':[620],
+'druddigon':[621],
+'golett':[622],
+'golurk':[623],
+'pawniard':[624],
+'bisharp':[625],
+'bouffalant':[626],
+'rufflet':[627],
+'braviary':[628],
+'vullaby':[629],
+'mandibuzz':[630],
+'heatmor':[631],
+'durant':[632],
+'deino':[633],
+'zweilous':[634],
+'hydreigon':[635],
+'larvesta':[636],
+'volcarona':[637],
+'cobalion':[638],
+'terrakion':[639],
+'virizion':[640],
+'tornadus':[641],
+'thundurus':[642],
+'reshiram':[643],
+'zekrom':[644],
+'landorus':[645],
+'kyurem':[646],
+'keldeo':[647],
+'meloetta':[648],
+'genesect':[649],
+},
+
+  },
+  
+})
+</script>
+</body>
+</html>

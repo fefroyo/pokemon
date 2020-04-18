@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400">
+<style>
+.pokedex {padding: 2rem 0;font-family: Lato;}
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pokemon-list li {
+    width: 130px;
+    height: 150px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.pokemon__sprite {height: 120px;}
+.u-sprite {height: 100%;}
+.pokemon__name {
+    font-weight: 700;
+    padding: 5px 0;
+}
+.u-capitalize, .u-stat-label, .u-stat-value {text-transform: capitalize;}
+</style>
+</head>
+
+<body>
+
+<!-- <input type="search" v-model="buscar"> -->
+<!-- | filterBy buscar -->
+<div class="pokedex">
+
+<ul class="pokemon-list" v-for="(key, val) in pkmn">
+
+<li><a href="#/pokedex/{{val}}">
+     <div class="pokemon" data-name="{{ key }}"><div class="pokemon__sprite">
+<p>{{val}}</p>
+<img :src="'https://www.serebii.net/Shiny/SM/'+val+'.png'" height="80"/>
+<!-- <img :src="'http://fefroyo.github.io/pokemon/icons/'+val+'.png'" height="120"/> -->
+
+<!-- <img v-attr="src: 'http://fefroyo.github.io/pokemon/icons/' + {{val}} +'.png'"> -->
+<!-- <img class="u-sprite" v-bind:src="'http://fefro.hol.es/pokemons/pokes2/'{{val}}'.png'" title="Ivysaur"> -->
+
+</div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a></li>
+
+
+</ul>
+
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script>
+/////// SHINY ////////
+// https://www.serebii.net/Shiny/SM/
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_'+val+'_s.png
+// https://github.com/fefroyo/pokemon/blob/master/shiny/pokemon_icon_408_00_shiny.png
+// https://github.com/ZeChrales/PogoAssets/blob/master/pokemon_icons/pokemon_icon_640_00_shiny.png
+// https://www.serebii.net/pokemongo/pokemon/shiny/261.png
+// https://db.pokemongohub.net/images/ingame/normal/pokemon_icon_492_00_shiny.png
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_494_s.png
+
+
+// 1 -151
+// 152 - 251
+// 252 - 356 
+// 357 - 386
+// 387 - 493
+// 650 - 
+// 722 - 809
+// 810 - 830... 
+
+new Vue({
+  el: 'body',
+
+  data: {
+
+pkmn: {
+'chespin':[650],
+'quilladin':[651],
+'chesnaught':[652],
+'fennekin':[653],
+'braixen':[654],
+'delphox':[655],
+'froakie':[656],
+'frogadier':[657],
+'greninja':[658],
+'bunnelby':[659],
+'diggersby':[660],
+'fletchling':[661],
+'fletchinder':[662],
+'talonflame':[663],
+'scatterbug':[664],
+'spewpa':[665],
+'vivillon':[666],
+'litleo':[667],
+'pyroar':[668],
+'flabébé':[669],
+'floette':[670],
+'florges':[671],
+'skiddo':[672],
+'gogoat':[673],
+'pancham':[674],
+'pangoro':[675],
+'furfrou':[676],
+'espurr':[677],
+'meowstic':[678],
+'honedge':[679],
+'doublade':[680],
+'aegislash':[681],
+'spritzee':[682],
+'aromatisse':[683],
+'swirlix':[684],
+'slurpuff':[685],
+'inkay':[686],
+'malamar':[687],
+'binacle':[688],
+'barbaracle':[689],
+'skrelp':[690],
+'dragalge':[691],
+'clauncher':[692],
+'clawitzer':[693],
+'helioptile':[694],
+'heliolisk':[695],
+'tyrunt':[696],
+'tyrantrum':[697],
+'amaura':[698],
+'aurorus':[699],
+'sylveon':[700],
+'hawlucha':[701],
+'dedenne':[702],
+'carbink':[703],
+'goomy':[704],
+'sliggoo':[705],
+'goodra':[706],
+'klefki':[707],
+'phantump':[708],
+'trevenant':[709],
+'pumpkaboo':[710],
+'gourgeist':[711],
+'bergmite':[712],
+'avalugg':[713],
+'noibat':[714],
+'noivern':[715],
+'xerneas':[716],
+'yveltal':[717],
+'zygarde':[718],
+'diancie':[719],
+'hoopa':[720],
+'volcanion':[721],
+},
+
+  },
+  
+})
+</script>
+</body>
+</html>

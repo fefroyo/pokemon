@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400">
+<style>
+.pokedex {padding: 2rem 0;font-family: Lato;}
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pokemon-list li {
+    width: 130px;
+    height: 150px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.pokemon__sprite {height: 120px;}
+.u-sprite {height: 100%;}
+.pokemon__name {
+    font-weight: 700;
+    padding: 5px 0;
+}
+.u-capitalize, .u-stat-label, .u-stat-value {text-transform: capitalize;}
+</style>
+</head>
+
+<body>
+
+<!-- <input type="search" v-model="buscar"> -->
+<!-- | filterBy buscar -->
+<div class="pokedex">
+
+<ul class="pokemon-list" v-for="(key, val) in pkmn">
+  <li><a href="#/pokedex/{{val}}"><div class="pokemon" data-name="{{ key }}"><div class="pokemon__sprite">
+  <p>{{val}}</p>
+  <img :src="'https://www.serebii.net/Shiny/SWSH/'+val+'.png'" height="80"/>
+  </div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a>
+  </li>
+</ul>
+
+
+
+<!-- <ul class="pokemon-list">
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/052-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/077-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/078-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/083-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/110-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/122-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/222-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/263-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/264-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/554-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/555-d.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/555-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/555-gz.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/562-g.png'" height="80"/></li>
+<li><img :src="'https://www.serebii.net/Shiny/SWSH/618-g.png'" height="80"/></li>
+</ul> -->
+
+<!-- <a href="#/pokedex/849"><div class="pokemon" data-name="Eternatus"><div class="pokemon__sprite">
+<p>890</p> 
+</div>
+<div class="pokemon__name u-capitalize"><span class="u-title">Eternatus</span></div></div></a>
+-->
+
+</div>
+
+<!-- <img :src="'http://fefroyo.github.io/pokemon/icons/'+val+'.png'" height="120"/> -->
+<!-- <img v-attr="src: 'http://fefroyo.github.io/pokemon/icons/' + {{val}} +'.png'"> -->
+<!-- <img class="u-sprite" v-bind:src="'http://fefro.hol.es/pokemons/pokes2/'{{val}}'.png'" title="Ivysaur"> -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script>
+/////// SHINY ////////
+// https://www.serebii.net/Shiny/SM/
+// https://www.serebii.net/Shiny/SWSH/810.png
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_'+val+'_s.png
+// https://github.com/fefroyo/pokemon/blob/master/shiny/pokemon_icon_408_00_shiny.png
+// https://github.com/ZeChrales/PogoAssets/blob/master/pokemon_icons/pokemon_icon_640_00_shiny.png
+// https://www.serebii.net/pokemongo/pokemon/shiny/261.png
+// https://db.pokemongohub.net/images/ingame/normal/pokemon_icon_492_00_shiny.png
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_494_s.png
+
+
+// 1 -151
+// 152 - 251
+// 252 - 356 
+// 357 - 386
+// 387 - 493
+// 650 - 721
+// 722 - 809
+// 810 - 890
+
+      // GALAR ////////////
+
+// Zigzagoon
+// Linoone
+// Meowth
+// Farfetch’d (exclusivo de la edición Espada)
+// Stunfisk
+// Corsola
+// Weezing
+// Yamask
+// Cofagrigus
+// Ponyta (exclusivo de la edición Escudo)
+// Rapidash (exclusivo de la edición Escudo)
+// Mr. Mime
+// Darumaka
+// Darmanitan
+
+new Vue({
+  el: 'body',
+
+  data: {
+
+pkmn: {
+
+'MEOWTH':['052-g'],
+'PONYTA':['077-g'],
+'RAPIDASH':['078-g'],
+'FARFETCHD':['083-g'],
+'WEEZING':['110-g'],
+'MR MIME':['122-g'],
+'CORSOLA':['222-g'],
+'ZIGZAGOON':['263-g'],
+'LINOONE':['264-g'],
+'DARUMAKA':['554-g'],
+'DARMANITAN d':['555-d'],
+'DARMANITAN g':['555-g'],
+'DARMANITAN z':['555-gz'],
+'YAMASK':['562-g'],
+'STUNKFISK':['618-g'],
+
+'Grookey':[810],
+'Thwackey':[811],
+'Rillaboom':[812],
+'Scorbunny':[813],
+'Raboot':[814],
+'Cinderace':[815],
+'Sobble':[816],
+'Drizzile':[817],
+'Inteleon':[818],
+'Skwovet':[819],
+'Greedent':[820],
+'Rookidee':[821],
+'Corvisquire':[822],
+'Corviknight':[823],
+'Blipbug':[824],
+'Dottler':[825],
+'Orbeetle':[826],
+'Nickit':[827],
+'Thievul':[828],
+'Gossifleur':[829],
+'Eldegoss':[830],
+'Wooloo':[831],
+'Dubwool':[832],
+'Chewtle':[833],
+'Drednaw':[834],
+'Yamper':[835],
+'Boltund':[836],
+'Rolycoly':[837],
+'Carkol':[838],
+'Coalossal':[839],
+'Applin':[840],
+'Flapple':[841],
+'Appletun':[842],
+'Silicobra':[843],
+'Sandaconda':[844],
+'Cramorant':[845],
+'Arrokuda':[846],
+'Barraskewda':[847],
+'Toxel':[848],
+'Toxtricity':[849],
+'Sizzlipede':[850],
+'Centiskorch':[851],
+'Clobbopus':[852],
+'Grapploct':[853],
+'Sinistea':[854],
+'Polteageist':[855],
+'Hatenna':[856],
+'Hattrem':[857],
+'Hatterene':[858],
+'Impidimp':[859],
+'Morgrem':[860],
+'Grimmsnarl':[861],
+'Obstagoon':[862],
+'Perrserker':[863],
+'Cursola':[864],
+'Sirfetch_d':[865],
+'Mr. Rime':[866],
+'Runerigus':[867],
+'Milcery':[868],
+'Alcremie':[869],
+'Falinks':[870],
+'Pincurchin':[871],
+'Snom':[872],
+'Frosmoth':[873],
+'Stonjourner':[874],
+'Eiscue':[875],
+'Indeedee':[876],
+'Morpeko':[877],
+'Cufant':[878],
+'Copperajah':[879],
+'Dracozolt':[880],
+'Arctozolt':[881],
+'Dracovish':[882],
+'Arctovish':[883],
+'Duraludon':[884],
+'Dreepy':[885],
+'Drakloak':[886],
+'Dragapult':[887],
+'Zacian':[888],
+'Zamazenta':[889],
+'Eternatus':[890],
+},
+
+  },
+  
+})
+</script>
+</body>
+</html>

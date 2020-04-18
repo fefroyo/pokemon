@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400">
+<style>
+.pokedex {padding: 2rem 0;font-family: Lato;}
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pokemon-list li {
+    width: 130px;
+    height: 150px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.pokemon__sprite {height: 120px;}
+.u-sprite {height: 100%;}
+.pokemon__name {
+    font-weight: 700;
+    padding: 5px 0;
+}
+.u-capitalize, .u-stat-label, .u-stat-value {text-transform: capitalize;}
+</style>
+</head>
+
+<body>
+
+<!-- <input type="search" v-model="buscar"> -->
+<!-- | filterBy buscar -->
+<div class="pokedex">
+
+<ul class="pokemon-list" v-for="(key, val) in pkmn">
+
+<li><a href="#/pokedex/{{val}}">
+     <div class="pokemon" data-name="{{ key }}"><div class="pokemon__sprite">
+<p>{{val}}</p>
+<img :src="'https://www.serebii.net/Shiny/SM/'+val+'.png'" height="80"/>
+<!-- <img :src="'http://fefroyo.github.io/pokemon/icons/'+val+'.png'" height="120"/> -->
+
+<!-- <img v-attr="src: 'http://fefroyo.github.io/pokemon/icons/' + {{val}} +'.png'"> -->
+<!-- <img class="u-sprite" v-bind:src="'http://fefro.hol.es/pokemons/pokes2/'{{val}}'.png'" title="Ivysaur"> -->
+
+</div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a></li>
+
+
+</ul>
+
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script>
+/////// SHINY ////////
+// https://www.serebii.net/Shiny/SM/
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_'+val+'_s.png
+// https://github.com/fefroyo/pokemon/blob/master/shiny/pokemon_icon_408_00_shiny.png
+// https://github.com/ZeChrales/PogoAssets/blob/master/pokemon_icons/pokemon_icon_640_00_shiny.png
+// https://www.serebii.net/pokemongo/pokemon/shiny/261.png
+// https://db.pokemongohub.net/images/ingame/normal/pokemon_icon_492_00_shiny.png
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_494_s.png
+
+
+// 1 -151
+// 152 - 251
+// 252 - 356 
+// 357 - 386
+// 387 - 493
+// 650 - 
+// 722 - 809
+// 810 - 830... 
+
+new Vue({
+  el: 'body',
+
+  data: {
+
+pkmn: {
+'rowlet':[722],
+'dartrix':[723],
+'decidueye':[724],
+'litten':[725],
+'torracat':[726],
+'incineroar':[727],
+'popplio':[728],
+'brionne':[729],
+'primarina':[730],
+'pikipek':[731],
+'trumbeak':[732],
+'toucannon':[733],
+'yungoos':[734],
+'gumshoos':[735],
+'grubbin':[736],
+'charjabug':[737],
+'vikavolt':[738],
+'crabrawler':[739],
+'crabominable':[740],
+'oricorio':[741],
+'cutiefly':[742],
+'ribombee':[743],
+'rockruff':[744],
+'lycanroc':[745],
+'wishiwashi':[746],
+'mareanie':[747],
+'toxapex':[748],
+'mudbray':[749],
+'mudsdale':[750],
+'dewpider':[751],
+'araquanid':[752],
+'fomantis':[753],
+'lurantis':[754],
+'morelull':[755],
+'shiinotic':[756],
+'salandit':[757],
+'salazzle':[758],
+'stufful':[759],
+'bewear':[760],
+'bounsweet':[761],
+'steenee':[762],
+'tsareena':[763],
+'comfey':[764],
+'oranguru':[765],
+'passimian':[766],
+'wimpod':[767],
+'golisopod':[768],
+'sandygast':[769],
+'palossand':[770],
+'pyukumuku':[771],
+'type: Null':[772],
+'silvally':[773],
+'minior':[774],
+'komala':[775],
+'turtonator':[776],
+'togedemaru':[777],
+'mimikyu':[778],
+'bruxish':[779],
+'drampa':[780],
+'dhelmise':[781],
+'jangmo-o':[782],
+'hakamo-o':[783],
+'kommo-o':[784],
+'tapu Koko':[785],
+'tapu Lele':[786],
+'tapu Bulu':[787],
+'tapu Fini':[788],
+'cosmog':[789],
+'cosmoem':[790],
+'solgaleo':[791],
+'lunala':[792],
+'nihilego':[793],
+'buzzwole':[794],
+'pheromosa':[795],
+'xurkitree':[796],
+'celesteela':[797],
+'kartana':[798],
+'guzzlord':[799],
+'necrozma':[800],
+'magearna':[801],
+'marshadow':[802],
+'poipole':[803],
+'nagadanel':[804],
+'stakataka':[805],
+'blacephalon':[806],
+'zeraora':[807],
+'meltan':[808],
+'melmetal':[809],
+
+},
+
+  },
+  
+})
+</script>
+</body>
+</html>

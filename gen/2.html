@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400">
+<style>
+.pokedex {padding: 2rem 0;font-family: Lato;}
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pokemon-list li {
+    width: 130px;
+    height: 150px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    cursor: pointer;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.pokemon__sprite {height: 120px;}
+.u-sprite {height: 100%;}
+.pokemon__name {
+    font-weight: 700;
+    padding: 5px 0;
+}
+.u-capitalize, .u-stat-label, .u-stat-value {text-transform: capitalize;}
+</style>
+</head>
+
+<body>
+
+
+<input type="search" v-model="buscar">
+
+<div class="pokedex">
+
+<ul class="pokemon-list" v-for="(key, val) in pkmn | filterBy buscar">
+
+<li><a href="#/pokedex/{{val}}"><div class="pokemon" data-name="{{ key }}"><div class="pokemon__sprite">
+
+<p>{{val}}</p>
+<img :src="'http://pogoespbc.com:5001/static/icons/'+val+'.png'" />
+<!-- <img v-attr="src: 'http://fefro.hol.es/pokemons/pokes2/' + {{val}} +'.png'"> -->
+<!-- <img class="u-sprite" v-bind:src="'http://fefro.hol.es/pokemons/pokes2/'{{val}}'.png'" title="Ivysaur"> -->
+
+</div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a></li>
+
+
+</ul>
+
+</div>
+
+<!-- <ul v-for="(key, val) in pkmn"><li>{{ key }} - {{ val }}</li></ul>
+
+<pre>{{ pkmn | json }}</pre> -->
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script>
+new Vue({
+  el: 'body',
+
+  data: {
+
+		pkmn: {
+			'Chikorita': [152],
+			'Bayleef': [153],
+			'Meganium': [154],
+			'Cyndaquil': [155],
+			'Quilava': [156],
+			'Typhlosion': [157],
+			'Totodile': [158],
+			'Croconaw': [159],
+			'Feraligatr': [160],
+			'Sentret': [161],
+			'Furret': [162],
+			'Hoothoot': [163],
+			'Noctowl': [164],
+			'Ledyba': [165],
+			'Ledian': [166],
+			'Spinarak': [167],
+			'Ariados': [168],
+			'Crobat': [169],
+			'Chinchou': [170],
+			'Lanturn': [171],
+			'Pichu': [172],
+			'Cleffa': [173],
+			'Igglybuff': [174],
+			'Togepi': [175],
+			'Togetic': [176],
+			'Natu': [177],
+			'Xatu': [178],
+			'Mareep': [179],
+			'Flaaffy': [180],
+			'Ampharos': [181],
+			'Bellossom': [182],
+			'Marill': [183],
+			'Azumarill': [184],
+			'Sudowoodo': [185],
+			'Politoed': [186],
+			'Hoppip': [187],
+			'Skiploom': [188],
+			'Jumpluff': [189],
+			'Aipom': [190],
+			'Sunkern': [191],
+			'Sunflora': [192],
+			'Yanma': [193],
+			'Wooper': [194],
+			'Quagsire': [195],
+			'Espeon': [196],
+			'Umbreon': [197],
+			'Murkrow': [198],
+			'Slowking': [199],
+			'Misdreavus': [200],
+			'Unown': [201],
+			'Wobbuffet': [202],
+			'Girafarig': [203],
+			'Pineco': [204],
+			'Forretress': [205],
+			'Dunsparce': [206],
+			'Gligar': [207],
+			'Steelix': [208],
+			'Snubbull': [209],
+			'Granbull': [210],
+			'Qwilfish': [211],
+			'Scizor': [212],
+			'Shuckle': [213],
+			'Heracross': [214],
+			'Sneasel': [215],
+			'Teddiursa': [216],
+			'Ursaring': [217],
+			'Slugma': [218],
+			'Magcargo': [219],
+			'Swinub': [220],
+			'Piloswine': [221],
+			'Corsola': [222],
+			'Remoraid': [223],
+			'Octillery': [224],
+			'Delibird': [225],
+			'Mantine': [226],
+			'Skarmory': [227],
+			'Houndour': [228],
+			'Houndoom': [229],
+			'Kingdra': [230],
+			'Phanpy': [231],
+			'Donphan': [232],
+			'Porygon2': [233],
+			'Stantler': [234],
+			'Smeargle': [235],
+			'Tyrogue': [236],
+			'Hitmontop': [237],
+			'Smoochum': [238],
+			'Elekid': [239],
+			'Magby': [240],
+			'Miltank': [241],
+			'Blissey': [242],
+			'Raikou': [243],
+			'Entei': [244],
+			'Suicune': [245],
+			'Larvitar': [246],
+			'Pupitar': [247],
+			'Tyranitar': [248],
+			'Lugia': [249],
+			'Ho-Oh': [250],
+			'Celebi': [251],
+		},
+
+  },
+  
+})
+</script>
+</body>
+</html>

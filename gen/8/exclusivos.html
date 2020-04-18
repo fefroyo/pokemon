@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:100,400">
+<style>
+.pokedex {padding: 2rem 0;font-family: Lato;}
+.pokemon-list {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: center;*/
+    padding: 0;
+    margin: 0;
+    padding: 1rem 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.pokemon-list li {
+    width: 130px;
+    height: 150px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    cursor: pointer;
+}
+a {color: inherit;text-decoration: none;}
+.pokemon__sprite {height: 120px;}
+.u-sprite {height: 100%;}
+.pokemon__name {
+    font-weight: 700;
+    padding: 5px 0;
+}
+.u-capitalize, .u-stat-label, .u-stat-value {text-transform: capitalize;}
+
+.separate {
+  width: 100%;
+  height: 5px;
+  background: #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- <input type="search" v-model="buscar"> -->
+<!-- | filterBy buscar -->
+<div class="pokedex">
+
+<h3>Exclusivos ESCUDO</h3>
+<ul class="pokemon-list" >
+  <li v-for="(key, val) in pkmnEscudo">
+    <a href="#/pokedex/{{val}}"><div class="pokemon" data-name="{{ key }}"><div class="pokemon__sprite">
+  <p>{{val}}</p>
+  <img :src="'https://www.serebii.net/swordshield/pokemon/small/'+val+'.png'" height="80"/>
+  </div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a>
+  </li>
+</ul>
+<br><br>
+<!-- <div class="separate"></div> -->
+<h3>Exclusivos ESPADA</h3>
+<ul class="pokemon-list">
+  <li v-for="(key, val) in pkmnEspada">
+    <a href="#/pokedex/{{val}}"><div class="pokemon" data-name="{{ key }}"><div class="pokemon__sprite">
+  <p>{{val}}</p>
+  <img :src="'https://www.serebii.net/swordshield/pokemon/small/'+val+'.png'" height="80"/>
+  </div><div class="pokemon__name u-capitalize"><span class="u-title">{{ key }}</span></div></div></a>
+  </li>
+</ul>
+
+
+</div>
+
+<!-- <img :src="'http://fefroyo.github.io/pokemon/icons/'+val+'.png'" height="120"/> -->
+<!-- <img v-attr="src: 'http://fefroyo.github.io/pokemon/icons/' + {{val}} +'.png'"> -->
+<!-- <img class="u-sprite" v-bind:src="'http://fefro.hol.es/pokemons/pokes2/'{{val}}'.png'" title="Ivysaur"> -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.28/vue.js'></script>
+<script>
+// https://www.serebii.net/pokedex-swsh/basculin/#
+
+/////// SHINY ////////
+// https://www.serebii.net/Shiny/SM/
+// https://www.serebii.net/Shiny/SWSH/810.png
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_'+val+'_s.png
+// https://github.com/fefroyo/pokemon/blob/master/shiny/pokemon_icon_408_00_shiny.png
+// https://github.com/ZeChrales/PogoAssets/blob/master/pokemon_icons/pokemon_icon_640_00_shiny.png
+// https://www.serebii.net/pokemongo/pokemon/shiny/261.png
+// https://db.pokemongohub.net/images/ingame/normal/pokemon_icon_492_00_shiny.png
+// https://cdn.bulbagarden.net/upload/0/04/Spr_7s_494_s.png
+
+// normal
+// https://www.serebii.net/swordshield/pokemon/small/
+
+// 1 -151
+// 152 - 251
+// 252 - 356 
+// 357 - 386
+// 387 - 493
+// 650 - 721
+// 722 - 809
+// 810 - 890
+
+
+new Vue({
+  el: 'body',
+
+  data: {
+
+pkmnEscudo: {
+
+'indeedee':['876-f'],
+'eiscue':[875],
+'gengar':['094'],
+'lapras':[131],
+'appletun':[842],
+'larvitar':[246],
+'pupitar':[247],
+'tyranitar':[248],
+'goomy':[704],
+'sliggoo':[705],
+'goodra':[706],
+'solosis':[577],
+'duosion':[578],
+'reuniclus':[579],
+'lotad':[270],
+'lombre':[271],
+'ludicolo':[272],
+'vullaby':[629],
+'mandibuzz':[630],
+'spritzee':[682],
+'aromatisse':[683],
+'croagunk':[453],
+'toxicroak':[454],
+'throh':[538],
+'basculin':[550],
+'sableye':[302],
+'lunatone':[337],
+'oranguru':[765],
+'drampa':[780],
+'ponyta':['077-g'],
+'rapidash':['078-g'],
+'corsola':['222-g'],
+'cursola':[864],
+'zamazenta':[889],
+},
+
+pkmnEspada: {
+
+'indeedee':[876],
+'stonejourner':[874],
+'machamp':['068'],
+'coalossal':[839],
+'flapple':[841],
+'deino':[633],
+'zweilous':[634],
+'hydreigon':[635],
+'jangmo':[782],
+'hakamo':[783],
+'kommo':[784],
+'gothita':[574],
+'gothorita':[575],
+'gothitelle':[576],
+'seedot':[273],
+'nuzleaf':[274],
+'shiftry':[275],
+'rufflet':[627],
+'braviary':[628],
+'swirlix':[684],
+'slurpuff':[685],
+'scraggy':[559],
+'scrafty':[560],
+'sawk':[539],
+'basculin':[550],
+'mawile':[303],
+'solrock':[338],
+'passimian':[766],
+'turtonator':[776],
+'farfetch’d':['083-g'],
+'sirfetch’d':[865],
+'darumaka':['554-g'],
+'darmanitan':['555-g'],
+'zacian':[888],
+},
+
+  },
+  
+})
+</script>
+</body>
+</html>
