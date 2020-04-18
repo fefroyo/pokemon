@@ -179,7 +179,7 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
   color: transparent;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
   font: 900 16em monospace;
-  opacity: .3;
+  opacity: .3;z-index: -9;
 }
 .greenWord {color: #44696c;}
 .levelBar {
@@ -5551,14 +5551,15 @@ function myFuncion(){
     
 if (foundItem) {
 
-  var x1 = document.getElementById("mySelect").value;
-  if (x1 == 'shiny'){ var shiny = "shiny/"; }
+var x1 = document.getElementById("mySelect").value;
+var pokeicono = 'poke_capture_0'; var shinyicono = 'f_n';   
+  if (x1 == 'shiny'){ var shiny = "shiny/"; pokeicono = 'poke_capture_0'; shinyicono = 'f_r';}
   if (x1 == 'noshiny'){ shiny = "icons/"; }
 
     var poke =
 '<div class="monsterInfo">'+
 '<p class="points">PC <span>'+foundItem.cpmax+'</span></p>'+
-'<img src="./'+shiny+foundItem.id2+'.png" alt="'+foundItem.id2+'" class="pokemon">'+
+'<img src="https://fefroyo.github.io/pokeHome-icons/'+shiny+pokeicono+foundItem.id2+'_000_mf_n_00000000_'+shinyicono+'.png" alt="'+foundItem.id2+'" data-hover="https://fefroyo.github.io/pokeHome-icons/shiny/poke_capture_0'+foundItem.id2+'_000_mf_n_00000000_f_r.png" class="pokeshiny pokemon">'+
 '<div class="number">'+foundItem.id+'</div>'+
 '<div class="pokemonLevel">'+
 '<h2 class="greenWord pokemonName">'+foundItem.name+' </h2>'+
@@ -5606,63 +5607,15 @@ if (foundItem) {
 
   $("#search").val('');
 }
-
-//function myFuncion2(){
-//
-//var numId = $('.number').html();
-//var incursion = $('.pokemonName').html();
-//
-//  for (i = 0; i < raids.length; i++) {
-//
-//    if (numId == raids[i].idRaid){
-//
-//    var pokeInc =
-//'<div class="monsterInfo">'+
-//'<img src="./imagenes pokemon/rd'+raids[i].Tier+'.png" alt="pokeMon" height="64"/>'+
-//'<p class="points">PC incursion <span>'+raids[i].BossCP+'</span></p>'+
-//'<div>'+
-//'<table><thead><tr>'+
-//'<th>#</th><th>Pokémon</th><th>Movimiento rápido</th>'+
-//'<th>Movimiento principal</th></tr></thead>'+
-//'<tbody>'+
-//'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac1+'.png" style="width:28px;height:28px!important;"></td>'+
-//'<td>'+raids[i].pokeAtac1+'</td>'+
-//'<td class="stab">'+
-//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick1+'</td><td class="stab">'+
-//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge1+'</td></tr>'+
-//'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac2+'.png" style="width:28px;height:28px!important;"></td>'+
-//'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac2+'</td>'+
-//'<td class="stab">'+
-//'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick2+'</td><td class="stab">'+
-//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge2+'</td></tr>'+
-//'<tr><td><img src="https://poketoolset.com/assets/img/pokemon/images/'+raids[i].idAtac3+'.png" style="width:28px;height:28px!important;"></td>'+
-//'<td><span class="_p28" style="background-position: -112px -168px;"></span>'+raids[i].pokeAtac3+'</td>'+
-//'<td class="stab">'+
-//'<span class="move-icon move-type-psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].quick3+'</td><td class="stab">'+
-//'<span class="move-icon move-type-Psychic move-tooltip" data-type="Psíquico">&nbsp;</span>'+raids[i].charge3+'</td></tr>'+
-//'</tbody></table>';
-//
-//  document.getElementById('results2').innerHTML = pokeInc;
-//    } 
-//  }  
-//}//fin function2
        
-function myFuncion3(){
-   var numId = $('.number').html();
-   var numId2 = 'pokeshiny'+numId;
-   var pokenumId = document.getElementById(numId2);
-   var imgBasePath = 'raw.githubusercontent.com/ZeChrales/PogoAssets/master/pokemon_icons/pokemon_icon_';
-
-   var pokeInc ='<div class="monsterInfo">'+
-              '<img src="https://images.weserv.nl/?w=200&il&url='+imgBasePath+numId+'_00.png" id="pokeshiny'+numId+'" class="pokeshiny1" alt="pokeMon" height="64"/>'+
-            '</div>';
-   
-   $(pokenumId).hover(
-     function() {
-       $(this).attr("src",'https://images.weserv.nl/?w=200&il&url='+imgBasePath+numId+'_00_shiny.png'); },
-     function() {
-       $(this).attr("src",'https://images.weserv.nl/?w=200&il&url='+imgBasePath+numId+'_00.png'); }
-   );
+function myFuncion3(){ 
+   $(".pokeshiny").each(function() {
+      $(this).data("original", this.src);
+    }).mouseenter(function() {
+      $(this).attr("src", $(this).data("hover"));
+    }).mouseleave(function() {
+      $(this).attr("src", $(this).data("original"));
+    });
 } //fin function3       
 
 
