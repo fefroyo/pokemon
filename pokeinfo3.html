@@ -5595,18 +5595,10 @@ if (x1 == 'noshiny'){ shiny = "g1/"; }
     
 if (foundItem) {
 
-
-// https://fefroyo.github.io/pokemon/icons/
-// https://fefroyo.github.io/pokemon/shiny/
-// https://www.serebii.net/pokemongo/pokemon/
-// https://www.serebii.net/pokemongo/pokemon/shiny/
-// poke_capture_0 ... _000_mf_n_00000000_ ...f_r (shiny) f_n (normal) .png 
-
-//var numrito = foundItem.id2 + 1;
 var poke =
 '<div class="monsterInfo">'+
 '<p class="points">PC <span>'+foundItem.cpmax+'</span></p>'+
-'<img class="pokeshiny pokemon" src="./pokesHome/'+shiny+pokeicono+foundItem.id2+'_000_mf_n_00000000_'+shinyicono+'.png" data-hover="./pokesHome/shiny/poke_capture_0'+foundItem.id2+'_000_mf_n_00000000_f_r.png" alt="'+foundItem.id2+'" id="pokeshiny'+foundItem.id2+'">'+'<div class="number">'+foundItem.id+'</div>'+
+'<img class="pokeshiny pokemon" src="https://fefroyo.github.io/pokeHome-icons/'+shiny+pokeicono+foundItem.id2+'_000_mf_n_00000000_'+shinyicono+'.png" data-hover="https://fefroyo.github.io/pokeHome-icons/shiny/poke_capture_0'+foundItem.id2+'_000_mf_n_00000000_f_r.png" alt="'+foundItem.id2+'" id="pokeshiny'+foundItem.id2+'">'+'<div class="number">'+foundItem.id+'</div>'+
 '<div class="pokemonLevel">'+
 '<h2 class="greenWord pokemonName">'+foundItem.name+' </h2>'+
 '<div class="levelBar"></div>'+
@@ -5627,7 +5619,6 @@ var poke =
 '</div>'+
 '</div><p> </p>'+
 
-//'<a href="'+numrito+'">'+numrito+'</a>'+
 
 '</div>'+
 
@@ -5658,7 +5649,6 @@ var poke =
      }
   } 
 }
-
   $("#search").val('');
 }
 
@@ -5675,18 +5665,8 @@ function myFuncion3(){
 
 } //fin function3
 
-
    });
 });
-
-
-// $(".pokeshiny").each(function() {
-//   $(this).data("original", this.src);
-// }).mouseenter(function() {
-//   $(this).attr("src", $(this).data("hover"));
-// }).mouseleave(function() {
-//   $(this).attr("src", $(this).data("original"));
-// });
 </script>
 </body>
 </html>
