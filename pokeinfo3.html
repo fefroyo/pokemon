@@ -343,6 +343,60 @@ table.moveset td {
 table.moveset tr.stab td {background-color: #dcedc8;}
 table.moveset td .move-icon {margin-right:4px}
 table.moveset td a { color:#222;text-decoration:none }
+   
+   /* stats */
+table.table-stats {margin-left: 0;margin-right: 0;}
+.grid.boxed article.pokemon-stats {overflow: auto;}
+.grid.boxed article.pokemon-stats .table-stats {border: none;}
+.grid.boxed article.pokemon-stats .table-stats td {padding: 4px 6px;}
+.grid.boxed article.pokemon-stats .table-stats tr:nth-child(2n) td {background: 0 0;}
+.grid.boxed article.pokemon-stats .table-stats td:nth-child(1) {font-size: 13px;color: #555;}
+.grid.boxed article.pokemon-stats .table-stats td:nth-child(2) {
+font-size: 15px;}
+.grid.boxed article.pokemon-stats .table-stats td:nth-child(n + 2) {
+border-left: 1px solid #eee;}
+.grid.boxed article.pokemon-stats .table-stats td span {
+  font-size: 13px;color: #888;}
+.grid.boxed article.pokemon-stats .table-stats td strong {color: #222;}
+.grid.boxed article.pokemon-stats .table-stats td small {
+  font-size: 13px;color: #777;}
+.grid.boxed article.pokemon-stats h3 {margin-top: 32px;}
+.grid.boxed article.pokemon-stats a {
+  font-size: 12px;margin-left: 8px;}
+.grid.boxed article.pokemon-stats .table-stats.bars {
+  width: auto;margin: 22px auto 36px;}
+.grid.boxed article.pokemon-stats .table-stats.bars td {
+  border-left: none !important;
+}
+.grid.boxed article.pokemon-stats .table-stats.bars td:first-child {
+  padding-right: 24px !important;
+}
+.grid.boxed article.pokemon-stats .table-stats.bars td:last-child {
+  text-align: right;
+  padding-left: 12px !important;
+}
+.grid.boxed article.pokemon-stats .bars .bar {
+  height: 6px;
+  width: 150px;
+  position: relative;
+  background: #eaeaea;
+  border-radius: 5px;
+}
+.grid.boxed article.pokemon-stats .bars .bar .inner {
+  position: absolute;
+  height: 100%;
+  background: #aaa;
+  border-radius: 5px;
+}
+.grid.boxed article.pokemon-stats .bars .bar.att .inner {
+  background: #f56565;
+}
+.grid.boxed article.pokemon-stats .bars .bar.def .inner {
+  background: #48bb78;
+}
+.grid.boxed article.pokemon-stats .bars .bar.sta .inner {
+  background: #4299e1;
+}
 </style>
 </head>
 <body>
@@ -5556,6 +5610,7 @@ $('#searchBtn').click(function (e) {
   myFuncion();
   myFuncion3();
 });
+   // keyup - keypress (pulsar enter)
 document.addEventListener('keyup', function (e) {
     var key = e.which || e.keyCode;
     document.getElementById("search").value;
@@ -5565,15 +5620,6 @@ document.addEventListener('keyup', function (e) {
     }
 });
 
-// keyup - keypress
-// const input = document.querySelector('#myInput');
-// input.addEventListener('keyup',function(e){
-//   if (e.keyCode === 13) {
-//     alert('hi');
-//   }
-// });
-
-//document.getElementById("searchBtn").addEventListener('click', myFuncion);
 
 function myFuncion(){
 
@@ -5608,19 +5654,17 @@ var poke =
 '<div class="large-type letra"><div class="typess POKEMON_TYPE_'+foundItem.type1+'">'+foundItem.type1+'</div>'+
 '<div class="typess POKEMON_TYPE_'+foundItem.type2+'">'+foundItem.type2+'</div></div>'+
 
-'<div style="width: 685px;text-align: left;">'+
-'<div class="w3-container" style="max-width: 100%;">'+
-'<span>Atk:</span>'+
-'<div class="w3-tiny"><div class="w3-container w3-red" style="max-width:'+foundItem.BaseAttack+'px">'+foundItem.BaseAttack+'</div></div>'+
-'<span>Def:</span>'+
-'<div class="w3-tiny"><div class="w3-container w3-blue" style="max-width:'+foundItem.BaseDefense+'px">'+foundItem.BaseDefense+'</div></div>'+
-'<span>Sta:</span>'+
-'<div class="w3-tiny"><div class="w3-container w3-green" style="max-width:'+foundItem.BaseStamina+'px">'+foundItem.BaseStamina+'</div></div>'+
-'</div>'+
-'</div><p> </p>'+
+'<div class="main grid boxed" style="display: inline;"><article class="pokemon-stats" id="stats">'+
+'<table class="table-stats bars">'+
+'<tbody><tr><td>Ataque</td><td><div class="bar att">'+
+'<div class="inner" style="width: calc('+foundItem.BaseAttack+' / 345 * 100%)"></div></div></td><td>'+foundItem.BaseAttack+'</td></tr>'+
+'<tr><td>Defensa</td><td><div class="bar def">'+
+'<div class="inner" style="width: calc('+foundItem.BaseDefense+' / 396 * 100%)"></div></div></td><td>'+foundItem.BaseDefense+'</td></tr>'+
+'<tr><td>Salud</td><td>'+
+'<div class="bar sta"><div class="inner" style="width: calc('+foundItem.BaseStamina+' / 496 * 100%)"></div></div></td><td>'+foundItem.BaseStamina+'</td></tr></tbody>'+
+'</table></article></div>'+
 
-
-'</div>'+
+'<p> </p></div>'+
 
 '<div class="grid letra"><div class="moves compact"><h3>Ataque<i class="fa fa-question-circle-o fa-fw" data-type="offense"></i></h3><table class="moveset"><tbody><tr class="stab"><td><span class="type-icon move-type-'+foundItem.atacTipo1+'">Flying</span><a href="#">'+foundItem.atac1+'</a></td><td></td></tr><tr class="stab"><td><span class="type-icon move-type-'+foundItem.atacTipo2+'">Flying</span><a href="/es/move/74-cabeza-de-hierro">'+foundItem.atac2+'</a></td><td></td></tr></tbody></table></div>'+
 
@@ -5651,7 +5695,6 @@ var poke =
 }
   $("#search").val('');
 }
-
 
 function myFuncion3(){
 
