@@ -235,6 +235,15 @@ function myFunction() {
       li[i].style.display = "none";
     }
   }
+   
+   $(".pokeshiny").each(function() {
+        $(this).data("original", this.src);
+      }).mouseenter(function() {
+        $(this).attr("src", $(this).data("hover"));
+      }).mouseleave(function() {
+        $(this).attr("src", $(this).data("original"));
+    });
+   
 }
 </script>
 </body>
