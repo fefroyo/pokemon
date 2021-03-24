@@ -4,11 +4,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- iconos web -->
-<link rel="shortcut icon" href="https://raw.githubusercontent.com/nepixl/hiRes_PkmIcons_TG-Discord/main/Discord_hiRes_noShiny_withBorder/pokemon_icon_553_00.png"/>
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/nepixl/hiRes_PkmIcons_TG-Discord/main/Discord_hiRes_noShiny_withBorder/pokemon_icon_553_00.png"/>
-<link rel="icon" href="https://raw.githubusercontent.com/nepixl/hiRes_PkmIcons_TG-Discord/main/Discord_hiRes_noShiny_withBorder/pokemon_icon_553_00.png"/>
-   
+   <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/> -->
 <style>
 .w3-tiny{font-size:10px!important}
 .w3-container:after,.w3-container:before,.w3-panel:after,.w3-panel:before,.w3-row:after,.w3-row:before,.w3-row-padding:after,.w3-row-padding:before,
@@ -17,42 +13,9 @@
 .w3-red,.w3-hover-red:hover{color:#fff!important;background-color:#f44336!important}
 .w3-yellow,.w3-hover-yellow:hover{color:#000!important;background-color:#ffeb3b!important}
 .w3-blue,.w3-hover-blue:hover{color:#fff!important;background-color:#2196F3!important}
-</style>   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style>
-.type-icon {
-  background: url(icons-sprite.png);
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-  color: transparent;
-  cursor: default;
-  margin-right:4px;
-}
-.move-type-bug {background-position:-24px 0;}
-.move-type-dark {background-position:-48px 0;}
-.move-type-dragon {background-position:0 -24px;}
-.move-type-electric {background-position:-24px -24px;}
-.move-type-fairy {background-position:-48px -24px;}
-.move-type-fighting {background-position:-72px -24px;}
-.move-type-fight {background-position:-72px -24px;}
-.move-type-fire {background-position:0 -48px;}
-.move-type-flying {background-position:-24px -48px;}
-.move-type-ghost {background-position:-48px -48px;}
-.move-type-grass {background-position:-72px -48px;}
-.move-type-ground {background-position:0 -72px;}
-.move-type-ice {background-position:-24px -72px;}
-.move-type-normal {background-position:-48px -72px;}
-.move-type-poison {background-position:-72px -72px;}
-.move-type-psychic {background-position:0 -96px;}
-.move-type-rock {background-position:-24px -96px;}
-.move-type-steel {background-position:-48px -96px;}
-.move-type-water {background-position:-72px -96px;}
-
 
 /* input search */
-#main { 
+/*#main { 
   width: 400px; 
   height: 50px; 
   background: #f2f2f2; 
@@ -120,7 +83,39 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
   -webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
   box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7), 0 3px 0 #b8882a, 0 4px 0 #593a11, 0 8px 0 #ccc; 
 }
-.shinyboton {float: right;width: 30px;}
+.shinyboton {float: right;width: 30px;}*/
+
+/* iconos 
+--------------------*/
+.type-icon {
+  background: url(icons-sprite.png);
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  color: transparent;
+  cursor: default;
+  margin-right:4px;
+}
+.move-type-bug {background-position:-24px 0;}
+.move-type-dark {background-position:-48px 0;}
+.move-type-dragon {background-position:0 -24px;}
+.move-type-electric {background-position:-24px -24px;}
+.move-type-fairy {background-position:-48px -24px;}
+.move-type-fighting {background-position:-72px -24px;}
+.move-type-fight {background-position:-72px -24px;}
+.move-type-fire {background-position:0 -48px;}
+.move-type-flying {background-position:-24px -48px;}
+.move-type-ghost {background-position:-48px -48px;}
+.move-type-grass {background-position:-72px -48px;}
+.move-type-ground {background-position:0 -72px;}
+.move-type-ice {background-position:-24px -72px;}
+.move-type-normal {background-position:-48px -72px;}
+.move-type-poison {background-position:-72px -72px;}
+.move-type-psychic {background-position:0 -96px;}
+.move-type-rock {background-position:-24px -96px;}
+.move-type-steel {background-position:-48px -96px;}
+.move-type-water {background-position:-72px -96px;}
 
 .list-group {list-style:none;margin: 0;padding: 0;}
 .list-group-item { 
@@ -145,7 +140,7 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
   box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.8), inset 0 2px 2px rgba(255, 255, 255, 1), 0 5px 0 #ccc, 0 6px 0 #989898, 0 13px 0 #dfdede;  
 }
 
-  /* ///// poke ////// */
+/* ///// poke ////// */
 .monsterInfo {
   width: 500px;
   /*height: 300px;*/
@@ -157,7 +152,7 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
   position: relative;
   vertical-align: top;
 }
-.monsterInfo img {height: 120px;cursor: pointer;}
+.monsterInfo img {height: 250px;cursor: pointer;}
 .points {color: #44696c;}
 .points span {font-size: 24px;font-weight: bold;}
 .pokemonLevel {
@@ -172,6 +167,9 @@ input[type="submit"].solid:active, #searchBtn.solid:active, #mySelect.solid:acti
     text-transform: capitalize;
     /*width: 600px;*/
     text-align: center;
+}
+.pokemonName a{
+  text-decoration: none;color: #44696c;
 }
 .pokemonName::after {
     content: "";
@@ -347,8 +345,8 @@ table.moveset td {
 table.moveset tr.stab td {background-color: #dcedc8;}
 table.moveset td .move-icon {margin-right:4px}
 table.moveset td a { color:#222;text-decoration:none }
-   
-   /* stats */
+
+/* stats */
 table.table-stats {margin-left: 0;margin-right: 0;}
 .grid.boxed article.pokemon-stats {overflow: auto;}
 .grid.boxed article.pokemon-stats .table-stats {border: none;}
@@ -401,7 +399,10 @@ border-left: 1px solid #eee;}
 .grid.boxed article.pokemon-stats .bars .bar.sta .inner {
   background: #4299e1;
 }
+
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 </head>
 <body>
   
@@ -830,7 +831,7 @@ border-left: 1px solid #eee;}
 </tr><tr>
   <td class="type-img-cell"><span class="type-icon move-type-psychic">Psychic</span></td>
   <td>Takes <span class="type-weak-value type-weak-value-160">160%</span> damage</td>
-</tr></tbody></table></div></div><div class="types-divs clearfix fight-water water-fight" style="display:none" id="type-fighting/water"><h2 class="main-title POKEMON_TYPE_fighting">Fighting/Water</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table"><tbody><tr>
+</tr></tbody></table></div></div><div class="types-divs clearfix fighting-water water-fighting water-fight" style="display:none" id="type-fighting/water"><h2 class="main-title POKEMON_TYPE_fighting">Fighting/Water</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table"><tbody><tr>
     <td class="type-img-cell"><span class="type-icon move-type-bug">Bug</span></td>
     <td>Takes <span class="type-resist-value type-resist-value-63">62.5%</span> damage</td>
   </tr><tr>
@@ -2185,7 +2186,7 @@ border-left: 1px solid #eee;}
 </tr><tr>
   <td class="type-img-cell"><span class="type-icon move-type-steel">Steel</span></td>
   <td>Takes <span class="type-weak-value type-weak-value-160">160%</span> damage</td>
-</tr></tbody></table></div></div><div class="types-divs clearfix normal-fighting" style="display:none" id="type-normal/fighting"><h2 class="main-title POKEMON_TYPE_normal">Normal/Fighting</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table">
+</tr></tbody></table></div></div><div class="types-divs clearfix normal-fighting normal-fight" style="display:none" id="type-normal/fighting"><h2 class="main-title POKEMON_TYPE_normal">Normal/Fighting</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table">
 <tbody><tr>
     <td class="type-img-cell"><span class="type-icon move-type-ghost">Ghost</span></td>
     <td>Takes <span class="type-resist-value type-resist-value-39">39.1%</span> damage</td>
@@ -3438,7 +3439,7 @@ border-left: 1px solid #eee;}
 </tr><tr>
   <td class="type-img-cell"><span class="type-icon move-type-grass">Grass</span></td>
   <td>Takes <span class="type-weak-value type-weak-value-160">160%</span> damage</td>
-</tr></tbody></table></div></div><div class="types-divs clearfix fight-steel fight-steel steel-fight" style="display:none" id="type-fighting/steel"><h2 class="main-title POKEMON_TYPE_fighting">Fighting/Steel</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table"><tbody><tr>
+</tr></tbody></table></div></div><div class="types-divs clearfix fight-steel steel-fight" style="display:none" id="type-fighting/steel"><h2 class="main-title POKEMON_TYPE_fighting">Fighting/Steel</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table"><tbody><tr>
     <td class="type-img-cell"><span class="type-icon move-type-bug">Bug</span></td>
     <td>Takes <span class="type-resist-value type-resist-value-39">39.1%</span> damage</td>
   </tr><tr>
@@ -4087,7 +4088,7 @@ border-left: 1px solid #eee;}
 </tr><tr>
   <td class="type-img-cell"><span class="type-icon move-type-steel">Steel</span></td>
   <td>Takes <span class="type-weak-value type-weak-value-160">160%</span> damage</td>
-</tr></tbody></table></div></div><div class="types-divs clearfix dragon-fighting" style="display:none" id="type-dragon/fighting"><h2 class="main-title POKEMON_TYPE_dragon">Dragon/Fighting</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table"><tbody><tr>
+</tr></tbody></table></div></div><div class="types-divs clearfix dragon-fighting dragon-fight" style="display:none" id="type-dragon/fighting"><h2 class="main-title POKEMON_TYPE_dragon">Dragon/Fighting</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table"><tbody><tr>
     <td class="type-img-cell"><span class="type-icon move-type-bug">Bug</span></td>
     <td>Takes <span class="type-resist-value type-resist-value-63">62.5%</span> damage</td>
   </tr><tr>
@@ -4212,7 +4213,7 @@ border-left: 1px solid #eee;}
 </tr><tr>
   <td class="type-img-cell"><span class="type-icon move-type-psychic">Psychic</span></td>
   <td>Takes <span class="type-weak-value type-weak-value-160">160%</span> damage</td>
-</tr></tbody></table></div></div><div class="types-divs clearfix dragon-rock" style="display:none" id="type-dragon/rock"><h2 class="main-title POKEMON_TYPE_dragon">Dragon/Rock</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table">
+</tr></tbody></table></div></div><div class="types-divs clearfix dragon-rock rock-dragon" style="display:none" id="type-dragon/rock"><h2 class="main-title POKEMON_TYPE_dragon">Dragon/Rock</h2><div class="type-divs"><h3 class="sub-title">Resiste a:</h3><table class="vuln-table">
 <tbody><tr>
     <td class="type-img-cell"><span class="type-icon move-type-fire ">Fire</span></td>
     <td>Takes <span class="type-resist-value type-resist-value-39">39.1%</span> damage</td>
@@ -5486,6 +5487,16 @@ border-left: 1px solid #eee;}
 </tr></tbody></table></div></div></div>
 
 
+<!-- <div class="main grid boxed"><article class="pokemon-stats" id="stats">
+<table class="table-stats bars">
+<tbody><tr><td>Ataque</td><td><div class="bar att">
+<div class="inner" style="width: calc(261 / 345 * 100%)"></div></div></td><td>261</td></tr>
+<tr><td>Defensa</td><td><div class="bar def">
+<div class="inner" style="width: calc(166 / 396 * 100%)"></div></div></td><td>166</td></tr>
+<tr><td>Aguante</td><td>
+<div class="bar sta"><div class="inner" style="width: calc(225 / 496 * 100%)"></div></div></td><td>225</td></tr></tbody>
+</table></article></div> -->
+
 <!-- https://jsbin.com/gosedejuro/edit?html,output -->
 <!-- https://jsbin.com/qupixex/edit?html,css,output -->
 <!-- https://gamepress.gg/pokemongo/pokemon-go-type-chart#2 -->
@@ -5561,6 +5572,7 @@ var pokedex = JSON.parse(pokes1);
 var search = $(".search-input");
 
   search.keyup(function() {
+    
     var value = $(this).val();
     var regex = new RegExp(value, "i");
     var results = '<ul class="list-group">';
@@ -5572,13 +5584,14 @@ var search = $(".search-input");
         array.push(val);
         count++;
       }
+    
     });
     
 // https://www.serebii.net/pokemongo/pokemon/shiny/001.png   
 // poke_capture_0 ... _000_mf_n_00000000_ ...f_r (shiny) f_n (normal) .png 
     $.each(array, function(key, val) {
       results += "<li class='list-group-item'><img src='https://fefroyo.github.io/pokeHome-icons/icons/poke_capture_0"+
-                  val.id2+"_000_mf_n_00000000_f_n.png' height='20'> "+val.name+"</li>";
+                  val.id2+"_000_mf_n_00000000_f_n.png' height='20'>" +val.name+ "</li>";
       return key < 10;
     });
       results += '</ul>';
@@ -5614,7 +5627,6 @@ $('#searchBtn').click(function (e) {
   myFuncion();
   myFuncion3();
 });
-   // keyup - keypress (pulsar enter)
 document.addEventListener('keyup', function (e) {
     var key = e.which || e.keyCode;
     document.getElementById("search").value;
@@ -5623,7 +5635,6 @@ document.addEventListener('keyup', function (e) {
       myFuncion3();
     }
 });
-
 
 function myFuncion(){
 
@@ -5641,22 +5652,25 @@ var x1 = document.getElementById("mySelect").value;
 var pokeicono = 'poke_capture_0'; var shinyicono = 'f_n';
 
 if (x1 == 'shiny'){ var shiny = "shiny/"; pokeicono = 'poke_capture_0'; shinyicono = 'f_r';}
-if (x1 == 'noshiny'){ shiny = "icons/"; } //g1 - icons
+if (x1 == 'noshiny'){ shiny = "icons/"; }
     
 if (foundItem) {
+
 
 var poke =
 '<div class="monsterInfo">'+
 '<p class="points">PC <span>'+foundItem.cpmax+'</span></p>'+
 '<img class="pokeshiny pokemon" src="https://fefroyo.github.io/pokeHome-icons/'+shiny+pokeicono+foundItem.id2+'_000_mf_n_00000000_'+shinyicono+'.png" data-hover="https://fefroyo.github.io/pokeHome-icons/shiny/poke_capture_0'+foundItem.id2+'_000_mf_n_00000000_f_r.png" alt="'+foundItem.id2+'" id="pokeshiny'+foundItem.id2+'">'+'<div class="number">'+foundItem.id+'</div>'+
 '<div class="pokemonLevel">'+
-'<h2 class="greenWord pokemonName">'+foundItem.name+' </h2>'+
+'<h2 class="greenWord pokemonName"><a href="https://db.pokemongohub.net/pokemon/'+foundItem.id2+'/counters">'+foundItem.name+' </a></h2>'+
 '<div class="levelBar"></div>'+
 '<div class="HP"><span>'+foundItem.BaseStamina+'</span> / <span>'+foundItem.BaseStamina+'</span> Stamina</div>'+
 '</div>'+
 
 '<div class="large-type letra"><div class="typess POKEMON_TYPE_'+foundItem.type1+'">'+foundItem.type1+'</div>'+
 '<div class="typess POKEMON_TYPE_'+foundItem.type2+'">'+foundItem.type2+'</div></div>'+
+
+// stats
 
 '<div class="main grid boxed" style="display: inline;"><article class="pokemon-stats" id="stats">'+
 '<table class="table-stats bars">'+
@@ -5697,8 +5711,10 @@ var poke =
      }
   } 
 }
+
   $("#search").val('');
 }
+
 
 function myFuncion3(){
 
@@ -5712,8 +5728,10 @@ function myFuncion3(){
 
 } //fin function3
 
+
    });
 });
+
 </script>
 </body>
 </html>
