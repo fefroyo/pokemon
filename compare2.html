@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>pokemon select type number</title>
+  <link rel="shortcut icon" href="https://www.serebii.net/pokemongo/pokemon/698.png"/>
+  <link rel="apple-touch-icon" href="https://www.serebii.net/pokemongo/pokemon/698.png"/>
+  <link rel="icon" href="https://www.serebii.net/pokemongo/pokemon/698.png"/>
+  <!-- type="image/gif" sizes="16x16" -->
+<style>
+@import url('https://fonts.googleapis.com/css?family=Oswald:300|Passion+One');
+*{ font-family: 'Oswald', sans-serif;}
+
+.type-icon {
+    background: url(icons-sprite.png);
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    color: transparent;
+    cursor: default;
+}
+.move-type-bug {background-position:-24px 0;}
+.move-type-dark {background-position:-48px 0;}
+.move-type-dragon {background-position:0 -24px;}
+.move-type-electric {background-position:-24px -24px;}
+.move-type-fairy {background-position:-48px -24px;}
+.move-type-fighting {background-position:-72px -24px;}
+.move-type-fight {background-position:-72px -24px;}
+.move-type-fire {background-position:0 -48px;}
+.move-type-flying {background-position:-24px -48px;}
+.move-type-ghost {background-position:-48px -48px;}
+.move-type-grass {background-position:-72px -48px;}
+.move-type-ground {background-position:0 -72px;}
+.move-type-ice {background-position:-24px -72px;}
+.move-type-normal {background-position:-48px -72px;}
+.move-type-poison {background-position:-72px -72px;}
+.move-type-psychic {background-position:0 -96px;}
+.move-type-rock {background-position:-24px -96px;}
+.move-type-steel {background-position:-48px -96px;}
+.move-type-water {background-position:-72px -96px;}
+.move-type- {display:none;}
+
+.results {
+/*border: 1px solid #484542;*/
+/*background: hsla(0, 0%, 0%, 0.15);*/
+position: relative;
+/*width: 1102px;*/
+width: 92%;
+height: 550px;
+margin: 0 auto;
+margin-top: 64px;
+}
+
+#lista {cursor: pointer;}
+.rojo {color: red;}
+.verde{color: green;}
+
+.pokemon-list td:nth-child(1) {
+    background-color: rgba(0,0,0,0.04);
+    width: 40px;
+    color: #666;
+    text-align: center;
+}
+.pokemon-list td:nth-child(2) {width: 75px;}
+.pokemon-list td:nth-child(3),
+.pokemon-list td:nth-child(7), .borrar {
+  font-weight: bold; cursor: pointer;
+}
+.pokemon-list td:nth-child(7) {width: 90px;}
+.pokemon-list td:nth-child(4),
+.pokemon-list td:nth-child(5),
+.pokemon-list td:nth-child(6) {
+/*width: 40px;*/
+}
+
+.pokemon-list td, .centro {text-align: center;}
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+table a {text-decoration: none;}
+th, td {padding: 5px;}
+
+/*poke*/
+.pokedex_content {margin: auto;text-align: center;}
+.pokemon { width: 160px; height: 300px; float: left; margin: 1px; margin-bottom: 3px;border: 1px solid #aaaaaa;
+}
+.p_id {position: relative; float:left; height: 0px; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
+.p_g {position: relative; text-transform: uppercase; float:right; padding: 5px; padding-bottom: 0px; color: #A9A9A9; font-weight: bold; z-index: 999;}
+.p_n {text-transform: uppercase; text-align: center; font-weight: bold;}
+.i {position: relative; width: 140px; height:140px; padding: 10px; margin-top: -25px; background-color: white; z-index: 1; }
+.p_t_wrapper {clear: both; min-width: 100%; height: 15px; padding-top: 10px; padding-bottom: 10px;}
+.p_t {text-transform: uppercase; max-width: 100%; margin: auto; text-align: center; font-size: 12px; padding-top: 2px; padding-bottom: 2px;}
+.p_t1 { text-transform: uppercase; width: 49%; float: left; text-align: center; font-size: 12px; padding-top: 2px; padding-bottom: 2px;} 
+.p_t2 { text-transform: uppercase; width: 49%; float: right; text-align: center; font-size: 12px; padding-top: 2px; padding-bottom: 2px;}
+/*color for types */
+.fire {background-color: #ff7c4c; }
+.fighting {background-color: #ff4c4c; }
+.normal { background-color: Beige; }
+.water { background-color: #4ca8ff;}
+.grass { background-color: #59c67a; }
+.ground { background-color: #c69659; }
+.dark { background-color: #919191; }
+.bug {background-color: #d1ed95; }
+.flying {background-color: #d9f6f7;}
+.poison {background-color: #ffa0e8; }
+.fairy {background-color: #ffa0e8; }
+.psychic {background-color: #efbbf7; }
+.rock {background-color: #bc8871; }
+.steel {background-color: #b5a69f; }
+.ghost {background-color: #a498ad; }
+.electric {background-color: #fffa82; }
+.dragon {background-color: #ff5e5e; }
+.ice {background-color: #d6ffff; }
+
+.pokemon { display: inline-block; float:none !important; width: 120px; height: auto;}
+.stat_hold {clear:both; font-size: 12px; display:block;}
+.stat_contain {width: 100%; min-width: 100%; height: 40px; padding-top: 10px;}
+.p_a, .p_d, .p_s { width: 33% !important; float: left;}
+.p_c {margin-top: 10px; font-weight: bold;}
+.cp_hold { font-size: 12px; display:inline-block;  }
+.p_c2 {font-weight: bold;}
+.cp_hold2 { font-size: 12px; display:inline-block;  }
+.cp_hold2 b { font-size: medium;}
+.p_n { font-size: 15px; height: 15px; margin-top: -20px;}
+.p_id, .p_g { font-size: 12px; color: black;}
+.lo {font-size: 12px !important; line-height: 15px; }
+.lon {font-size: 10px !important; line-height: 15px; }
+.pokemon p {text-align: left;margin: 0px;}
+.pokemon p span{vertical-align: middle;margin: 5px;}
+  
+.pokemon:hover #img2 {
+  display: block;
+}
+</style>  
+</head>
+
+<body>
+
+<div class="centro">
+<input id="formInput" name="formInput" class="search-input" id="search"  type="search" placeholder="Busca pokemon"/>
+<button id="add">OK</button>
+
+<select id="mySelect" onchange="myFunction()">
+  <option value="noshiny" selected>Normal</option>
+  <option value="shiny">Shiny</option>
+</select>
+</div>
+<p id="demo" style="display: none"></p>
+
+<div class="results1"></div>
+<span id="resultado"></span>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="./js/allpokedex.js"></script>
+<script>
+  //// funcion shiny
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  var shiny = "";
+
+  if (x == 'shiny'){ shiny = "shiny/";}
+  else if (x == 'noshiny'){ shiny = "icons/";}
+  document.getElementById("demo").innerHTML = shiny;
+ // console.log(shiny + " " +x)
+}
+
+
+  // listar al buscar
+var search = $(".search-input");
+
+search.keyup(function() {
+var value = $(this).val().toLowerCase();
+var regex = new RegExp(value, "i");
+var results = '<table class="tablesorter responsive-on-mobile pokemon-list tablesorter-default" style="width:300px"><tbody>';
+var array = [];
+var count = 1;
+
+$.each(pokedex, function(key, val) {
+  if ((val.name.search(regex) != -1)) {
+    array.push(val);
+    count++;
+  }
+});
+
+$.each(array, function(key, val) {
+
+  results += "<tr><td><span>"+val.id+"</span></td>";
+  results += "<td id='lista'><img src='./icons/"+val.id2+".png' height='20' alt='"+val.id+"'>" 
+            +val.name+ "</td></tr>"; //" +val.id+ " 
+  return key < 3;
+});
+  results += '</tbody></table><br>';
+
+    if (value !== '') {
+      $('.results1').html(results);
+    }
+    else {
+      $('.results1').html('');
+    }
+    $("tr td#lista").click(function() { 
+      $("#search").val($(this).text());
+        if (value !== '') {
+          $('.results1').html(results);
+          document.getElementById("formInput").value = $(this).text();
+          add();myFuncion3();
+          $('.results1').html('');
+          document.getElementById("formInput").value = '';
+        }
+        else {
+          $('.results1').html('');
+        }
+
+    });
+});
+
+// Lista
+function get_todos() {
+    var todos = new Array;
+    var todos_str = localStorage.getItem('todo');
+    if (todos_str !== null) {
+        todos = JSON.parse(todos_str); 
+    } return todos;
+}
+
+function add() {
+    var formInput = document.getElementById("formInput").value,
+    foundItem = null;
+
+  if (formInput === '') { return false;}
+
+  for (i = 0; i < pokedex.length; i++) {
+    if (pokedex[i].id == formInput || pokedex[i].name == formInput) {
+      foundItem = pokedex[i];
+      break;
+    }
+  }
+
+var shiny = "icons/";
+var x1 = document.getElementById("mySelect").value;
+var pokeicono = 'poke_capture_0'; var shinyicono = 'f_n';
+  
+if (x1 == 'shiny'){ shiny = "shiny/"; pokeicono = 'poke_capture_0'; shinyicono = 'f_r';}
+if (x1 == 'noshiny'){ shiny = "icons/"; }
+
+  if (foundItem) {
+  var poke = 
+  '<div class="p_id">#<a href="https://db.pokemongohub.net/pokemon/'+foundItem.id+'">'+
+      foundItem.id+'</a></div><div class="p_g">PC '+
+      foundItem.cpmax+'</div> <img class="pokeshiny" id="img1" src="https://fefroyo.github.io/pokeHome-icons/'+shiny+pokeicono+foundItem.id2+'_000_mf_n_00000000_'+shinyicono+'.png" data-hover="https://fefroyo.github.io/pokeHome-icons/shiny/'+pokeicono+foundItem.id2+'_000_mf_n_00000000_f_r.png" style="height: 120px; width:120px;position:relative;top:-10px;" alt=""><div class="p_n "><a href="https://pokemon.gameinfo.io/es/pokemon/'+
+      foundItem.id+'">'+foundItem.name+'</a></div><div class="p_t_wrapper"><div class="p_t1 '+foundItem.type1+'">'+foundItem.type1+'</div><div class="p_t2 '+foundItem.type2+'">'+foundItem.type2+'</div></div><div class="p_c2"><span class="cp_hold2">lv15: <b>'+foundItem.level15+'</b></span></div><div class="p_c2"><span class="cp_hold2">lv20: <b>'+foundItem.eggiv+'</b></span></div><p><span class="type-icon move-type-'+foundItem.atacTipo1+'"></span>'+foundItem.atac1+'<br><span class="type-icon move-type-'+foundItem.atacTipo2+'"></span>'+foundItem.atac2+'</p><div class="stat_contain"><div class="p_a"><span class="stat_hold">ATT</span> '+foundItem.BaseAttack+'</div><div class="p_d"><span class="stat_hold">DEF</span> '+foundItem.BaseDefense+'</div><div class="p_s"><span class="stat_hold">STA</span> '+foundItem.BaseStamina+'</div></div>';
+
+      document.getElementById('resultado').innerHTML = poke;
+
+  }
+
+    var todos = get_todos();
+    todos.push(poke);
+    localStorage.setItem('todo', JSON.stringify(todos));
+    show();
+    return false;
+}
+
+function remove() {
+    var id = this.getAttribute('id');
+    var todos = get_todos();
+    todos.splice(id, 1);
+    localStorage.setItem('todo', JSON.stringify(todos));
+    show();
+    return false;
+}
+function show() {
+    var todos = get_todos();
+    var html = '<div class="pokedex_content">';
+
+    for(var i=0; i<todos.length; i++) {
+        html += '<div class="pokemon">'+todos[i]+
+                '<div class="borrar remove" id="' +i+ '">&times;</div></div>';};
+    
+    html += '</div>';
+    
+    document.getElementById('resultado').innerHTML = html;
+ 
+    var buttons = document.getElementsByClassName('remove');
+    for (var i=0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', remove);
+    };
+}
+   
+function myFuncion3(){
+    $(".pokeshiny").each(function() {
+      $(this).data("original", this.src);
+    }).mouseenter(function() {
+      $(this).attr("src", $(this).data("hover"));
+    }).mouseleave(function() {
+      $(this).attr("src", $(this).data("original"));
+    });  
+}//fin function3
+  
+  // click and enter
+document.getElementById('add').addEventListener('click', add);
+document.addEventListener('keypress', function (e) {
+    var key = e.which || e.keyCode;
+    if (key === 13) { // 13 is enter
+      add();
+      document.getElementById("formInput").value = '';
+    }
+}); show();
+  
+    $(".pokeshiny").each(function() {
+      $(this).data("original", this.src);
+    }).mouseenter(function() {
+      $(this).attr("src", $(this).data("hover"));
+    }).mouseleave(function() {
+      $(this).attr("src", $(this).data("original"));
+    });
+</script>
+</body>
+</html>
